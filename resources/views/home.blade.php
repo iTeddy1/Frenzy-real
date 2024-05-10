@@ -3,7 +3,7 @@
         Home Page
     </x-slot:title>
     <div class="mx-auto w-full max-w-screen-2xl p-4 md:p-6 2xl:p-10">
-        <div class="relative w-full" id="carousel-example">
+        {{-- <div class="relative w-full" id="carousel-example">
             <!-- Carousel wrapper -->
             <div class="relative left-[-1.5%] h-56 overflow-hidden rounded-lg sm:h-64 xl:h-80 2xl:h-96">
                 <!-- Item 1 -->
@@ -58,9 +58,10 @@
                     <span class="hidden">Next</span>
                 </span>
             </button>
-        </div>
+        </div> --}}
+        {{ Breadcrumbs::render('home') }}
 
-        <div class="sticky mt-10">
+        <div class="mt-10">
             <div class="">
                 <div class="inline-flex h-10 items-center gap-2 rounded-md border border-solid border-[#E0E4E8] p-1">
                     <input class="w-[100px] bg-transparent pl-5 text-[#212B36] focus:outline-none" type="text"
