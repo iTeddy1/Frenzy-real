@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 export default {
   content: [
     "./resources/**/*.blade.php",
@@ -7,6 +9,12 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        public: ['Public Sans', ...defaultTheme.fontFamily.sans],
+        rubik: ['Rubik Moonrocks']
+
+      },
+  
       colors: {
         primary: {
           lighter: "#C8FBCD",

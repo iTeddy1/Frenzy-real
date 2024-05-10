@@ -18,7 +18,7 @@
     <div class="flex flex-col">
         @include("layouts.navigation")
         {{-- <x-header /> --}}
-        <main class="container mx-auto flex">
+        <main class="container max-w-screen-2xl flex">
             @include("layouts.sidebar")
 
             {{ $slot }}

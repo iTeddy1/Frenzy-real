@@ -2,7 +2,6 @@
     <x-slot:title>
         Home Page
     </x-slot:title>
-    {{ Breadcrumbs::render('home') }}
     <div class="mx-auto w-full max-w-screen-2xl p-4 md:p-6 2xl:p-10">
         <div class="relative w-full" id="carousel-example">
             <!-- Carousel wrapper -->
