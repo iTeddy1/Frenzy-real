@@ -7,27 +7,13 @@
         <div class="self-stretch text-gray-800 text-2xl font-bold font-['Public Sans'] leading-normal tracking-wide">
             Modify product</div>
         {{-- road map --}}
-        <div class="justify-start items-center gap-2.5 inline-flex">
-            <div class="opacity-50 text-black text-sm font-normal font-['Public Sans'] leading-[21px]">Dashboard</div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-slash" width="20" height="20"
-                viewBox="0 0 24 24" stroke-width="2" stroke="#637381" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M17 5l-10 14" />
-            </svg>
-            <div class="text-gray-800 text-sm font-normal font-['Public Sans'] leading-[21px]">E-Commerce</div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-slash" width="20"
-                height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#637381" fill="none"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M17 5l-10 14" />
-            </svg>
-            <div class="text-black text-sm font-normal font-['Public Sans'] leading-[21px]">Modify product</div>
-        </div>
+        {{ Breadcrumbs::render('products.edit', $product) }}
+
         {{-- form --}}
-        <form action="/products" method="POST" id="product" class="gap-2.5 flex">
+        <form action="/products/{{$product->id}}" method="POST" id="product" class="gap-2.5 flex">
             @csrf
             @method('PATCH')
+
             {{-- left form --}}
             <div
                 class="w-[600px] p-2.5 rounded-[10px] border border-zinc-200 flex-col justify-start items-start gap-2.5 inline-flex">
@@ -114,9 +100,6 @@
                             Kids
                         </label>
                     </div>
-                    
-                    
-                    
                 </div>
 
                 <div class="text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">Regular Price
@@ -134,7 +117,7 @@
                     </a>
                     <button
                         class="w-[340px] px-12 py-4 bg-green-600 rounded-[10px] justify-center items-center gap-2.5 inline-flex text-neutral-50 text-base font-semibold font-['Public Sans'] leading-tight"
-                        type="submit" form="product">
+                        type="submit">
                         Save
                     </button>
                 </div>

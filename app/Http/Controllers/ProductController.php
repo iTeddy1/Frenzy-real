@@ -41,10 +41,9 @@ class ProductController extends Controller
     }
 
     // Method to update a product
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        $product = Product::findOrFail($id);
         $product->update($request->all());
-        return redirect('/products/edit/{$id}');
+        return redirect()->route('products.show', $product->id);
     }
 }

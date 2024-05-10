@@ -7,19 +7,8 @@
         <div class="self-stretch text-gray-800 text-2xl font-bold font-['Public Sans'] leading-normal tracking-wide">
             Create a new product</div>
         {{-- road map --}}
-        <div class="justify-start items-center gap-2.5 inline-flex">
-            <div class="opacity-50 text-black text-sm font-normal font-['Public Sans'] leading-[21px]">Dashboard</div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-slash" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#637381" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M17 5l-10 14" />
-              </svg>
-            <div class="text-gray-800 text-sm font-normal font-['Public Sans'] leading-[21px]">E-Commerce</div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-slash" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#637381" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M17 5l-10 14" />
-              </svg>
-            <div class="text-black text-sm font-normal font-['Public Sans'] leading-[21px]">New product</div>
-        </div>
+        {{ Breadcrumbs::render('products.create') }}
+
         {{-- form --}}
         <form action="/products" method="POST" id="product" class="gap-2.5 flex">
             @csrf

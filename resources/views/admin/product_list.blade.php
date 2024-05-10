@@ -2,33 +2,14 @@
     <x-slot:title>
         Product List
     </x-slot:title>
+    
     <div class=" p-5 flex-col justify-start items-center gap-2.5 inline-flex">
         {{-- heading --}}
         <div class="self-stretch text-gray-800 text-2xl font-bold font-['Public Sans'] leading-normal tracking-wide">
             Product List</div>
-        {{-- roadmap --}}
-        <div class="flex self-stretch justify-between">
-            <div class="self-stretch justify-start items-center gap-2.5 flex">
-                <div class="opacity-50 text-black text-sm font-normal font-['Public Sans'] leading-[21px]">Dashboard
-                </div>
-                <div class="w-[13.19px] h-[0px] origin-top-left rotate-[117.05deg] opacity-50 border border-black"></div>
-                <div class="text-gray-800 text-sm font-normal font-['Public Sans'] leading-[21px]">E-Commerce</div>
-                <div class="w-[13.19px] h-[0px] origin-top-left rotate-[117.05deg] border border-black"></div>
-                <div class="text-black text-sm font-normal font-['Public Sans'] leading-[21px]">List</div>
-            </div>
-            <a href="/products/create"
-                class="px-5 py-2 bg-green-600 rounded-[10px] justify-center items-center gap-2.5 inline-flex text-neutral-50 text-base font-semibold font-['Public Sans'] leading-tight"
-                type="submit" form="product">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus stroke-neutral-50"
-                    width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 5l0 14" />
-                    <path d="M5 12l14 0" />
-                </svg>
-                Create Product
-            </a>
-        </div>
+            {{-- roadmap --}}
+            {{ Breadcrumbs::render('products') }}
+       
         {{-- main --}}
         <div
             class="py-5 self-stretch bg-white rounded-[10px] shadow border border-divider flex-col justify-start items-start gap-2.5 flex">
@@ -77,7 +58,7 @@
                     {{-- {{ $product }} --}}
                     <div class="self-stretch p-2.5 bg-white justify-start items-center gap-2.5 flex">
                         <input type="checkbox" name="">
-                        <a href="/products/edit/{{$product->id}}" class="min-w-[500px] max-w-[500px] h-[50px] justify-start items-center gap-2.5 flex">
+                        <a href="/products/{{$product->id}}/edit" class="min-w-[500px] max-w-[500px] h-[50px] justify-start items-center gap-2.5 flex">
                             <img class="w-[50px] h-[50px] rounded-[10px]" src="https://via.placeholder.com/50x50" />
                             <div class="grow h-[26px] text-gray-800 text-base font-semibold font-['Public Sans']">
                                 {{ $product->name }}</div>

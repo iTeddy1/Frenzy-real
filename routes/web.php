@@ -3,25 +3,24 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'home'
-);
+Route::view('/', 'home')->name('home');
 
 
 //! Admin product
 // Route to display all products
-Route::get('products', [ProductController::class, 'index']);
+Route::get('products', [ProductController::class, 'index'])->name('products');
 
 // Route to display the form for creating a new product
-Route::get('/products/create', [ProductController::class, 'create']);
+Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 // Route to store a newly created product
 Route::post('/products', [ProductController::class, 'store']);
 
-Route::get('/products/show/{id}', [ProductController::class, 'show']);
+Route::get('/products/show/{id}', [ProductController::class, 'show'])->name('products.show');
 // Route to display the form for editing a product
-Route::get('/products/edit/{id}', [ProductController::class, 'edit']);
+Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 
 // Route to update a product
-Route::patch('/products/update/{product}', [ProductController::class, 'update']);
+Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 
 //! Auth
 Route::middleware('auth')->group(function () {
