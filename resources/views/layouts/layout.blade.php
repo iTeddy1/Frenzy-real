@@ -16,12 +16,12 @@
 </head>
 
 <body class="font-public">
-    <div class="flex flex-col">
-        @include("layouts.navigation")
+    <div class="flex h-screen overflow-hidden">
+        @include("layouts.sidebar")
         {{-- <x-header /> --}}
         <main class="container mx-auto flex">
-            @include("layouts.sidebar")
-
+            @include("layouts.navigation")
+            
             {{ $slot }}
         </main>
     </div>
