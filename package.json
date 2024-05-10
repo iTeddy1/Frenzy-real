@@ -6,7 +6,6 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "alpinejs": "^3.13.10",
         "autoprefixer": "^10.4.19",
         "axios": "^1.6.4",
         "laravel-vite-plugin": "^1.0",
