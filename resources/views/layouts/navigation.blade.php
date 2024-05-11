@@ -34,6 +34,15 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        @guest 
+                        <x-dropdown-link :href="route('login')">
+                            {{ __('Login') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('register')">
+                            {{ __('Register') }}
+                        </x-dropdown-link>
+                        @endguest
+                        @auth
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
@@ -48,6 +57,7 @@
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
+                        @endauth
                     </x-slot>
                 </x-dropdown>
             </div>
