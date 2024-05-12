@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::with('assets')->simplePaginate(12);
+        $products = Product::with('assets')->Paginate(12);
         // dd($products);
         return view('home')->with('products', $products);
     }

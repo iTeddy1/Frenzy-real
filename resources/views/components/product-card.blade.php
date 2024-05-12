@@ -1,7 +1,7 @@
 @props(['name' => "Nike Air Force 1 '07 Essential", 'regularprice' => 20, 'saleprice' => 0, 'image' => ''])
 
 <div
-    class="mx-auto mt-4 w-full overflow-hidden  rounded-lg border bg-white p-2 font-public shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)]">
+    class="flex flex-col justify-between mx-auto mt-4 w-full overflow-hidden  rounded-lg border bg-white p-2 font-public shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)]">
     <div class="relative">  
         <div
             class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] items-center justify-center gap-2.5 rounded bg-red-500 px-3 py-1">
@@ -50,7 +50,6 @@
     <div class="flex flex-col text-left">
         <h3 class="text-md font-semibold">{{ $name }}</h3>
 
-        <div>
             <div class="flex items-center justify-between pt-10">
                 <!-- Color Pallette  -->
                 <span class="flex">
@@ -73,6 +72,5 @@
                     </span>
                 </div>
             </div>
-        </div>
     </div>
 </div>

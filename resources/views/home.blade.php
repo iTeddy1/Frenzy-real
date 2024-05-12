@@ -1,4 +1,4 @@
-@props(['products'])
+{{-- @props(['products']) --}}
 <x-layout>
     <x-slot:title>
         Home Page
@@ -111,33 +111,16 @@
         <section>
             <div class="mx-auto mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                 @foreach ($products as $product)
-                @php
-                @endphp
-                <x-product-card 
-                        :name="$product['name']" 
-                        :regularprice="$product['regular_price']" 
-                        :saleprice="$product['sale_price']"
-                        :image="$product->mainAsset->first()->path"
-                        />
+                    <x-product-card 
+                            :name="$product['name']" 
+                            :regularprice="$product['regular_price']" 
+                            :saleprice="$product['sale_price']"
+                            :image="$product->mainAsset->first()->path"
+                    />
                 @endforeach
             </div>
-
+            <div>{{$products->links()}}</div>
         </section>
-
-        <div class="mt-14 flex items-center justify-center">
-            <button class="flex h-8 w-8 items-center justify-center rounded-full bg-[#00AC55]"
-                onclick="decreaseValue()">
-                <i class="bx bx-left-arrow-alt text-white"></i>
-            </button>
-            <span class="font-inter ml-5 mr-5 px-3 text-center text-lg font-semibold leading-6 text-black"
-                id="numberInput">
-                1
-            </span>
-            <button class="flex h-8 w-8 items-center justify-center rounded-full bg-[#00AC55]"
-                onclick="increaseValue()">
-                <i class="bx bx-right-arrow-alt text-white"></i>
-            </button>
-        </div>
     </div>
 
 </x-layout>
