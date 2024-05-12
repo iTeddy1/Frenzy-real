@@ -1,4 +1,4 @@
-@props(['name' => "Nike Air Force 1 '07 Essential", 'regularprice' => 20, 'saleprice' => 0, 'images' => ''])
+@props(['name' => "Nike Air Force 1 '07 Essential", 'regularprice' => 20, 'saleprice' => 0, 'image' => ''])
 
 <div
     class="mx-auto mt-4 w-full overflow-hidden  rounded-lg border bg-white p-2 font-public shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)]">
@@ -36,20 +36,22 @@
                 </div>
             </div>
         </div>
+        {{-- @php
+        $mainAsset = $product->assets->firstWhere('pivot.type', 'main')->path;
+        @endphp
 
-        @if (!empty($images) && count($images) > 0)
-        <img class="h-[250px] w-[260px] rounded-lg" src="{{ $images[0] }}" style="block-size: fit-content"
+        @if ($mainAsset)
+        @endif --}}
+        <img class="h-[250px] w-[260px] rounded-lg" src="{{ $image }}" style="block-size: fit-content"
             alt="Product Image" />
-    @else
-        <p>No image available</p>
-    @endif
+
     </div>
 
-    <div class="h-[75px]  text-left">
+    <div class="flex flex-col text-left">
         <h3 class="text-md font-semibold">{{ $name }}</h3>
 
         <div>
-            <div class="flex items-center justify-between pt-8">
+            <div class="flex items-center justify-between pt-10">
                 <!-- Color Pallette  -->
                 <span class="flex">
                     <div class="relative h-4 w-8">

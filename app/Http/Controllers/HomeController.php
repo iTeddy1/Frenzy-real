@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Storage::json('nike_db.json');
+        $products = Product::with('assets')->simplePaginate(12);
         // dd($products);
         return view('home')->with('products', $products);
     }

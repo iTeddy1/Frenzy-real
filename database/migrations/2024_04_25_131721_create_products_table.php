@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('colorway')->default('#000000');
             $table->string('status')->nullable();
-            $table->string('images')->nullable();
             $table->integer('sold')->default(0);
             $table->timestamps();
         });

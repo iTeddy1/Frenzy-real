@@ -1,5 +1,4 @@
-@props(["products"])
-
+@props(['products'])
 <x-layout>
     <x-slot:title>
         Home Page
@@ -111,15 +110,16 @@
         </div> --}}
         <section>
             <div class="mx-auto mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-
                 @foreach ($products as $product)
+                @php
+                @endphp
                 <x-product-card 
-                :name="$product['name']"
-                :regularprice="$product['regular_price']" 
-                :saleprice="$product['sale_price']" 
-                :images="$product['images']" 
-                />
-            @endforeach
+                        :name="$product['name']" 
+                        :regularprice="$product['regular_price']" 
+                        :saleprice="$product['sale_price']"
+                        :image="$product->mainAsset->first()->path"
+                        />
+                @endforeach
             </div>
 
         </section>
