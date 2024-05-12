@@ -1,8 +1,10 @@
+@props(["products"])
+
 <x-layout>
     <x-slot:title>
         Home Page
     </x-slot:title>
-    <div class="mx-auto w-full max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+    <div class="mx-auto w-full max-w-screen-2xl p-4 md:p-6 2xl:p-8">
         {{-- <div class="relative w-full" id="carousel-example">
             <!-- Carousel wrapper -->
             <div class="relative left-[-1.5%] h-56 overflow-hidden rounded-lg sm:h-64 xl:h-80 2xl:h-96">
@@ -59,53 +61,66 @@
                 </span>
             </button>
         </div> --}}
-        <div class="self-stretch text-gray-800 text-2xl font-bold font-['Public Sans'] leading-normal tracking-wide">
+        <div class="font-['Public Sans'] self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
             Shop</div>
-        {{ Breadcrumbs::render('home') }}
+        {{ Breadcrumbs::render("home") }}
 
-        <div class="mt-10">
-            <div class="">
-                <div class="inline-flex h-10 items-center gap-2 rounded-md border border-solid border-[#E0E4E8] p-1">
-                    <input class="w-[100px] bg-transparent pl-5 text-[#212B36] focus:outline-none" type="text"
-                        placeholder="Search" />
-                    <span class="flex items-center justify-center pr-2 text-lg text-black">
-                        <i class="bx bx-search"></i>
-                    </span>
+        <div class="mt-10 flex">
+            <div>
+                <form class="mx-auto max-w-md">
+                    <label class="sr-only mb-2 text-sm font-medium text-text-dark dark:text-white"
+                        for="default-search">Search</label>
+                    <div class="relative">
+                        <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
+                            <svg class="h-4 w-4 text-text-normal dark:text-text-normal" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </div>
+                        <input
+                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-text-normal focus:border-divider focus:ring-primary dark:border-divider dark:bg-background-default-dark dark:text-white dark:placeholder-gray-400 dark:focus:border-primary dark:focus:ring-primary"
+                            id="default-search" type="search" placeholder="Search..." required />
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="ml-auto inline-flex items-center justify-between">
+                <div class="font-inter ml-auto mr-16 break-words text-right text-lg font-bold leading-6 text-black">
+                    Filter:
+                </div>
+
+                <div class="font-inter break-words text-center text-lg font-bold leading-6 text-black">
+                    Sort by:
+                    <i class="bx bx-chevron-down ml-1"></i>
                 </div>
             </div>
         </div>
 
         <!--Products-->
-        <div class="mt-16 flex items-center space-x-5">
+        {{-- <div class="mt-16 flex items-center space-x-5">
             <div class="ml h-14 w-6 bg-[#007B55]"></div>
             <div class="font-public-sans break-words text-2xl font-semibold text-green-600">
                 Our Products
             </div>
         </div>
 
-        <div class="mt-3 flex justify-between">
-            <div class="font-inter ml-auto mr-16 break-words text-right text-lg font-bold leading-6 text-black">
-                Filter:
-            </div>
-
-            <div class="font-inter break-words text-center text-lg font-bold leading-6 text-black">
-                Sort by:
-                <i class="bx bx-chevron-down ml-1"></i>
-            </div>
-        </div>
-
-        <div
-            class="mt-none explore font-public-sans leading-12 mb-10 text-4xl font-bold tracking-wide text-black">
+        <div class="mt-none explore font-public-sans leading-12 mb-10 text-4xl font-bold tracking-wide text-black">
             Explore Our Products
-        </div>
+        </div> --}}
         <section>
+            <div class="mx-auto mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+
+                @foreach ($products as $product)
                 <x-product-card 
-                name="Nike Air Force 1 '07 Essential"
-                regularprice = 614
-                saleprice = 500
-                image = "https://static.nike.com/a/images/t_PDP_1728_v1/20488f52-3686-476c-b4b8-0ca430c34a05/air-force-1-07-essential-shoe-BHN3Db.jpg" 
-                /> 
-            
+                :name="$product['name']"
+                :regularprice="$product['regular_price']" 
+                :saleprice="$product['sale_price']" 
+                :images="$product['images']" 
+                />
+            @endforeach
+            </div>
 
         </section>
 
