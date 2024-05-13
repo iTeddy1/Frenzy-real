@@ -12,6 +12,7 @@ class ProductController extends Controller
     // Method to display all products
     public function index()
     {
+
         $products = Product::all();
         return view('admin.product_list', ['products' => $products ]);
     }
@@ -55,4 +56,5 @@ class ProductController extends Controller
         $product->update($request->all());
         return redirect()->route('products.show', $product->id);
     }
+
 }

@@ -23,10 +23,21 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('assets')->Paginate(12);
+        $searchTerm = $request->input('query');
+
+        // Query products based on search term
+        $productsQuery = Product::query();
+
+        if ($searchTerm) {
+            $productsQuery->where('name', 'like', "%$searchTerm%")
+                          ->orWhere('description', 'like', "%$searchTerm%");
+        }
+
+        // Fetch products based on the search query or fetch all products
+        $products = $productsQuery->with('assets')->paginate(12);
         // dd($products);
-        return view('home')->with('products', $products);
+        return view('home', compact('products', 'searchTerm'));
     }
 }

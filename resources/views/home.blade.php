@@ -66,7 +66,7 @@
 
         <div class="mt-10 flex">
             <div>
-                <form class="mx-auto max-w-md">
+                <form action='/' method="GET" class="mx-auto max-w-md">
                     <label class="sr-only mb-2 text-sm font-medium text-text-dark dark:text-white"
                         for="default-search">Search</label>
                     <div class="relative">
@@ -79,12 +79,11 @@
                         </div>
                         <input
                             class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-text-normal focus:border-divider focus:ring-primary dark:border-divider dark:bg-background-default-dark dark:text-white dark:placeholder-gray-400 dark:focus:border-primary dark:focus:ring-primary"
-                            id="default-search" type="search" placeholder="Search..." required />
+                            id="default-search" name="query" type="search" placeholder="Search..." required />
 
                     </div>
                 </form>
             </div>
-
             <div class="ml-auto inline-flex items-center justify-between">
                 <div class="font-inter ml-auto mr-16 break-words text-right text-lg font-bold leading-6 text-black">
                     Filter:
