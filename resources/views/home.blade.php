@@ -66,7 +66,7 @@
 
         <div class="mt-10 flex">
             <div>
-                <form action='/' method="GET" class="mx-auto max-w-md">
+                <form class="mx-auto max-w-md" action='/' method="GET">
                     <label class="sr-only mb-2 text-sm font-medium text-text-dark dark:text-white"
                         for="default-search">Search</label>
                     <div class="relative">
@@ -89,8 +89,23 @@
                     Filter:
                 </div>
 
-                <div class="font-inter break-words text-center text-lg font-bold leading-6 text-black">
+                <div class="flex font-public break-words text-center text-lg font-bold leading-6 ">
                     Sort by:
+                    <a class="btn btn-secondary"
+                        href="{{ route("home", ["sort_field" => "name", "sort_direction" => $sortField == "name" && $sortDirection == "asc" ? "desc" : "asc"]) }}">
+                        {!! $sortDirection == "asc"
+                            ? '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M6 15l6 -6l6 6" />
+                                    </svg>'
+                            : '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M6 9l6 6l6 -6" />
+                                    </svg>' 
+                        !!}
+
+                    </a>
+
                     <i class="bx bx-chevron-down ml-1"></i>
                 </div>
             </div>
@@ -111,15 +126,14 @@
             <div class="mx-auto mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                 @foreach ($products as $product)
                     <x-product-card 
-                            :name="$product['name']" 
-                            :regularprice="$product['regular_price']" 
-                            :saleprice="$product['sale_price']"
-                            :image="$product->assets->first()->path"
-                            :hoverimage="$product->assets->skip(1)->first()->path"
-                    />
+                    :name="$product['name']" 
+                    :regularprice="$product['regular_price']" 
+                    :saleprice="$product['sale_price']" 
+                    :image="$product->assets->first()->path"
+                    :hoverimage="$product->assets->skip(1)->first()->path" />
                 @endforeach
             </div>
-            <div>{{$products->links()}}</div>
+            <div>{{ $products->links() }}</div>
         </section>
     </div>
 

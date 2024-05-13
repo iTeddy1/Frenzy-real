@@ -24,7 +24,10 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Request $request)
-    {
+    {    // Get the sort parameters from the request
+        $sortField = $request->input('sort_field', 'name'); // Default to sorting by name
+        $sortDirection = $request->input('sort_direction', 'asc'); // Default to ascending order
+
         $searchTerm = $request->input('query');
 
         // Query products based on search term
@@ -32,12 +35,21 @@ class HomeController extends Controller
 
         if ($searchTerm) {
             $productsQuery->where('name', 'like', "%$searchTerm%")
-                          ->orWhere('description', 'like', "%$searchTerm%");
+                ->orWhere('description', 'like', "%$searchTerm%");
         }
+        
+        // Apply sorting
+        $productsQuery->orderBy($sortField, $sortDirection);
 
         // Fetch products based on the search query or fetch all products
         $products = $productsQuery->with('assets')->paginate(12);
+
         // dd($products);
-        return view('home', ['products' => $products, 'searchTerm' => $searchTerm]);
+        return view('home', [
+            'products' => $products,
+            'searchTerm' => $searchTerm,
+            'sortField' => $sortField,
+            'sortDirection' => $sortDirection
+        ]);
     }
 }
