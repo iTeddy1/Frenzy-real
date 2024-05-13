@@ -23,9 +23,5 @@ class Product extends Model
         return $this->belongsToMany(Asset::class, 'product_assets');
     }
 
-    public function mainAsset(): BelongsToMany
-    {
-        return $this->belongsToMany(Asset::class, 'product_assets')
-                    ->wherePivot('type', 'main');
-    }
+
 }

@@ -17,7 +17,7 @@ Route::get('/products/create', [ProductController::class, 'create'])->name('prod
 // Route to store a newly created product
 Route::post('/products', [ProductController::class, 'store']);
 
-Route::get('/products/show/{id}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products/show/{product}', [ProductController::class, 'show'])->name('products.show');
 // Route to display the form for editing a product
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 

@@ -1,8 +1,14 @@
-@props(['name' => "Nike Air Force 1 '07 Essential", 'regularprice' => 20, 'saleprice' => 0, 'image' => ''])
+@props([
+    "name" => "Nike Air Force 1 '07 Essential",
+    "regularprice" => 20,
+    "saleprice" => 0,
+    "image" => "",
+    "hoverimage" => "",
+])
 
 <div
-    class="flex flex-col justify-between mx-auto mt-4 w-full overflow-hidden  rounded-lg border bg-white p-2 font-public shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)]">
-    <div class="relative">  
+    class="mx-auto mt-4 flex w-full flex-col justify-between overflow-hidden rounded-lg border bg-white p-2 font-public shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)]">
+    <div class="relative">
         <div
             class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] items-center justify-center gap-2.5 rounded bg-red-500 px-3 py-1">
             <div class="font-['Poppins'] text-xs font-bold uppercase leading-[18px] text-neutral-50">
@@ -36,41 +42,36 @@
                 </div>
             </div>
         </div>
-        {{-- @php
-        $mainAsset = $product->assets->firstWhere('pivot.type', 'main')->path;
-        @endphp
-
-        @if ($mainAsset)
-        @endif --}}
-        <img class="h-[250px] w-[260px] rounded-lg" src="{{ $image }}" style="block-size: fit-content"
-            alt="Product Image" />
+        <img class="peer rounded-lg object-cover" src="{{ $image }}" alt="product image" />
+        <img class="peer absolute -right-96 top-0 h-full w-full object-cover transition-all delay-100 duration-1000 hover:right-0 peer-hover:right-0"
+            src="{{ $hoverimage }}" alt="product image" />
 
     </div>
 
     <div class="flex flex-col text-left">
         <h3 class="text-md font-semibold">{{ $name }}</h3>
 
-            <div class="flex items-center justify-between pt-10">
-                <!-- Color Pallette  -->
-                <span class="flex">
-                    <div class="relative h-4 w-8">
-                        <div class="absolute left-[-0px] top-0 h-4 w-4 rounded-full bg-cyan-400"></div>
-                        <div class="absolute left-[8px] top-0 h-4 w-4 rounded-full bg-orange-500">
-                        </div>
-                        <div class="absolute left-[16px] top-0 h-4 w-4 rounded-full bg-stone-100">
-                        </div>
+        <div class="flex items-center justify-between pt-10">
+            <!-- Color Pallette  -->
+            <span class="flex">
+                <div class="relative h-4 w-8">
+                    <div class="absolute left-[-0px] top-0 h-4 w-4 rounded-full bg-cyan-400"></div>
+                    <div class="absolute left-[8px] top-0 h-4 w-4 rounded-full bg-orange-500">
                     </div>
-                </span>
-
-                <!-- Price  -->
-                <div class="flex gap-1.5">
-                    <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-400 line-through">
-                        ${{ $regularprice }}
-                    </span>
-                    <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-800">
-                        ${{ $saleprice }}
-                    </span>
+                    <div class="absolute left-[16px] top-0 h-4 w-4 rounded-full bg-stone-100">
+                    </div>
                 </div>
+            </span>
+
+            <!-- Price  -->
+            <div class="flex gap-1.5">
+                <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-400 line-through">
+                    ${{ $regularprice }}
+                </span>
+                <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-800">
+                    ${{ $saleprice }}
+                </span>
             </div>
+        </div>
     </div>
 </div>

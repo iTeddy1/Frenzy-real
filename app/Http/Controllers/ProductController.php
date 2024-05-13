@@ -22,9 +22,18 @@ class ProductController extends Controller
         return view('admin.product_create');
     }
 
-    public function show( $id)
+    public function show(Product $product)
     {
-        return view('product_show', ['id' => $id]);
+        $gender = $product->gender;
+
+        // Fetch related products with the same gender
+        $related = Product::where('gender', $gender)
+            ->where('id', '!=', $product->id) // Exclude the current product
+            ->limit(4) // Adjust as needed to limit the number of related products
+            ->get();
+        // dd($related);
+        
+        return view('product_show', ['product' => $product, 'related' => $related]);
     }
     // Method to store a newly created product
     public function store(Request $request)

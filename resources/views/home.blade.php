@@ -115,7 +115,8 @@
                             :name="$product['name']" 
                             :regularprice="$product['regular_price']" 
                             :saleprice="$product['sale_price']"
-                            :image="$product->mainAsset->first()->path"
+                            :image="$product->assets->first()->path"
+                            :hoverimage="$product->assets->skip(1)->first()->path"
                     />
                 @endforeach
             </div>
