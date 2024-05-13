@@ -38,6 +38,6 @@ class HomeController extends Controller
         // Fetch products based on the search query or fetch all products
         $products = $productsQuery->with('assets')->paginate(12);
         // dd($products);
-        return view('home', compact('products', 'searchTerm'));
+        return view('home', ['products' => $products, 'searchTerm' => $searchTerm]);
     }
 }
