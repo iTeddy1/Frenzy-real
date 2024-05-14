@@ -23,6 +23,7 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name
 
 // Route to update a product
 Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+Route::delete('/products/show/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 //! Auth
 Route::middleware('auth')->group(function () {

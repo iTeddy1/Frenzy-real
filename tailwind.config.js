@@ -9,12 +9,16 @@ export default {
   ],
   theme: {
     extend: {
+      borderRadius: {
+        DEFAULT: "10px",
+        'full': "9999px",
+        'small': '5px'
+      },
       fontFamily: {
         public: ['Public Sans', ...defaultTheme.fontFamily.sans],
         rubik: ['Rubik Moonrocks']
 
       },
-  
       colors: {
         primary: {
           lighter: "#C8FBCD",

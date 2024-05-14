@@ -11,41 +11,46 @@
             <section class="mb-5 lg:col-span-3 w-full">
                 <div class="">
                     <img
+                    id="mainImage"
                         alt="ecommerce"
-                        class="w-full lg:h-[650px] object-cover object-center rounded-[10px]"
+                        class="w-full lg:h-[650px] object-cover object-center rounded transition-opacity duration-300 ease-in-out"
                         src="{{$product->assets->first()->path}}"
                     />
                 </div>
                 <div class="w-[472px] h-[100px] flex justify-between m-auto mt-3">
                     <div
-                        class="w-[100px] h-[100px] bg-neutral-100 rounded-[10px] justify-center items-center inline-flex"
+                        class="thumbnail  w-[100px] h-[100px] bg-neutral-100 rounded-[10px] justify-center items-center inline-flex cursor-pointer"
                     >
                         <img
-                            class="w-[100px] h-[100px] rounded-[10px]"
+                        id="thumbnail-{{$product->id}}"
+                            class="w-[100px] h-[100px] rounded border-transparent"
                             src="{{$product->assets->skip(1)->first()->path}}"
                         />
                     </div>
                     <div
-                        class="w-[100px] h-[100px] bg-neutral-100 rounded-[10px] justify-center items-center inline-flex"
+                        class="thumbnail  w-[100px] h-[100px] bg-neutral-100 rounded-[10px] justify-center items-center inline-flex"
                     >
                         <img
-                            class="w-[100px] h-[100px] rounded-[10px]"
+                        id="thumbnail-{{$product->id}}"
+                            class="w-[100px] h-[100px] rounded-[10px] border-transparent"
                             src="{{$product->assets->skip(2)->first()->path}}"
                         />
                     </div>
                     <div
-                        class="w-[100px] h-[100px]bg-neutral-100 rounded-[10px] justify-center items-center inline-flex"
+                        class="thumbnail  w-[100px] h-[100px]bg-neutral-100 rounded-[10px] justify-center items-center inline-flex"
                     >
                         <img
-                            class="w-[100px] h-[100px] rounded-[10px]"
+                        id="thumbnail-{{$product->id}}"
+                            class="w-[100px] h-[100px] rounded-[10px] border-transparent"
                             src="{{$product->assets->skip(3)->first()->path}}"
                         />
                     </div>
                     <div
-                        class="w-[100px] h-[100px]bg-neutral-100 rounded-[10px] justify-center items-center inline-flex"
+                        class="thumbnail  w-[100px] h-[100px]bg-neutral-100 rounded-[10px] justify-center items-center inline-flex"
                     >
                         <img
-                            class="w-[100px] h-[100px] rounded-[10px]"
+                        id="thumbnail-{{$product->id}}"
+                            class="w-[100px] h-[100px] rounded-[10px] border-transparent"
                             src="{{$product->assets->skip(4)->first()->path}}"
                         />
                     </div>
@@ -1451,4 +1456,41 @@
             </div>
         @endforeach
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainImage = document.getElementById('mainImage');
+            const thumbnails = document.querySelectorAll('.thumbnail img');
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    // Update main image src
+                    mainImage.style.opacity = 0; // Start transition
+                    setTimeout(() => {
+                        mainImage.src = this.src;
+                        mainImage.style.opacity = 1; // End transition
+                    }, 300); // Match the duration in CSS
+    
+                    // Remove active class from all thumbnails
+                    thumbnails.forEach(img => img.classList.remove('active'));
+                    // Add active class to clicked thumbnail
+                    this.classList.add('active');
+                });
+            });
+    
+            // Set the first thumbnail as active on load
+            if (thumbnails.length > 0) {
+                thumbnails[0].classList.add('active');
+            }
+        });
+    </script>
+    
+    <style>
+        .thumbnail img.active {
+            border: 2px solid #000;
+        }
+    
+        #mainImage {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
 </x-layout>
+

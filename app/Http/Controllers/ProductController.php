@@ -56,4 +56,13 @@ class ProductController extends Controller
         $product->update($request->all());
         return redirect()->route('products.show', $product->id);
     }
+
+    public function destroy(Product $product)
+    {
+        // Gate::authorize('edit-job', $job);
+
+        $product->delete();
+
+        return redirect('/products');
+    }
 }

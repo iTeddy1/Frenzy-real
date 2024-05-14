@@ -41,33 +41,33 @@
             <table class="w-full table-fixed">
                 {{-- header --}}
                 <thead>
-                    <tr >
-                        <td class="w-[30px] py-4 px-6 text-left text-gray-600 font-bold">
+                    <tr>
+                        <td class="w-[30px] px-6 py-4 text-left font-bold text-gray-600">
                             <input type="checkbox">
                         </td>
 
-                        <td class="w-2/5 py-4 px-6 text-left text-gray-600 font-bold">
-                            <div class="font-['Public Sans'] text-base font-extrabold text-gray-400 ">
+                        <td class="w-2/5 px-6 py-4 text-left font-bold text-gray-600">
+                            <div class="font-['Public Sans'] text-base font-extrabold text-gray-400">
                                 Product</div>
                         </td>
 
-                        <td class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold">
+                        <td class="w-1/4 px-6 py-4 text-left font-bold text-gray-600">
                             <div class="font-['Public Sans'] self-stretch text-base font-bold text-gray-400">
                                 Create at
                             </div>
                         </td>
 
-                        <td class="w-[15%] py-4 px-6 text-left text-gray-600 font-bold">
+                        <td class="w-[15%] px-6 py-4 text-left font-bold text-gray-600">
                             <div class="font-['Public Sans'] text-base font-bold text-gray-400">Price</div>
                         </td>
 
-                        <td class="w-1/4 py-4 px-6 text-center text-gray-600 font-bold">
+                        <td class="w-1/4 px-6 py-4 text-center font-bold text-gray-600">
 
                             <div class="font-['Public Sans'] self-stretch text-base font-bold text-gray-400">
                                 Status
                             </div>
                         </td>
-                        <td class="w-[40px] py-4 px-6 text-left text-gray-600 font-bold"></td>
+                        <td class="w-[40px] px-6 py-4 text-left font-bold text-gray-600"></td>
                     </tr>
                 </thead>
                 {{-- product list --}}
@@ -78,19 +78,18 @@
                             <td class="border-b border-divider px-6 py-4">
                                 <input name="" type="checkbox">
                             </td>
-                            <td class="border-b border-gray-200 px-6 py-4 w-2/5">
-                                <a class="flex h-[50px] gap-2.5"
-                                    href="/products/show/{{ $product->id }}">
+                            <td class="w-2/5 border-b border-gray-200 px-6 py-4">
+                                <a class="flex h-[50px] gap-2.5" href="/products/show/{{ $product->id }}">
                                     <img class="h-[50px] w-[50px] rounded-[10px]"
                                         src="{{ $product->assets->first()->path }}" />
                                     <p
-                                        class="font-['Public Sans'] h-[26px] grow text-base font-semibold text-gray-800 truncate">
+                                        class="font-['Public Sans'] h-[26px] grow truncate text-base font-semibold text-gray-800">
                                         {{ $product->name }}
                                     </p>
                                 </a>
                             </td>
 
-                            <td class=" border-b border-gray-200 px-6 py-4">
+                            <td class="border-b border-gray-200 px-6 py-4">
                                 {{ $product->created_at }}</td>
                             <td class="border-b border-gray-200 px-6 py-4">
                                 ${{ $product->regular_price }}
@@ -123,19 +122,46 @@
                                         <x-dropdown-link  :href="route('products.edit', $product)">
                                             Edit
                                         </x-dropdown-link>
-                                        <x-dropdown-link  :href="route('products.show', $product)">
+                                        <x-dropdown-link x-on:click="$dispatch('open-modal', 'myModal')"  >
                                             Delete
                                         </x-dropdown-link>
                                     </x-slot>
+                                                                      
                                 </x-dropdown>
+                                <x-modal name="myModal" maxWidth="2xl">
+                                    <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                            Delete product
+                                        </h3>
+                                        <div class="mt-2">
+                                            <p class="text-sm text-gray-500">
+                                                Your modal content goes here.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                       <button form="delete_form" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                                                Confirm
+                                        </button>
+                                        <button x-on:click="$dispatch('close-modal', 'myModal')" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </x-modal>
+                                
                             </td>
                         </tr>
+                        <form id='delete_form' method="POST" action="{{ route('products.destroy', ['product' => $product->id]) }}">
+                            @csrf
+                            @method('DELETE')
+                        </form>
                     @endforeach
         </div>
         {{-- pagination --}}
-        
+
     </div>
     </table>
 
     </div>
+
 </x-layout>
