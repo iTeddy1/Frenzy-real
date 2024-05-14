@@ -13,7 +13,7 @@
                     <img
                         alt="ecommerce"
                         class="w-full lg:h-[650px] object-cover object-center rounded-[10px]"
-                        src="https://static.nike.com/a/images/t_PDP_1728_v1/20488f52-3686-476c-b4b8-0ca430c34a05/air-force-1-07-essential-shoe-BHN3Db.jpg"
+                        src="{{$product->assets->first()->path}}"
                     />
                 </div>
                 <div class="w-[472px] h-[100px] flex justify-between m-auto mt-3">
@@ -22,7 +22,7 @@
                     >
                         <img
                             class="w-[100px] h-[100px] rounded-[10px]"
-                            src="https://static.nike.com/a/images/t_PDP_1728_v1/e9fe72b4-a153-4019-8ea6-9f31230b247c/air-force-1-07-essential-shoe-BHN3Db.jpg"
+                            src="{{$product->assets->skip(1)->first()->path}}"
                         />
                     </div>
                     <div
@@ -30,7 +30,7 @@
                     >
                         <img
                             class="w-[100px] h-[100px] rounded-[10px]"
-                            src="https://static.nike.com/a/images/t_PDP_1728_v1/490add03-5c99-403d-b456-48036981ac92/air-force-1-07-essential-shoe-BHN3Db.jpg"
+                            src="{{$product->assets->skip(2)->first()->path}}"
                         />
                     </div>
                     <div
@@ -38,7 +38,7 @@
                     >
                         <img
                             class="w-[100px] h-[100px] rounded-[10px]"
-                            src="https://static.nike.com/a/images/t_PDP_1728_v1/d4e9d5d6-3c97-4e58-bed6-1a2780519612/air-force-1-07-essential-shoe-BHN3Db.jpg"
+                            src="{{$product->assets->skip(3)->first()->path}}"
                         />
                     </div>
                     <div
@@ -46,7 +46,7 @@
                     >
                         <img
                             class="w-[100px] h-[100px] rounded-[10px]"
-                            src="https://static.nike.com/a/images/t_PDP_1728_v1/8222053d-ec2a-4ba9-a8bb-7fe7e2108dad/air-force-1-07-essential-shoe-BHN3Db.jpg"
+                            src="{{$product->assets->skip(4)->first()->path}}"
                         />
                     </div>
                 </div>
@@ -55,7 +55,7 @@
             <section class="lg:col-span-2 lg:py-6">
                 <!-- class="xl:w-[450px]  lg:px-6 lg:py-6 mt-6 lg:mt-0 flex flex-col justify-between" -->
                 <h1 class="text-3xl font-medium mb-1">
-                    Nike Air Force 1 '07 Essential
+                    {{ $product->name }}
                 </h1>
                 <div class="flex mb-4">
                     <span class="flex items-center">

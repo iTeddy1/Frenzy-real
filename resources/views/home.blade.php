@@ -130,7 +130,8 @@
                     :regularprice="$product['regular_price']" 
                     :saleprice="$product['sale_price']" 
                     :image="$product->assets->first()->path"
-                    :hoverimage="$product->assets->skip(1)->first()->path" />
+                    :hoverimage="$product->assets->skip(1)->first()->path" 
+                    :urlid="$product['id']"/>
                 @endforeach
             </div>
             <div>{{ $products->links() }}</div>

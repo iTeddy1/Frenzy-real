@@ -56,6 +56,4 @@ class ProductController extends Controller
         $product->update($request->all());
         return redirect()->route('products.show', $product->id);
     }
-  
-
 }

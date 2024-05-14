@@ -4,9 +4,10 @@
     "saleprice" => 0,
     "image" => "",
     "hoverimage" => "",
+    "urlid" => "",
 ])
-
-<div
+<a 
+    href="/products/show/{{$urlid}}"
     class="mx-auto mt-4 flex w-full flex-col justify-between overflow-hidden rounded-lg border bg-white p-2 font-public shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)]">
     <div class="relative">
         <div
@@ -43,13 +44,13 @@
             </div>
         </div>
         <img class="peer rounded-lg object-cover" src="{{ $image }}" alt="product image" />
-        <img class="peer absolute -right-96 top-0 h-full w-full object-cover transition-all delay-100 duration-1000 hover:right-0 peer-hover:right-0"
+        <img class="peer absolute -right-96 top-0 hidden h-full object-cover transition-all delay-100 duration-1000 hover:right-0 peer-hover:right-0 md:block md:w-full"
             src="{{ $hoverimage }}" alt="product image" />
 
     </div>
 
     <div class="flex flex-col text-left">
-        <h3 class="text-md font-semibold">{{ $name }}</h3>
+        <h3 class="text-[16px] font-semibold">{{ $name }}</h3>
 
         <div class="flex items-center justify-between pt-10">
             <!-- Color Pallette  -->
@@ -74,4 +75,4 @@
             </div>
         </div>
     </div>
-</div>
+</a>
