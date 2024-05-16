@@ -16,19 +16,19 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
 // Home > Products
 Breadcrumbs::for('products', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push('Products', route('products'));
+    // $trail->push('Products', route('products'));
 });
 
 // Home > Products > Create Product
 Breadcrumbs::for('products.create', function (BreadcrumbTrail $trail) {
-  $trail->parent('products');
-  $trail->push('Create Product', route('products.create'));
+  $trail->parent('home');
+  // $trail->push('Create Product', route('products.create'));
 });
 
 // Home > Products > Edit Product
 Breadcrumbs::for('products.edit', function (BreadcrumbTrail $trail, $id) {
   $trail->parent('products');
-  $trail->push('Edit Product', route('products.edit', $id));
+  // $trail->push('Edit Product', route('products.edit', $id));
 });
 
 // // Home > Blog > [Category]

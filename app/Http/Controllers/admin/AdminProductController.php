@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class AdminProductController extends Controller
 {
     // Method to display all products
     public function index()
     {
 
-        $products = Product::all();
-        return view('admin.product_list', ['products' => $products ]);
+        $products = Product::with('assets')->paginate(5);
+        return view('admin.products.index', ['products' => $products ]);
     }
 
     // Method to display the form for creating a new product
     public function create()
     {
-        return view('admin.product_create');
+        return view('admin.products.create');
     }
 
     public function show(Product $product)
@@ -34,27 +34,32 @@ class ProductController extends Controller
             ->get();
         // dd($related);
         
-        return view('product_show', ['product' => $product, 'related' => $related]);
+        return view('admin.products.show', ['product' => $product, 'related' => $related]);
     }
     // Method to store a newly created product
     public function store(Request $request)
     {
-        Product::create($request->all());
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+        ]);
+        
+        Product::create($validated);
         return redirect('/products');
     }
 
     // Method to display the form for editing a product
-    public function edit($id)
+    public function edit(Product $product)
     {
-        $product = Product::findOrFail($id);
-        return view('admin.product_edit', ['product' => $product]);
+        return view('admin.products.edit', ['product' => $product]);
     }
 
     // Method to update a product
     public function update(Request $request, Product $product)
     {
         $product->update($request->all());
-        return redirect()->route('products.show', $product->id);
+        return redirect()->route('admin.products.index', $product);
     }
 
     public function destroy(Product $product)
@@ -62,7 +67,6 @@ class ProductController extends Controller
         // Gate::authorize('edit-job', $job);
 
         $product->delete();
-
-        return redirect('/products');
+        return redirect()->route('admin.products.index');
     }
 }
