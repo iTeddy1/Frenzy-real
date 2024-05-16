@@ -1450,12 +1450,7 @@
                 </div>
             </div>
         </section>
-        @foreach ($related as $relatedProduct)
-            <div class="product">
-                <h4>{{ $relatedProduct->name }}</h4>
-                <!-- Display other product details -->
-            </div>
-        @endforeach
+
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {

@@ -7,7 +7,7 @@
     "urlid" => "",
 ])
 <a 
-    href="/products/show/{{$urlid}}"
+    href="/products/{{$urlid}}/"
     class="mx-auto mt-4 flex w-full flex-col justify-between overflow-hidden rounded-lg border bg-white p-2 font-public shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)]">
     <div class="relative">
         <div

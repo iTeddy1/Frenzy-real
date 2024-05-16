@@ -1,16 +1,18 @@
 <?php
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\ProductController;
 use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Route;
 
 //! Public routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/products', [HomeController::class, 'products'])->name('products.index');
-Route::get('/products/{product}', [HomeController::class, 'showProduct'])->name('products.show');
+Route::get('/products', [HomeController::class, 'index'])->name('products.index');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 //! Auth
 Route::middleware('auth')->group(function () {
@@ -44,7 +46,14 @@ Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admi
 
 // User routes
 Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
+    Route::get('/cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
+    Route::get('/checkout/shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
+    Route::post('/checkout/shipping', [CheckoutController::class, 'storeShipping'])->name('checkout.storeShipping');
+    Route::get('/checkout/payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
+    Route::post('/checkout/payment', [CheckoutController::class, 'storePayment'])->name('checkout.storePayment');
+    Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
     // Route::resource('orders', UserOrderController::class)->except(['create', 'edit']);
-    // Route::get('orders/create/{product}', [UserOrderController::class, 'create'])->name('orders.create');
-    // Route::get('orders/{order}/edit', [UserOrderController::class, 'edit'])->name('orders.edit');
+
+    // Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    // Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 });
