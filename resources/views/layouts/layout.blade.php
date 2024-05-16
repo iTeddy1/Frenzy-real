@@ -11,16 +11,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <!-- Scripts -->
     @vite(["resources/css/app.css", "resources/js/app.js"])
 </head>
 
 <body class="font-public">
     <div class="flex h-screen overflow-hidden">
-        @include("layouts.sidebar")
+        @include("layouts.partials.sidebar")
         {{-- <x-header /> --}}
         <main class="container mx-auto flex">
-            @include("layouts.navigation")
+            @include("layouts.partials.navigation")
             
             {{ $slot }}
         </main>

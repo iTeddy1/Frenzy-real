@@ -1,9 +1,9 @@
-<x-layout>
+@extends('layouts.admin')
     <x-slot:title>
         Product List
     </x-slot:title>
-
-    <div class="inline-flex flex-col items-center justify-start gap-2.5 p-5">
+@section('content')
+    <div class="flex flex-col items-center justify-start gap-2.5 p-5">
         {{-- heading --}}
         <div class="font-['Public Sans'] self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
             Product List</div>
@@ -14,7 +14,7 @@
         <div
             class="flex flex-col items-start justify-start gap-2.5 self-stretch rounded-[10px] border border-divider bg-white py-5 shadow">
             {{-- filter --}}
-            <div class="flex items-center justify-center gap-[15px] self-stretch px-[15px]">
+            <div class="flex items-center justify-center gap-4 self-stretch px-4">
                 <select
                     class="flex w-[200px] items-center justify-between self-stretch rounded-[5px] border border-divider p-2.5 text-opacity-50 focus:outline-none"
                     id="status" name="status">
@@ -38,7 +38,8 @@
                         placeholder="Search..." />
                 </div>
             </div>
-            <table class="w-full table-fixed">
+            <div class="w-full overflow-x-auto">
+            <table class="w-full overflow-x-auto">
                 {{-- header --}}
                 <thead>
                     <tr>
@@ -79,7 +80,7 @@
                                 <input name="" type="checkbox">
                             </td>
                             <td class="w-2/5 border-b border-gray-200 px-6 py-4">
-                                <a class="flex h-[50px] gap-2.5" href="/products/show/{{ $product->id }}">
+                                <a class="flex h-[50px] gap-2.5" href="{{route('admin.products.show', $product->id)}}">
                                     <img class="h-[50px] w-[50px] rounded-[10px]"
                                         src="{{ $product->assets->first()->path }}" />
                                     <p
@@ -119,7 +120,7 @@
                                         </svg>
                                     </x-slot>
                                     <x-slot name="content">
-                                        <x-dropdown-link  :href="route('products.edit', $product)">
+                                        <x-dropdown-link  :href="route('admin.products.edit', $product)">
                                             Edit
                                         </x-dropdown-link>
                                         <x-dropdown-link x-on:click="$dispatch('open-modal', 'myModal')"  >
@@ -151,17 +152,18 @@
                                 
                             </td>
                         </tr>
-                        <form id='delete_form' method="POST" action="{{ route('products.destroy', ['product' => $product->id]) }}">
+                        <form id='delete_form' method="POST" action="{{ route('admin.products.destroy', ['product' => $product->id]) }}">
                             @csrf
                             @method('DELETE')
                         </form>
                     @endforeach
-        </div>
+                </div>
+                </div>
         {{-- pagination --}}
 
     </div>
     </table>
+    <div class="w-full px-4">{{ $products->links() }}</div>
 
     </div>
-
-</x-layout>
+@endsection

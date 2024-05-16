@@ -62,6 +62,9 @@
                     {{-- item list --}}
                     <div class="flex flex-col items-start justify-start gap-2.5">
                         {{-- product --}}
+                        <x-nav-link href="/" :active="request()->routeIs('/admin/products')">
+                            {{ __('Home') }}
+                        </x-nav-link>
                         <a class="flex items-center justify-start gap-2.5 p-2.5" href="/products">
                             <svg class="{{ request()->is("products") ? "w-5 h-5 stroke-primary" : "w-3 h-3 stroke-text-normal" }} icon icon-tabler icon-tabler-point"
                                 xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"

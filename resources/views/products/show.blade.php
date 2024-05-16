@@ -1,5 +1,6 @@
-<x-layout>
+@extends("layouts.app")
     <x-slot:title>Product Detail</x-slot:title>
+    @section( 'content')
     <div class="lg:mx-auto transition-transform -translate-x-full sm:translate-x-0">
         <!-- Process -->
         
@@ -28,7 +29,7 @@
                         />
                     </div>
                     <div
-                        class="thumbnail  w-[100px] h-[100px] bg-neutral-100 rounded-[10px] justify-center items-center inline-flex"
+                        class="thumbnail w-[100px] h-[100px] bg-neutral-100 rounded-[10px] justify-center items-center inline-flex"
                     >
                         <img
                         id="thumbnail-{{$product->id}}"
@@ -1492,5 +1493,5 @@
             transition: opacity 0.3s ease-in-out;
         }
     </style>
-</x-layout>
+    @endsection
 
