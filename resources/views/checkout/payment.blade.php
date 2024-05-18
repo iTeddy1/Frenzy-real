@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form action="{{ route('checkout.storePayment') }}" method="POST" id="payment-form">
+    <form action="{{ route('user.checkout.storePayment') }}" method="POST" id="payment-form">
         @csrf
         <div class="form-group">
             <label for="total">Total</label>

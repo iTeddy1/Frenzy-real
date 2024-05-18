@@ -1,7 +1,7 @@
 <?php
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminLoginController;
-use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\ProfileController;
@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Route;
 
 //! Public routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/products', [HomeController::class, 'index'])->name('products.index');
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 
 //! Auth
 Route::middleware('auth')->group(function () {
@@ -46,7 +47,9 @@ Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admi
 
 // User routes
 Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
-    Route::get('/cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
+    Route::post('/checkout/cart', [CartController::class, 'add'])->name('cart.add');
+
+    Route::get('/checkout/cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
     Route::get('/checkout/shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
     Route::post('/checkout/shipping', [CheckoutController::class, 'storeShipping'])->name('checkout.storeShipping');
     Route::get('/checkout/payment', [CheckoutController::class, 'payment'])->name('checkout.payment');

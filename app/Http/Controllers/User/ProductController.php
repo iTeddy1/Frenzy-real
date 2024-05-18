@@ -17,4 +17,16 @@ class ProductController extends Controller
     {
         return view('products.show', ['product'=> $product]);
     }
+
+    public function search(Request $request){
+        $search = $request->input('search');
+
+        $products = Product::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->get();
+            
+        return response()->json($products);
+    }
+    
 }

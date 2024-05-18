@@ -70,7 +70,7 @@
             <div>
                 <form class="mx-auto max-w-md" action='/' method="GET">
                     <label class="sr-only mb-2 text-sm font-medium text-text-dark dark:text-white"
-                        for="default-search">Search</label>
+                        for="product-search">Search</label>
                     <div class="relative">
                         <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
                             <svg class="h-4 w-4 text-text-normal dark:text-text-normal" aria-hidden="true"
@@ -81,7 +81,7 @@
                         </div>
                         <input
                             class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-text-normal focus:border-divider focus:ring-primary dark:border-divider dark:bg-background-default-dark dark:text-white dark:placeholder-gray-400 dark:focus:border-primary dark:focus:ring-primary"
-                            id="default-search" name="query" type="search" placeholder="Search..." required />
+                            id="product-search" placeholder="Search..." required />
 
                     </div>
                 </form>
@@ -125,7 +125,7 @@
             Explore Our Products
         </div> --}}
         <section>
-            <div class="mx-auto mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+            <div id="search-result" class="mx-auto mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                 @foreach ($products as $product)
                     <x-product-card 
                     :name="$product['name']" 

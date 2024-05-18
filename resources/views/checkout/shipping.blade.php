@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form action="{{ route('checkout.storeShipping') }}" method="POST">
+    <form action="{{ route('user.checkout.storeShipping') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="address">Address</label>
