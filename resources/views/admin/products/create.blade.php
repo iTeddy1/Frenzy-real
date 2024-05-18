@@ -12,7 +12,7 @@
         {{ Breadcrumbs::render('products.create') }}
 
         {{-- form --}}
-        <form action="{{ route('admin.products') }}" method="POST" id="product" class="gap-2.5 flex">
+        <form action="{{ route('admin.products.index') }}" method="POST" id="product" class="gap-2.5 flex">
             @csrf
             {{-- left form --}}
             <div

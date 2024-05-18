@@ -26,7 +26,7 @@
                     placeholder="Write something awesome..." id="description" name="description" value="{{ $product->description }}"></textarea>
 
                 <div class="text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">Images</div>
-                <img src="{{ $product->images ?? '' }}" alt="">
+                <img src="{{ $product->assets->first()->path ?? '' }}" alt="">
                 <div class="w-full h-[200px] relative bg-black bg-opacity-5 rounded border border-zinc-200">
                     <label for="image" class="w-[103px] h-[101px] left-[49px] top-[49px] absolute cursor-pointer">
                         <input type="file" class="hidden" id="image" name="images">

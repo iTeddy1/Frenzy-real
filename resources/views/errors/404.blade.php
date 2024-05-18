@@ -34,10 +34,10 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <button
+                        <a href="/"
                             class="font-public-sans via-var(--Background-On-Light, #F4F6F7) h-[60px] w-[275px] rounded-xl border border-solid border-primary bg-gradient-to-r from-white to-white stroke-primary stroke-1 text-3xl font-normal text-primary">
                             GO BACK HOME
-                        </button>
+                        </a>
                     </td>
                 </tr>
 
