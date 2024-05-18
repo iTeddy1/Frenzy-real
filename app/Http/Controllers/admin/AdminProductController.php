@@ -14,7 +14,9 @@ class AdminProductController extends Controller
     {
 
         $products = Product::with('assets')->paginate(5);
-        return view('admin.products.index', ['products' => $products ]);
+        $totalQuantity = Product::with('assets')->sum('quantity');
+        $averagePrice = Product::with('assets')->average('regular_price');
+        return view('admin.products.index', ['products' => $products , "totalQuantity" => $totalQuantity, "averagePrice" => $averagePrice]);
     }
 
     // Method to display the form for creating a new product

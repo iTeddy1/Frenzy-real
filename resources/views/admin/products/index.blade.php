@@ -5,10 +5,38 @@
 @section('content')
     <div class="flex flex-col items-center justify-start gap-2.5 p-5">
         {{-- heading --}}
-        <div class="font-['Public Sans'] self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
-            Product List</div>
-        {{-- roadmap --}}
-        {{ Breadcrumbs::render("products") }}
+        <div class="flex items-center justify-between w-full ">
+            <div>
+                <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
+                    Product List</div>
+                {{-- roadmap --}}
+                {{ Breadcrumbs::render("products") }}
+            </div>
+            <div><a href="create">New Product</a></div>
+        </div>
+        
+        <div class="w-full grid gap-6 md:grid-cols-3 mb-8">
+            <div class="p-6 border rounded bg-white">
+                <div>
+                    <span class="font-medium">Total Products</span>
+                </div>
+                <div class="text-3xl font-semibold">{{$products->total()}}</div>
+            </div>
+
+            <div class="p-6 border rounded bg-white">
+                <div>
+                    <span class="font-medium">Product Inventory</span>
+                </div>
+                <div class="text-3xl font-semibold">{{$totalQuantity}}</div>
+            </div>
+            
+            <div class="p-6 border rounded bg-white">
+                <div>
+                    <span class="font-medium">Average Price</span>
+                </div>
+                <div class="text-3xl font-semibold">{{$averagePrice}}</div>
+            </div>
+        </div>
 
         {{-- main --}}
         <div
@@ -61,11 +89,12 @@
                         <td class="w-[15%] px-6 py-4 text-left font-bold text-gray-600">
                             <div class="font-['Public Sans'] text-base font-bold text-gray-400">Price</div>
                         </td>
-
-                        <td class="w-1/4 px-6 py-4 text-center font-bold text-gray-600">
-
+                        <td class="px-6 py-4 text-left font-bold text-gray-600">
+                            Quantity
+                        </td>
+                        <td class="px-6 py-4 text-center font-bold text-gray-600">
                             <div class="font-['Public Sans'] self-stretch text-base font-bold text-gray-400">
-                                Status
+                                Visibility
                             </div>
                         </td>
                         <td class="w-[40px] px-6 py-4 text-left font-bold text-gray-600"></td>
@@ -94,16 +123,17 @@
                                 {{ $product->created_at }}</td>
                             <td class="border-b border-gray-200 px-6 py-4">
                                 ${{ $product->regular_price }}
+                            <td class="border-b border-gray-200 px-6 py-4">
+                                {{ $product->quantity ?? 0}}
                             <td class="border-b border-gray-200 px-6 py-4 text-center">
-                                @if ($product->status === "in_stock")
-                                    <span class="rounded-full bg-green-500 px-2 py-1 text-xs text-green-900">In
-                                        Stock</span>
-                                @elseif ($product->status === "low_stock")
-                                    <span class="text-yello-500 rounded-full bg-yellow-500 px-2 py-1 text-xs">Low
-                                        Stock</span>
+                                @if ($product->quantity !== 0)
+                                <svg style="--c-400:var(--success-400);--c-500:var(--success-500);" class="fi-ta-icon-item fi-ta-icon-item-size-lg h-6 w-6 fi-color-custom text-custom-500 dark:text-custom-400 fi-color-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+                                  </svg>
                                 @else
-                                    <span class="flex rounded-full bg-red-500 px-2 py-1 text-xs text-red-800">Out of
-                                        Stock</span>
+                                <svg style="--c-400:var(--danger-400);--c-500:var(--danger-500);" class="fi-ta-icon-item fi-ta-icon-item-size-lg h-6 w-6 fi-color-custom text-custom-500 dark:text-custom-400 fi-color-danger" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+                                  </svg>
                                 @endif
                             </td>
                             <td class="border-b border-gray-200 px-6 py-4">
