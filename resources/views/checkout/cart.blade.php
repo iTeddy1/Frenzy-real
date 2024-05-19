@@ -81,27 +81,44 @@
                                                     </div>
                                                 </td>
                                                 <td class="p-4">
-                                                    <form id="update-form-{{$item->id}}" action="{{ route('user.cart.update') }}" method="POST">
+                                                    <form id="update-form-{{ $item->id }}"
+                                                        action="{{ route("user.cart.update") }}" method="POST">
                                                         @csrf
-                                                    <div
-                                                    class="h-9 flex m-auto items-center max-w-[8rem]"
-                                                  >
-                                                            <input type="hidden" name="cart_item_id" value="{{ $item->id }}">
+                                                        <div class="m-auto flex h-9 max-w-[8rem] items-center">
+                                                            <input name="cart_item_id" type="hidden"
+                                                                value="{{ $item->id }}">
 
-                                                            <button onclick="updateQuantity({{$item->id}}, 'decrement')" type="button" class="text-black hover:bg-gray-200 border border-divider rounded-s p-3 h-9 focus:ring-gray-100 focus:ring-2 focus:outline-none">
-                                                                <svg class="w-3 h-3 text-black-900 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+                                                            <button
+                                                                class="h-9 rounded-s border border-divider p-3 text-black hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100"
+                                                                type="button"
+                                                                onclick="updateQuantity({{ $item->id }}, 'decrement')">
+                                                                <svg class="text-black-900 h-3 w-3 dark:text-black"
+                                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                                    fill="none" viewBox="0 0 18 2">
+                                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                                        stroke-linejoin="round" stroke-width="2"
+                                                                        d="M1 1h16" />
                                                                 </svg>
                                                             </button>
-                                                            <input type="text" name="quantity" id="quantity-input-{{$item->id}}" class="border-x-0 border border-divider h-9 text-center text-black text-sm block w-full" value="{{ $item->quantity }}" required>
-                                                            <button onclick="updateQuantity({{$item->id}}, 'increment')" type="button" class="hover:bg-gray-200 border border-divider rounded-e p-3 h-9 focus:ring-gray-100 focus:ring-2 focus:outline-none">
-                                                                <svg class="w-3 h-3 text-gray-900 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+                                                            <input
+                                                                class="block h-9 w-full border border-x-0 border-divider text-center text-sm text-black"
+                                                                id="quantity-input-{{ $item->id }}" name="quantity"
+                                                                type="text" value="{{ $item->quantity }}" required>
+                                                            <button
+                                                                class="h-9 rounded-e border border-divider p-3 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100"
+                                                                type="button"
+                                                                onclick="updateQuantity({{ $item->id }}, 'increment')">
+                                                                <svg class="h-3 w-3 text-gray-900 dark:text-black"
+                                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                                    fill="none" viewBox="0 0 18 18">
+                                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                                        stroke-linejoin="round" stroke-width="2"
+                                                                        d="M9 1v16M1 9h16" />
                                                                 </svg>
                                                             </button>
                                                         </div>
                                                     </form>
-                                                        {{-- <input name="cart_item_id" type="hidden"
+                                                    {{-- <input name="cart_item_id" type="hidden"
                                                             value="{{ $item->id }}">
                                                         <input name="quantity" type="number" value="{{ $item->quantity }}"
                                                             onchange="this.form.submit()"> --}}
@@ -109,43 +126,30 @@
                                                 <td class="p-4">${{ $item->price }}</td>
                                                 <td class="p-4">${{ $item->quantity * $item->price }}</td>
                                                 <td class="p-4">
-                                                    <div class="flex my-auto">
-                                                     
-                                                            {{-- <input type="hidden" id="quantity-hidden-{{$item->id}}" name="quantity" value="{{ $item->quantity }}"> --}}
-                                                            <button form="update-form-{{$item->id}}">Update</button>
+                                                    <div class="my-auto flex">
+                                                        <button form="update-form-{{ $item->id }}">Update</button>
                                                         <form action="{{ route("user.cart.remove") }}" method="POST">
                                                             @csrf
                                                             <div>
                                                                 <input name="cart_item_id" type="hidden"
                                                                     value="{{ $item->id }}">
-                                                                <button type="submit"> 
-                                                                    <svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    class="icon icon-tabler icon-tabler-trash"
-                                                                    width="24"
-                                                                    height="24"
-                                                                    viewBox="0 0 24 24"
-                                                                    stroke-width="1.5"
-                                                                    stroke="#000000"
-                                                                    fill="none"
-                                                                    stroke-linecap="round"
-                                                                    stroke-linejoin="round"
-                                                                  >
-                                                                    <path
-                                                                      stroke="none"
-                                                                      d="M0 0h24v24H0z"
-                                                                      fill="none"
-                                                                    />
-                                                                    <path d="M4 7l16 0" />
-                                                                    <path d="M10 11l0 6" />
-                                                                    <path d="M14 11l0 6" />
-                                                                    <path
-                                                                      d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"
-                                                                    />
-                                                                    <path
-                                                                      d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"
-                                                                    />
-                                                                  </svg>
+                                                                <button type="submit">
+                                                                    <svg class="icon icon-tabler icon-tabler-trash"
+                                                                        xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24"
+                                                                        stroke-width="1.5" stroke="#000000"
+                                                                        fill="none" stroke-linecap="round"
+                                                                        stroke-linejoin="round">
+                                                                        <path stroke="none" d="M0 0h24v24H0z"
+                                                                            fill="none" />
+                                                                        <path d="M4 7l16 0" />
+                                                                        <path d="M10 11l0 6" />
+                                                                        <path d="M14 11l0 6" />
+                                                                        <path
+                                                                            d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                                        <path
+                                                                            d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                                    </svg>
                                                                 </button>
                                                             </div>
                                                         </form>
@@ -193,16 +197,15 @@
     </div>
     <script>
         function updateQuantity(itemId, operation) {
-        let quantityInput = document.getElementById('quantity-input-' + itemId);
-        let currentQuantity = +(quantityInput.value);
-        
-        if (operation === 'increment') {
-            quantityInput.value = currentQuantity + 1;
-        } else if (operation === 'decrement' && currentQuantity > 1) {
-            quantityInput.value = currentQuantity - 1;
-        }
-    }
+            let quantityInput = document.getElementById('quantity-input-' + itemId);
+            let currentQuantity = +(quantityInput.value);
 
+            if (operation === 'increment') {
+                quantityInput.value = currentQuantity + 1;
+            } else if (operation === 'decrement' && currentQuantity > 1) {
+                quantityInput.value = currentQuantity - 1;
+            }
+        }
     </script>
-    
+
 @endsection
