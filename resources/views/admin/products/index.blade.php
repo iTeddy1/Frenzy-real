@@ -12,7 +12,7 @@
                 {{-- roadmap --}}
                 {{ Breadcrumbs::render("products") }}
             </div>
-            <div><a href="create">New Product</a></div>
+            <div><a href="products/create">New Product</a></div>
         </div>
         
         <div class="w-full grid gap-6 md:grid-cols-3 mb-8">
