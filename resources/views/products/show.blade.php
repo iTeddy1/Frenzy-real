@@ -269,13 +269,11 @@
                 </div>
 
                 <div class="flex">
-                    <form action="{{ route("user.cart.add") }}" method="POST">
+                    <form action="{{ route('user.cart.add') }}" method="POST">
                         @csrf
-
-                        <button
-                            class="flex h-12 items-center justify-center rounded-[10px] border-0 bg-primary px-12 text-white hover:bg-primary-dark focus:outline-none">
-                            Add to cart
-                        </button>
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <input type="number" name="quantity" value="1" min="1" class="form-control mb-2">
+                        <button type="submit" class="flex h-12 items-center justify-center rounded-[10px] border-0 bg-primary px-12 text-white hover:bg-primary-dark focus:outline-none">Add to Cart</button>
                     </form>
                     <form class="mx-auto max-w-xs">
                         <label class="block text-sm font-medium dark:text-white" for="quantity-input"></label>

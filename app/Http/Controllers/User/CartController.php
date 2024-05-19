@@ -11,48 +11,60 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    public function index()
+    {
+        $cart = Auth::user()->cart;
+        return view('checkout.cart', compact('cart'));
+    }
+
     public function add(Request $request)
     {
-        // Validate the request input
-        $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'quantity' => 'required|integer|min:1',
-        ]);
+        $product = Product::find($request->input('product_id'));
+        $quantity = $request->input('quantity');
 
-        // Retrieve the product and quantity from the request
-        $product = Product::findOrFail($request->product_id);
-        $quantity = $request->quantity;
-
-        // Get or create a cart for the authenticated user
-        $cart = Cart::firstOrCreate(['user_id' => Auth::id()]);
-
-        // Check if the product is already in the cart
+        $cart = Auth::user()->cart()->firstOrCreate(['user_id' => Auth::id(), 'total' => $product->regular_price]);
         $cartItem = $cart->items()->where('product_id', $product->id)->first();
 
         if ($cartItem) {
-            // If the item already exists in the cart, update its quantity and price
             $cartItem->quantity += $quantity;
-            $cartItem->price += $quantity * $product->price;
         } else {
-            // If the item doesn't exist in the cart, create a new cart item
             $cartItem = new CartItem([
                 'cart_id' => $cart->id,
                 'product_id' => $product->id,
                 'quantity' => $quantity,
-                'price' => $quantity * $product->price,
+                'price' => $product->regular_price,
             ]);
+            $cart->items()->save($cartItem);
         }
 
-        // Save the cart item
+        $cart->total = $cart->items->sum(fn($item) => $item->quantity * $item->price);
+        $cart->save();
+
+        return redirect()->route('user.cart.index');
+    }
+
+    public function update(Request $request)
+    {
+        $cartItem = CartItem::find($request->input('cart_item_id'));
+        $cartItem->quantity = $request->input('quantity');
         $cartItem->save();
 
-        // Update the total price of the cart
-        $cart->updateTotal();
+        $cart = $cartItem->cart;
+        $cart->total = $cart->items->sum(fn($item) => $item->quantity * $item->price);
+        $cart->save();
 
-        // Flash a success message to be displayed after redirect
-        session()->flash('success', 'Product added to cart.');
+        return redirect()->route('user.cart.index');
+    }
 
-        // Redirect to the product page
-        return redirect()->route('products.show', $product);
+    public function remove(Request $request)
+    {
+        $cartItem = CartItem::find($request->input('cart_item_id'));
+        $cartItem->delete();
+
+        $cart = $cartItem->cart;
+        $cart->total = $cart->items->sum(fn($item) => $item->quantity * $item->price);
+        $cart->save();
+
+        return redirect()->route('user.cart.index');
     }
 }

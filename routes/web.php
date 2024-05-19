@@ -47,16 +47,17 @@ Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admi
 
 // User routes
 Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
-    Route::post('/checkout/cart', [CartController::class, 'add'])->name('cart.add');
 
-    Route::get('/checkout/cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
     Route::get('/checkout/shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
     Route::post('/checkout/shipping', [CheckoutController::class, 'storeShipping'])->name('checkout.storeShipping');
     Route::get('/checkout/payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
     Route::post('/checkout/payment', [CheckoutController::class, 'storePayment'])->name('checkout.storePayment');
     Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
-    // Route::resource('orders', UserOrderController::class)->except(['create', 'edit']);
 
-    // Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-    // Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+    // Cart 
+    // Route::get('/checkout/cart/index', [CheckoutController::class, 'cart'])->name('checkout.cart');
+    Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+    Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 });
