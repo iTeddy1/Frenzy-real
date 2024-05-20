@@ -21,10 +21,9 @@ class CartController extends Controller
     {
         $product = Product::find($request->input('product_id'));
         $quantity = $request->input('quantity');
-
+        $size = $request->input('size-choice');
         $cart = Auth::user()->cart()->firstOrCreate(['user_id' => Auth::id(), 'total' => $product->regular_price]);
         $cartItem = $cart->items()->where('product_id', $product->id)->first();
-
         if ($cartItem) {
             $cartItem->quantity += $quantity;
         } else {
@@ -32,6 +31,7 @@ class CartController extends Controller
                 'cart_id' => $cart->id,
                 'product_id' => $product->id,
                 'quantity' => $quantity,
+                'size' => $size,
                 'price' => $product->regular_price,
             ]);
             $cart->items()->save($cartItem);

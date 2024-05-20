@@ -1,10 +1,8 @@
 @extends("layouts.app")
 <x-slot:title>Product Detail</x-slot:title>
 @section("content")
-    <div class="-translate-x-full transition-transform sm:translate-x-0 lg:mx-auto">
-        <!-- Process -->
-
-        <!-- Product  -->
+    <div class="transition-transform lg:mx-auto">
+        <!-- Process -- Product  -->
         <section class="mx-auto grid max-w-4xl grid-cols-1 items-start gap-12 lg:mx-[25px] lg:max-w-7xl lg:grid-cols-5">
             <!-- class="mx-auto flex flex-wrap overflow-hidden lg:w-full xl:justify-center" -->
             <section class="mb-5 w-full lg:col-span-3">
@@ -83,12 +81,10 @@
                         </div>
                     </span>
                 </div>
-                <span class="title-font text-2xl font-medium">$58.00</span>
+                <span class="title-font text-2xl font-medium">$ {{ $product->regular_price }}</span>
 
                 <p class="mt-4 leading-relaxed">
-                    Let your shoe game shimmer in the Nike Air Force 1 '07
-                    Essential. It takes the classic AF-1 design to the next level
-                    with its premium leather upper and iridescent Swoosh.
+                    {{ $product->description }}
                 </p>
                 <div class="mt-8 flex justify-between">
                     <div class="inline-flex items-center justify-start gap-6">
@@ -102,185 +98,166 @@
                         </a>
                     </div>
                 </div>
-                <div class="mb-5 mt-6 flex items-center pb-5">
-                    <div class="flex items-center">
-                        <fieldset class="mt-4">
-                            <legend class="sr-only">Choose a size</legend>
-                            <div class="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                                <!-- Active: "ring-2 ring-indigo-500" -->
-                                <label
-                                    class="group relative flex h-12 cursor-not-allowed items-center justify-center rounded-md border bg-gray-50 px-8 py-3 text-sm text-gray-200 hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-2.5">
-                                    <input class="sr-only" name="size-choice" type="radio" value="XXS"
-                                        aria-labelledby="size-choice-0-label" disabled />
-                                    <span id="size-choice-0-label">37</span>
-                                    <span class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
-                                        aria-hidden="true">
-                                        <svg class="absolute inset-0 h-full w-full stroke-2 text-gray-200"
-                                            viewBox="0 0 100 100" preserveAspectRatio="none" stroke="currentColor">
-                                            <line x1="0" y1="100" x2="100" y2="0"
-                                                vector-effect="non-scaling-stroke" />
-                                        </svg>
-                                    </span>
-                                </label>
-                                <!-- Active: "ring-2 ring-indigo-500" -->
-                                <label
-                                    class="group relative flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white px-8 py-3 text-sm text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-2.5">
-                                    <input class="sr-only" name="size-choice" type="radio" value="XS"
-                                        aria-labelledby="size-choice-1-label" />
-                                    <span id="size-choice-1-label">38</span>
-                                    <!--
-                                Active: "border", Not Active: "border-2"
-                                Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                -->
-                                    <span class="pointer-events-none absolute -inset-px rounded-md"
-                                        aria-hidden="true"></span>
-                                </label>
-                                <!-- Active: "ring-2 ring-indigo-500" -->
-                                <label
-                                    class="group relative flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white px-8 py-3 text-sm text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-2.5">
-                                    <input class="sr-only" name="size-choice" type="radio" value="S"
-                                        aria-labelledby="size-choice-2-label" />
-                                    <span id="size-choice-2-label">38.5</span>
-                                    <!--
-                                Active: "border", Not Active: "border-2"
-                                Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                -->
-                                    <span class="pointer-events-none absolute -inset-px rounded-md"
-                                        aria-hidden="true"></span>
-                                </label>
-                                <!-- Active: "ring-2 ring-indigo-500" -->
-                                <label
-                                    class="group relative flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white px-8 py-3 text-sm text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-2.5">
-                                    <input class="sr-only" name="size-choice" type="radio" value="M"
-                                        aria-labelledby="size-choice-3-label" />
-                                    <span id="size-choice-3-label">39</span>
-                                    <!--
-                                Active: "border", Not Active: "border-2"
-                                Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                -->
-                                    <span class="pointer-events-none absolute -inset-px rounded-md"
-                                        aria-hidden="true"></span>
-                                </label>
-                                <!-- Active: "ring-2 ring-indigo-500" -->
-                                <label
-                                    class="group relative flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white px-8 py-3 text-sm text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-2.5">
-                                    <input class="sr-only" name="size-choice" type="radio" value="L"
-                                        aria-labelledby="size-choice-4-label" />
-                                    <span id="size-choice-4-label">39.5</span>
-                                    <!--
-                                Active: "border", Not Active: "border-2"
-                                Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                -->
-                                    <span class="pointer-events-none absolute -inset-px rounded-md"
-                                        aria-hidden="true"></span>
-                                </label>
-                                <!-- Active: "ring-2 ring-indigo-500" -->
-                                <label
-                                    class="group relative flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white px-8 py-3 text-sm text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-2.5">
-                                    <input class="sr-only" name="size-choice" type="radio" value="XL"
-                                        aria-labelledby="size-choice-5-label" />
-                                    <span id="size-choice-5-label">40</span>
-                                    <!--
-                                Active: "border", Not Active: "border-2"
-                                Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                -->
-                                    <span class="pointer-events-none absolute -inset-px rounded-md"
-                                        aria-hidden="true"></span>
-                                </label>
-                                <!-- Active: "ring-2 ring-indigo-500" -->
-                                <label
-                                    class="group relative flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white px-8 py-3 text-sm text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-2.5">
-                                    <input class="sr-only" name="size-choice" type="radio" value="2XL"
-                                        aria-labelledby="size-choice-6-label" />
-                                    <span id="size-choice-6-label">41</span>
-                                    <!--
-                                Active: "border", Not Active: "border-2"
-                                Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                -->
-                                    <span class="pointer-events-none absolute -inset-px rounded-md"
-                                        aria-hidden="true"></span>
-                                </label>
-                                <!-- Active: "ring-2 ring-indigo-500" -->
-                                <label
-                                    class="group relative flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white px-8 py-3 text-sm text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-2.5">
-                                    <input class="sr-only" name="size-choice" type="radio" value="3XL"
-                                        aria-labelledby="size-choice-7-label" />
-                                    <span id="size-choice-7-label">42</span>
-                                    <!--
-                                Active: "border", Not Active: "border-2"
-                                Checked: "border-indigo-500", Not Checked: "border-transparent"
-                                -->
-                                    <span class="pointer-events-none absolute -inset-px rounded-md"
-                                        aria-hidden="true"></span>
-                                </label>
-                            </div>
-                        </fieldset>
-                        <!-- <div class="grid grid-cols-3 gap-7">
-                            <div class="inline-flex h-12 items-start justify-center">
-                            <button
-    class="inline-flex items-center justify-center rounded-small border border-black border-opacity-50 px-8 py-2.5">
-                                <div class="text-[1rem] leading-7 text-gray-800">
-                                EU 38.5
-                                </div>
-                            </button>
-                            </div>
-                            <div class="inline-flex h-12 items-start justify-center">
-                            <button
-    class="inline-flex items-center justify-center rounded-small border border-black border-opacity-50 px-8 py-2.5">
-                                <div class="text-[1rem] leading-7 text-gray-800">
-                                EU 40
-                                </div>
-                            </button>
-                            </div>
-                            <div class="inline-flex h-12 items-start justify-center">
-                            <button
-    class="inline-flex items-center justify-center rounded-small border border-black border-opacity-50 px-8 py-2.5">
-                                <div class="text-[1rem] leading-7 text-gray-800">
-                                EU 41
-                                </div>
-                            </button>
-                            </div>
-                            <div class="inline-flex h-12 items-start justify-center">
-                            <button
-    class="inline-flex items-center justify-center rounded-small border border-black border-opacity-50 px-8 py-2.5">
-                                <div class="text-[1rem] leading-7 text-gray-800">
-                                EU 42.5
-                                </div>
-                            </button>
-                            </div>
-                            <div class="inline-flex h-12 items-start justify-center">
-                            <button
-    class="inline-flex items-center justify-center rounded-small border border-black border-opacity-50 px-8 py-2.5">
-                                <div class="text-[1rem] leading-7 text-gray-800">
-                                EU 44
-                                </div>
-                            </button>
-                            </div>
-                            <div class="inline-flex h-12 items-start justify-center">
-                            <button
-    class="inline-flex items-center justify-center rounded-small border border-black border-opacity-50 px-8 py-2.5">
-                                <div class="text-[1rem] leading-7 text-gray-800">
-                                EU 45
-                                </div>
-                            </button>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
+                <form class="w-full" id="select-product" action="{{ route("user.cart.add") }}" method="POST">
+                    @csrf
+                    <div class="mb-5 mt-6 w-full pb-5">
+                        <div class="mb-5 mt-6 w-full">
+                            <input name="product_id" type="hidden" value="{{ $product->id }}">
+                            <div class="mt-4">
+                                <div class="sr-only">Choose a size</div>
+                                <div class="grid grid-cols-4 gap-4 md:grid-cols-3 lg:grid-cols-4">
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <div>
+                                        <label
+                                            class="flex h-12 cursor-not-allowed items-center justify-center rounded-md border text-base text-gray-200 hover:bg-gray-50 focus:outline-none sm:flex-1"
+                                            for="size-choice-0-label">
+                                            <input class="peer sr-only" id="size-choice-0-label" name="size-choice"
+                                                type="radio" value="37" />
+                                            <span>37</span>
+                                            {{-- <span
+                                            class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                                            aria-hidden="true">
+                                            <svg class="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                                                viewBox="0 0 100 100" preserveAspectRatio="none" stroke="currentColor">
+                                                <line x1="0" y1="100" x2="100" y2="0"
+                                                    vector-effect="non-scaling-stroke" />
+                                            </svg>
+                                        </span> --}}
+                                        </label>
 
-                <div class="flex">
-                    <form action="{{ route('user.cart.add') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <input type="number" name="quantity" value="1" min="1" class="form-control mb-2">
-                        <button type="submit" class="flex h-12 items-center justify-center rounded-[10px] border-0 bg-primary px-12 text-white hover:bg-primary-dark focus:outline-none">Add to Cart</button>
-                    </form>
-                    <form class="mx-auto max-w-xs">
-                        <label class="block text-sm font-medium dark:text-white" for="quantity-input"></label>
+                                    </div>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <div>
+                                        <input class="peer sr-only" id="size-choice-1-label" name="size-choice"
+                                            type="radio" value="38" />
+                                        <label
+                                            class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
+                                            for="size-choice-1-label">
+                                            <span>38</span>
+                                            <!--
+                                                        Active: "border", Not Active: "border-2"
+                                                        Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                                    -->
+                                            <span class="pointer-events-none absolute -inset-px rounded-md"
+                                                aria-hidden="true"></span>
+                                        </label>
+                                    </div>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <div>
+                                        <input class="peer sr-only" id="size-choice-2-label" name="size-choice"
+                                            type="radio" value="38.5" />
+                                        <label
+                                            class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
+                                            for="size-choice-2-label">
+                                            <span>38.5</span>
+                                            <!--
+                                                        Active: "border", Not Active: "border-2"
+                                                        Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                                    -->
+                                            <span class="pointer-events-none absolute -inset-px rounded-md"
+                                                aria-hidden="true"></span>
+                                        </label>
+
+                                    </div>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <div>
+                                        <input class="peer sr-only" id="size-choice-3-label" name="size-choice"
+                                            type="radio" value="39" />
+                                        <label
+                                            class="peer-checked:bg-red flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
+                                            for="size-choice-3-label">
+                                            <span>39</span>
+                                            <!--
+                                                        Active: "border", Not Active: "border-2"
+                                                        Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                                    -->
+                                            <span class="pointer-events-none absolute -inset-px rounded-md"
+                                                aria-hidden="true"></span>
+                                        </label>
+
+                                    </div>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <div>
+                                        <input class="peer sr-only" id="size-choice-4-label" name="size-choice"
+                                            type="radio" value="39.5" />
+                                        <label
+                                            class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
+                                            for="size-choice-4-label">
+                                            <span>39.5</span>
+                                            <!--
+                                                            Active: "border", Not Active: "border-2"
+                                                            Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                                        -->
+
+                                        </label>
+                                    </div>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <div>
+                                        <input class="peer sr-only" id="size-choice-5-label" name="size-choice"
+                                            type="radio" value="40" />
+                                        <label
+                                            class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
+                                            for="size-choice-5-label">
+                                            <span>40</span>
+                                            <!--
+                                                        Active: "border", Not Active: "border-2"
+                                                        Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                                    -->
+                                            <span class="pointer-events-none absolute -inset-px rounded-md"
+                                                aria-hidden="true"></span>
+                                        </label>
+
+                                    </div>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <div>
+                                        <input class="peer sr-only" id="size-choice-6-label" name="size-choice"
+                                            type="radio" value="41" />
+                                        <label
+                                            class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
+                                            for="size-choice-6-label">
+                                            <span>41</span>
+                                            <!--
+                                                        Active: "border", Not Active: "border-2"
+                                                        Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                                    -->
+                                            <span class="pointer-events-none absolute -inset-px rounded-md"
+                                                aria-hidden="true"></span>
+                                        </label>
+
+                                    </div>
+                                    <!-- Active: "ring-2 ring-indigo-500" -->
+                                    <div>
+                                        <input class="peer sr-only" id="size-choice-7-label" name="size-choice"
+                                            type="radio" value="42" />
+                                        <label
+                                            class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
+                                            for="size-choice-7-label">
+                                            <span>42</span>
+                                            <!--
+                                                        Active: "border", Not Active: "border-2"
+                                                        Checked: "border-indigo-500", Not Checked: "border-transparent"
+                                                    -->
+                                            <span class="pointer-events-none absolute -inset-px rounded-md"
+                                                aria-hidden="true"></span>
+                                        </label>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex">
+                        <button
+                            class="flex h-12 items-center justify-center rounded-[10px] border-0 bg-primary px-12 text-white hover:bg-primary-dark focus:outline-none"
+                            form="select-product" type="submit">Add to Cart</button>
+
+                        <label class="block text-sm font-medium dark:text-white" for="quantity"></label>
                         <div class="flex h-12 max-w-[8rem] items-center">
                             <button
                                 class="h-12 rounded-s border border-divider p-3 hover:bg-active-light focus:outline-none focus:ring-2 focus:ring-gray-100"
-                                id="decrement-button" data-input-counter-decrement="quantity-input" type="button">
+                                id="decrement-button" type="button"
+                                onclick="updateQuantity({{ $product->id }}, 'decrement')">
                                 <!-- dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 dark:focus:ring-gray-700 -->
                                 <svg class="text-black-900 h-3 w-3 dark:text-black" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
@@ -290,12 +267,13 @@
                             </button>
                             <input
                                 class="block h-12 w-full border border-x-0 border-divider text-center text-sm focus:outline-none"
-                                id="quantity-input" data-input-counter type="text" value="1"
+                                id="quantity-input-{{ $product->id }}" name="quantity" type="text" value="1"
                                 aria-describedby="helper-text-explanation" aria-valuenow="1" required />
                             <!-- dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" -->
                             <button
                                 class="h-12 rounded-e border border-divider p-3 hover:bg-active-light focus:outline-none focus:ring-2 focus:ring-gray-100"
-                                id="increment-button" data-input-counter-increment="quantity-input" type="button">
+                                id="increment-button" type="button"
+                                onclick="updateQuantity({{ $product->id }}, 'increment')">
                                 <!-- dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 dark:focus:ring-gray-700 -->
                                 <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 18 18">
@@ -304,17 +282,18 @@
                                 </svg>
                             </button>
                         </div>
-                    </form>
-                    <button
-                        class="rounded-[10px]-full ml-4 inline-flex h-12 w-12 items-center justify-center border border-divider p-0 text-active">
-                        <svg class="h-5 w-5" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" viewBox="0 0 24 24">
-                            <path
-                                d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z">
-                            </path>
-                        </svg>
-                    </button>
-                </div>
+                        <button
+                            class="ml-4 inline-flex h-12 w-12 items-center justify-center rounded border border-divider p-0 text-active">
+                            <svg class="h-5 w-5" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+
             </section>
         </section>
 
@@ -803,8 +782,7 @@
                                     </div>
                                     <div class="absolute right-0 top-9 z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700"
                                         id="dropdown">
-                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                            aria-labelledby="dropdown-button">
+                                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" id="dropdown-button">
                                             <li>
                                                 <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                                     href="#">
@@ -859,8 +837,18 @@
                 thumbnails[0].classList.add('active');
             }
         });
-    </script>
 
+        function updateQuantity(itemId, operation) {
+            let quantityInput = document.getElementById('quantity-input-' + itemId);
+            let currentQuantity = +(quantityInput.value);
+
+            if (operation === 'increment') {
+                quantityInput.value = currentQuantity + 1;
+            } else if (operation === 'decrement' && currentQuantity > 1) {
+                quantityInput.value = currentQuantity - 1;
+            }
+        }
+    </script>
     <style>
         .thumbnail img.active {
             border: 2px solid #000;

@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-// Admin routes
+//! Admin routes
 Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
@@ -45,7 +45,7 @@ Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admi
     Route::delete('products/show/{product}', [AdminProductController::class, 'destroy'])->name('products.destroy');
 });
 
-// User routes
+//! User routes
 Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
 
     Route::get('/checkout/shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');

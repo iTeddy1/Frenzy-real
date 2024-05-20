@@ -76,24 +76,24 @@
                         </td>
 
                         <td class="w-2/5 px-6 py-4 text-left font-bold text-gray-600">
-                            <div class="font-['Public Sans'] text-base font-extrabold text-gray-400">
+                            <div class="text-base font-extrabold text-gray-400">
                                 Product</div>
                         </td>
 
                         <td class="w-1/4 px-6 py-4 text-left font-bold text-gray-600">
-                            <div class="font-['Public Sans'] self-stretch text-base font-bold text-gray-400">
+                            <div class="self-stretch text-base font-bold text-gray-400">
                                 Create at
                             </div>
                         </td>
 
                         <td class="w-[15%] px-6 py-4 text-left font-bold text-gray-600">
-                            <div class="font-['Public Sans'] text-base font-bold text-gray-400">Price</div>
+                            <div class="text-base font-bold text-gray-400">Price</div>
                         </td>
                         <td class="px-6 py-4 text-left font-bold text-gray-600">
                             Quantity
                         </td>
                         <td class="px-6 py-4 text-center font-bold text-gray-600">
-                            <div class="font-['Public Sans'] self-stretch text-base font-bold text-gray-400">
+                            <div class="self-stretch text-base font-bold text-gray-400">
                                 Visibility
                             </div>
                         </td>
@@ -101,7 +101,7 @@
                     </tr>
                 </thead>
                 {{-- product list --}}
-                <tbody class="">
+                <tbody >
                     @foreach ($products as $product)
                         {{-- {{ $product }} --}}
                         <tr class="">
@@ -113,7 +113,7 @@
                                     <img class="h-[50px] w-[50px] rounded-[10px]"
                                         src="{{ $product->assets->first()->path }}" />
                                     <p
-                                        class="font-['Public Sans'] h-[26px] grow truncate text-base font-semibold text-gray-800">
+                                        class="h-[26px] grow truncate text-base font-semibold text-gray-800">
                                         {{ $product->name }}
                                     </p>
                                 </a>
