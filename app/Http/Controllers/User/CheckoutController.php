@@ -22,8 +22,8 @@ class CheckoutController extends Controller
     public function shipping()
     {
         $cart = Session::get('cart', []);
-        // dd($cart);
-        return view('checkout.shipping', ['cart' => $cart]);
+        $total = array_sum(array_column($cart, 'total_price'));
+        return view('checkout.shipping', ['total' => $total]);
     }
 
     public function storeShipping(Request $request)
