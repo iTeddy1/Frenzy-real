@@ -16,12 +16,14 @@ class CheckoutController extends Controller
         $cart = Session::get('cart', []);
         $total = array_sum(array_column($cart, 'total_price'));
 
-        return view('checkout.cart', compact('cart', 'total'));
+        return view('checkout.cart', ['cart' => $cart, 'total' => $total]);
     }
 
     public function shipping()
     {
-        return view('checkout.shipping');
+        $cart = Session::get('cart', []);
+        // dd($cart);
+        return view('checkout.shipping', ['cart' => $cart]);
     }
 
     public function storeShipping(Request $request)
@@ -41,7 +43,7 @@ class CheckoutController extends Controller
         $total = array_sum(array_column($cart, 'total_price'));
         $shipping = Session::get('shipping', []);
 
-        return view('checkout.payment', compact('cart', 'total', 'shipping'));
+        return view('checkout.payment', ['cart' => $cart, 'total' => $total, 'shipping' => $shipping]);
     }
 
     public function storePayment(Request $request)

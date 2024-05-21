@@ -13,7 +13,7 @@ class CartController extends Controller
     public function index()
     {
         $cart = Auth::user()->cart;
-        return view('checkout.cart', compact('cart'));
+        return view('checkout.cart', ['cart' => $cart]);
     }
 
     public function add(Request $request)
@@ -22,8 +22,8 @@ class CartController extends Controller
         $quantity = $request->input('quantity');
         $size = $request->input('size-choice');
         $cart = Auth::user()->cart()->firstOrCreate(['user_id' => Auth::id(), 'total' => $product->regular_price]);
-        $cartItem = $cart->items()->where(['product_id'=> $product->id, 'size' => $size])->first();
-        
+        $cartItem = $cart->items()->where('product_id', $product->id)->where('size', $size)->first();
+
         if ($cartItem) {
             $cartItem->quantity += $quantity;
         } else {
@@ -34,8 +34,8 @@ class CartController extends Controller
                 'size' => $size,
                 'price' => $product->regular_price,
             ]);
-            $cart->items()->save($cartItem);
         }
+        $cart->items()->save($cartItem);
 
         $cart->total = $cart->items->sum(fn($item) => $item->quantity * $item->price);
         $cart->save();
@@ -47,8 +47,7 @@ class CartController extends Controller
     {
         $cartItem = CartItem::find($request->input('cart_item_id'));
         $cartItem->quantity = $request->input('quantity');
-        $cartItem->save();
-
+        $cartItem->quantity === '0' ? $cartItem->delete() : $cartItem->save();
         $cart = $cartItem->cart;
         $cart->total = $cart->items->sum(fn($item) => $item->quantity * $item->price);
         $cart->save();

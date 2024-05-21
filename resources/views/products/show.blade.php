@@ -112,7 +112,7 @@
                                             class="flex h-12 cursor-not-allowed items-center justify-center rounded-md border text-base text-gray-200 hover:bg-gray-50 focus:outline-none sm:flex-1"
                                             for="size-choice-0-label">
                                             <input class="peer sr-only" id="size-choice-0-label" name="size-choice"
-                                                type="radio" value="37" />
+                                                type="radio" required value="37" />
                                             <span>37</span>
                                             {{-- <span
                                             class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
@@ -129,7 +129,7 @@
                                     <!-- Active: "ring-2 ring-indigo-500" -->
                                     <div>
                                         <input class="peer sr-only" id="size-choice-1-label" name="size-choice"
-                                            type="radio" value="38" />
+                                            type="radio" required value="38" />
                                         <label
                                             class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
                                             for="size-choice-1-label">
@@ -145,7 +145,7 @@
                                     <!-- Active: "ring-2 ring-indigo-500" -->
                                     <div>
                                         <input class="peer sr-only" id="size-choice-2-label" name="size-choice"
-                                            type="radio" value="38.5" />
+                                            type="radio" required value="38.5" />
                                         <label
                                             class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
                                             for="size-choice-2-label">
@@ -162,7 +162,7 @@
                                     <!-- Active: "ring-2 ring-indigo-500" -->
                                     <div>
                                         <input class="peer sr-only" id="size-choice-3-label" name="size-choice"
-                                            type="radio" value="39" />
+                                            type="radio" required value="39" />
                                         <label
                                             class="peer-checked:bg-red flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
                                             for="size-choice-3-label">
@@ -179,7 +179,7 @@
                                     <!-- Active: "ring-2 ring-indigo-500" -->
                                     <div>
                                         <input class="peer sr-only" id="size-choice-4-label" name="size-choice"
-                                            type="radio" value="39.5" />
+                                            type="radio" required value="39.5" />
                                         <label
                                             class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
                                             for="size-choice-4-label">
@@ -194,7 +194,7 @@
                                     <!-- Active: "ring-2 ring-indigo-500" -->
                                     <div>
                                         <input class="peer sr-only" id="size-choice-5-label" name="size-choice"
-                                            type="radio" value="40" />
+                                            type="radio" required value="40" />
                                         <label
                                             class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
                                             for="size-choice-5-label">
@@ -211,7 +211,7 @@
                                     <!-- Active: "ring-2 ring-indigo-500" -->
                                     <div>
                                         <input class="peer sr-only" id="size-choice-6-label" name="size-choice"
-                                            type="radio" value="41" />
+                                            type="radio" required value="41" />
                                         <label
                                             class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
                                             for="size-choice-6-label">
@@ -228,7 +228,7 @@
                                     <!-- Active: "ring-2 ring-indigo-500" -->
                                     <div>
                                         <input class="peer sr-only" id="size-choice-7-label" name="size-choice"
-                                            type="radio" value="42" />
+                                            type="radio" required value="42" />
                                         <label
                                             class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
                                             for="size-choice-7-label">
