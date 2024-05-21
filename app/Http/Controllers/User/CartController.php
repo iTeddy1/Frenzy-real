@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\CartItem;
-use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -23,7 +22,8 @@ class CartController extends Controller
         $quantity = $request->input('quantity');
         $size = $request->input('size-choice');
         $cart = Auth::user()->cart()->firstOrCreate(['user_id' => Auth::id(), 'total' => $product->regular_price]);
-        $cartItem = $cart->items()->where('product_id', $product->id)->first();
+        $cartItem = $cart->items()->where(['product_id'=> $product->id, 'size' => $size])->first();
+        
         if ($cartItem) {
             $cartItem->quantity += $quantity;
         } else {

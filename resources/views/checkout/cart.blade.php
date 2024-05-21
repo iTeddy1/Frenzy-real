@@ -77,7 +77,9 @@
                                                         <img class="mr-4 h-20 w-20 rounded"
                                                             src="{{ $item->product->assets->first()->path }}"
                                                             alt="Product image" />
-                                                        <span class="font-semibold">{{ $item->product->name }}</span>
+                                                        <div class="flex flex-col font-semibold">{{ $item->product->name }}
+                                                            <span>size: {{$item->size}}</span>
+                                                        </div>
                                                     </div>
                                                 </td>
                                                 <td class="p-4">
@@ -185,7 +187,7 @@
                                 <span class="font-semibold text-error">${{ $cart->total }}</span>
                             </div>
                         </div>
-                        <button
+                        <button href="user/checkout/shipping"
                             class="mt-4 w-full rounded bg-primary px-4 py-2 font-semibold text-white hover:bg-primary-dark">
                             Checkout
                         </button>
