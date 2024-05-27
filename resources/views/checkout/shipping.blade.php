@@ -4,16 +4,6 @@
     <div class="">
         <h1>Shipping Information</h1>
 
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
         <form action="{{ route("user.checkout.storeShipping") }}" method="POST">
             @csrf
             <div class="h-screen pt-12">
@@ -63,12 +53,12 @@
 
                                     <div class="mt-4 grid grid-cols-2 gap-8">
                                         <div>
-                                            <label class="mb-2 block text-text-light dark:text-white" for="state">
+                                            <label class="mb-2 block text-text-light dark:text-white" for="phone">
                                                 Phone
                                             </label>
                                             <input
                                                 class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-gray-700 dark:text-white"
-                                                id="state" type="text" />
+                                                id="phone" type="text" />
                                         </div>
                                         <div>
                                             <label class="mb-2 block text-text-light dark:text-white" for="shippingOption">
@@ -79,7 +69,7 @@
                                             </select> -->
                                             <input
                                                 class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-background-paper-dark dark:text-white"
-                                                id="zip" type="text" />
+                                                id="shippingOption" type="text" />
                                         </div>
                                     </div>
                                 </div>

@@ -46,32 +46,49 @@ class CheckoutController extends Controller
         return view('checkout.payment', ['cart' => $cart, 'total' => $total, 'shipping' => $shipping]);
     }
 
-    public function storePayment(Request $request)
+    public function momo_payment(Request $request)
     {
-        $cart = Session::get('cart', []);
-        $shipping = Session::get('shipping', []);
-        $total = array_sum(array_column($cart, 'total_price'));
+        $endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
 
-        // Handle payment logic (e.g., Stripe, PayPal)
 
-        // Create order
-        $order = new Order();
-        $order->user_id = Auth::id();
-        $order->total_price = $total;
-        $order->address = $shipping['address'];
-        $order->status = 'Pending';
-        $order->save();
+        $partnerCode = "MOMOBKUN20180529";
+        $accessKey = "klm05TvNBzhg7h7j";
+        $secretKey = "at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa";
+        $orderInfo = "Thanh toán qua MoMo";
+        $amount = "10000";
+        $orderId = time() . "";
+        $returnUrl = "http://localhost:8000/paymomo/result.php";
+        $notifyurl = "http://localhost:8000/paymomo/ipn_momo.php";
+        // Lưu ý: link notifyUrl không phải là dạng localhost
+        $extraData = "merchantName=MoMo Partner";
 
-        // Save order items
-        foreach ($cart as $item) {
-            $order->products()->attach($item['product_id'], ['quantity' => $item['quantity'], 'price' => $item['price']]);
-        }
+        $requestId = time() . "";
+        $requestType = "captureMoMoWallet";
+        //before sign HMAC SHA256 signature
+        $rawHash = "partnerCode=" . $partnerCode . "&accessKey=" . $accessKey . "&requestId=" . $requestId . "&amount=" . $amount . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&returnUrl=" . $returnUrl . "&notifyUrl=" . $notifyurl . "&extraData=" . $extraData;
+        $signature = hash_hmac("sha256", $rawHash, $secretKey);
+        $data = array(
+            'partnerCode' => $partnerCode,
+            'accessKey' => $accessKey,
+            'requestId' => $requestId,
+            'amount' => $amount,
+            'orderId' => $orderId,
+            'orderInfo' => $orderInfo,
+            'returnUrl' => $returnUrl,
+            'notifyUrl' => $notifyurl,
+            'extraData' => $extraData,
+            'requestType' => $requestType,
+            'signature' => $signature
+        );
 
-        // Clear the cart
-        Session::forget('cart');
-        Session::forget('shipping');
+        $result = execPostRequest($endpoint, json_encode($data));
+        $jsonResult = json_decode($result, true);  // decode json
 
-        return redirect()->route('user.checkout.success');
+        //Just a example, please check more in there
+        return redirect($jsonResult['payUrl']);
+        // header('Location: ' . $jsonResult['payUrl']);
+
+        // return redirect()->route('user.checkout.success');
     }
 
     public function success()
