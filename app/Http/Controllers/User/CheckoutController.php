@@ -57,29 +57,49 @@ class CheckoutController extends Controller
         $orderInfo = "Thanh toán qua MoMo";
         $amount = "10000";
         $orderId = time() . "";
-        $returnUrl = "http://localhost:8000/paymomo/result.php";
+        $returnUrl = "http://localhost:8000/user/checkout/success";
         $notifyurl = "http://localhost:8000/paymomo/ipn_momo.php";
         // Lưu ý: link notifyUrl không phải là dạng localhost
-        $extraData = "merchantName=MoMo Partner";
 
+        //! Use ATM payment
+        $bankCode = "SML";
+        $requestType = "payWithMoMoATM";
+        $extraData = "";
         $requestId = time() . "";
-        $requestType = "captureMoMoWallet";
-        //before sign HMAC SHA256 signature
-        $rawHash = "partnerCode=" . $partnerCode . "&accessKey=" . $accessKey . "&requestId=" . $requestId . "&amount=" . $amount . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&returnUrl=" . $returnUrl . "&notifyUrl=" . $notifyurl . "&extraData=" . $extraData;
+        $rawHash = "partnerCode=".$partnerCode."&accessKey=".$accessKey."&requestId=".$requestId."&bankCode=".$bankCode."&amount=".$amount."&orderId=".$orderId."&orderInfo=".$orderInfo."&returnUrl=".$returnUrl."&notifyUrl=".$notifyurl."&extraData=".$extraData."&requestType=".$requestType;
         $signature = hash_hmac("sha256", $rawHash, $secretKey);
-        $data = array(
-            'partnerCode' => $partnerCode,
-            'accessKey' => $accessKey,
-            'requestId' => $requestId,
-            'amount' => $amount,
-            'orderId' => $orderId,
-            'orderInfo' => $orderInfo,
-            'returnUrl' => $returnUrl,
-            'notifyUrl' => $notifyurl,
-            'extraData' => $extraData,
-            'requestType' => $requestType,
-            'signature' => $signature
-        );
+
+        $data =  array('partnerCode' => $partnerCode,
+                       'accessKey' => $accessKey,
+                       'requestId' => $requestId,
+                       'amount' => $amount,
+                       'orderId' => $orderId,
+                       'orderInfo' => $orderInfo,
+                       'returnUrl' => $returnUrl,
+                       'bankCode' => $bankCode,
+                       'notifyUrl' => $notifyurl,
+                       'extraData' => $extraData,
+                       'requestType' => $requestType,
+                       'signature' => $signature);
+        //! Use QR payment
+        // $extraData = "merchantName=MoMo Partner";
+        // $requestType = "captureMoMoWallet";
+        // //before sign HMAC SHA256 signature
+        // $rawHash = "partnerCode=" . $partnerCode . "&accessKey=" . $accessKey . "&requestId=" . $requestId . "&amount=" . $amount . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&returnUrl=" . $returnUrl . "&notifyUrl=" . $notifyurl . "&extraData=" . $extraData;
+        // $signature = hash_hmac("sha256", $rawHash, $secretKey);
+        // $data = array(
+        //     'partnerCode' => $partnerCode,
+        //     'accessKey' => $accessKey,
+        //     'requestId' => $requestId,
+        //     'amount' => $amount,
+        //     'orderId' => $orderId,
+        //     'orderInfo' => $orderInfo,
+        //     'returnUrl' => $returnUrl,
+        //     'notifyUrl' => $notifyurl,
+        //     'extraData' => $extraData,
+        //     'requestType' => $requestType,
+        //     'signature' => $signature
+        // );
 
         $result = execPostRequest($endpoint, json_encode($data));
         $jsonResult = json_decode($result, true);  // decode json
