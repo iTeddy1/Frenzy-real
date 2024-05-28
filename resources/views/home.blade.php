@@ -129,6 +129,7 @@
                 @foreach ($products as $product)
                     <x-product-card 
                     :name="$product['name']" 
+                    :tag="$product['tag']"
                     :regularprice="$product['regular_price']" 
                     :saleprice="$product['sale_price']" 
                     :image="$product->assets->first()->path"
@@ -139,4 +140,4 @@
             <div>{{ $products->links() }}</div>
         </section>
     </div>
-    @endsection
+@endsection

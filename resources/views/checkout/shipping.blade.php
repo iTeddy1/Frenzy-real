@@ -19,17 +19,17 @@
                                             <label class="mb-2 block text-text-light dark:text-white" for="first_name">
                                                 First Name
                                             </label>
-                                            <input
+                                            <input name="first_name"
                                                 class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-gray-700 dark:text-white"
-                                                id="first_name" type="text" />
+                                                id="first_name" type="text" required />
                                         </div>
                                         <div>
                                             <label class="mb-2 block text-text-light dark:text-white" for="last_name">
                                                 Last Name
                                             </label>
-                                            <input
+                                            <input name="last_name"
                                                 class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-gray-700 dark:text-white"
-                                                id="last_name" type="text" />
+                                                id="last_name" type="text" required />
                                         </div>
                                     </div>
 
@@ -37,18 +37,18 @@
                                         <label class="mb-2 block text-text-light dark:text-white" for="address">
                                             Address
                                         </label>
-                                        <input
+                                        <input name="address"
                                             class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-gray-700 dark:text-white"
-                                            id="address" type="text" />
+                                            id="address" type="text" required />
                                     </div>
 
                                     <div class="mt-4">
                                         <label class="mb-2 block text-text-light dark:text-white" for="city">
                                             City
                                         </label>
-                                        <input
+                                        <input name="city"
                                             class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-gray-700 dark:text-white"
-                                            id="city" type="text" />
+                                            id="city" type="text" required />
                                     </div>
 
                                     <div class="mt-4 grid grid-cols-2 gap-8">
@@ -56,62 +56,64 @@
                                             <label class="mb-2 block text-text-light dark:text-white" for="phone">
                                                 Phone
                                             </label>
-                                            <input
+                                            <input name="phone_number"
                                                 class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-gray-700 dark:text-white"
-                                                id="phone" type="text" />
+                                                id="phone_number" type="text" required />
                                         </div>
                                         <div>
                                             <label class="mb-2 block text-text-light dark:text-white" for="shippingOption">
-                                                Select Shipping
+                                                Delivery options
                                             </label>
-                                            <!-- <select id="" name="">
-                                                <option value=""></option>
-                                            </select> -->
-                                            <input
+                                            <select
                                                 class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-background-paper-dark dark:text-white"
-                                                id="shippingOption" type="text" />
+                                                id="" name="delivery_option">
+                                                <option value="0">Standard delivery (Free)</option>
+                                                <option value="25">Fast delivery ($2)</option>
+                                            </select>
+                                            {{-- <input r name="ingOption"equired
+                                                class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-background-paper-dark dark:text-white"
+                                                id="shippingOption" type="text" /> --}}
                                         </div>
+                                    </div>
+                                    <div class="ml-4 flex w-1/2">
+                                        <button
+                                            class="mt-4 w-full rounded bg-primary px-4 py-2 font-semibold text-white hover:bg-primary-dark"
+                                            href="user/checkout/shipping">
+                                            Checkout
+                                        </button>
                                     </div>
                                 </div>
 
-                                <div class="mt-8 flex justify-end">
-                                    <button
-                                        class="rounded border bg-primary px-4 py-2 font-semibold text-white hover:bg-primary-dark dark:bg-teal-600 dark:text-white dark:hover:bg-teal-900"
-                                        type="submit">
-                                        Deliver to this address
-                                    </button>
+                            </div>
+
+                        </div>
+                        <div class="w-full rounded md:w-1/4">
+                            <div class="w-full rounded border bg-white p-4 shadow-md">
+                                <h2 class="mb-4 text-2xl font-bold">Summary</h2>
+                                <div class="mb-2 flex justify-between">
+                                    <span class="text-text-light">Subtotal</span>
+                                    <span>${{ $total }}</span>
+                                </div>
+                                <div class="mb-2 flex justify-between">
+                                    <span class="text-text-light">Taxes</span>
+                                    <span>$1.99</span>
+                                </div>
+                                <div class="mb-2 flex justify-between">
+                                    <span class="text-text-light">Shipping</span>
+                                    <span>$0.00</span>
+                                </div>
+                                <hr class="my-2" />
+                                <div class="mb-2 flex justify-between">
+                                    <span class="font-semibold">Total Price</span>
+                                    <span class="font-semibold text-error">${{ $total }}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </form>
-        <div class="w-full rounded md:w-1/4">
-            <div class="w-full rounded border bg-white p-4 shadow-md">
-                <h2 class="mb-4 text-2xl font-bold">Summary</h2>
-                <div class="mb-2 flex justify-between">
-                    <span class="text-text-light">Subtotal</span>
-                    <span>${{ $total }}</span>
-                </div>
-                <div class="mb-2 flex justify-between">
-                    <span class="text-text-light">Taxes</span>
-                    <span>$1.99</span>
-                </div>
-                <div class="mb-2 flex justify-between">
-                    <span class="text-text-light">Shipping</span>
-                    <span>$0.00</span>
-                </div>
-                <hr class="my-2" />
-                <div class="mb-2 flex justify-between">
-                    <span class="font-semibold">Total Price</span>
-                    <span class="font-semibold text-error">${{ $total }}</span>
-                </div>
-            </div>
-            <button href="user/checkout/shipping"
-                class="mt-4 w-full rounded bg-primary px-4 py-2 font-semibold text-white hover:bg-primary-dark">
-                Checkout
-            </button>
-        </div>
+
     </div>
 @endsection

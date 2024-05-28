@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -28,11 +29,17 @@ class CheckoutController extends Controller
 
     public function storeShipping(Request $request)
     {
-        $request->validate([
-            'address' => 'required|string|max:255',
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name'  => 'required|string|max:255',
+            'address'    => 'required|string|max:255',
+            'city'       => 'required|string|max:255',
+            'phone_number'      => 'required|string|max:15',
+            // 'delivery_option' => 'required|in:0,25'
         ]);
-
-        Session::put('shipping', $request->only('address'));
+        $validated['user_id'] = Auth::user()->id;
+        Address::create ($validated);
+        // Session::put('shipping', $request->only('address'));
 
         return redirect()->route('user.checkout.payment');
     }

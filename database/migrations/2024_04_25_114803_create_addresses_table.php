@@ -15,9 +15,9 @@ return new class extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class, 'user_id')->constrained()->cascadeOnDelete();
-            $table->string('address_line_1');
-            $table->string('address_line_2');
-            $table->string('country');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('address');
             $table->string('city');
             $table->string('phone_number');
             $table->timestamps();

@@ -37,7 +37,7 @@ class HomeController extends Controller
             $productsQuery->where('name', 'like', "%$searchTerm%")
                 ->orWhere('description', 'like', "%$searchTerm%");
         }
-        
+
         // Apply sorting
         $productsQuery->orderBy($sortField, $sortDirection);
 

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->string('tag')->default('regular');
             $table->string('regular_price')->nullable();
             $table->string('sale_price')->nullable();
             $table->integer('quantity')->nullable();

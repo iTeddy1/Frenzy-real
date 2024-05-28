@@ -1,21 +1,30 @@
 @props([
-    "name" => "Nike Air Force 1 '07 Essential",
+    "name" => "",
+    "tag" => "",
     "regularprice" => 20,
     "saleprice" => 0,
     "image" => "",
     "hoverimage" => "",
     "urlid" => "",
 ])
-<a 
-    href="/products/{{$urlid}}/"
-    class="mx-auto mt-4 flex w-full flex-col justify-between overflow-hidden rounded-lg border bg-white p-2 font-public shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)]">
+<a class="mx-auto mt-4 flex w-full flex-col justify-between overflow-hidden rounded-lg border bg-white p-2 font-public shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)]"
+    href="/products/{{ $urlid }}/">
     <div class="relative">
-        <div
-            class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] items-center justify-center gap-2.5 rounded bg-red-500 px-3 py-1">
-            <div class="font-['Poppins'] text-xs font-bold uppercase leading-[18px] text-neutral-50">
-                Sale
+        @if ($tag === "sale")
+            <div
+                class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] items-center justify-center gap-2.5 rounded bg-red-500 px-3 py-1">
+                <div class="font-['Poppins'] text-xs font-bold uppercase leading-[18px] text-neutral-50">
+                    Sale
+                </div>
             </div>
-        </div>
+        @elseif($tag === "new")
+            <div
+                class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] items-center justify-center gap-2.5 rounded bg-blue-500 px-3 py-1">
+                <div class="font-['Poppins'] text-xs font-bold uppercase leading-[18px] text-neutral-50">
+                    New
+                </div>
+            </div>
+        @endif
         <div
             class="absolute right-[6px] top-[7px] inline-flex h-[76px] w-[34px] flex-col items-start justify-start gap-2">
             <div class="relative h-[34px] w-[34px]">
@@ -66,12 +75,18 @@
 
             <!-- Price  -->
             <div class="flex gap-1.5">
-                <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-400 line-through">
-                    ${{ $regularprice }}
-                </span>
-                <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-800">
-                    ${{ $saleprice }}
-                </span>
+                @if ($saleprice)
+                    <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-400 line-through">
+                        ${{ $regularprice }}
+                    </span>
+                    <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-800">
+                        ${{ $saleprice }}
+                    </span>
+                @else
+                    <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-800">
+                        ${{ $regularprice }}
+                    </span>
+                @endif
             </div>
         </div>
     </div>

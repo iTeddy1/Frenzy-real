@@ -18,10 +18,11 @@ class ProductSeeder extends Seeder
         $products = json_decode($json, true);
 
         foreach ($products as $product) {
-            $imagesJson = json_encode($product['images'], );
+            $imagesJson = json_encode($product['images']);
             $data = Product::updateOrCreate([
                 'name' => $product['name'],
                 'description' => $product['description'],
+                'tag' => $product['tag'],
                 'regular_price' => $product['regular_price'],
                 'sale_price' => $product['sale_price'],
                 'gender' => $product['gender'],
