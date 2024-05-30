@@ -89,8 +89,8 @@
                 <div class="flex font-public break-words text-center text-lg font-bold leading-6 ">
                     Sort by:
                     <a class="btn btn-secondary"
-                        href="{{ route("home", ["sort_field" => "name", "sort_direction" => $sortField == "name" && $sortDirection == "asc" ? "desc" : "asc"]) }}">
-                        {!! $sortDirection == "asc"
+                        href="{{ route("home") }}">
+                        {!! 1 == "1"
                             ? '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                         <path d="M6 15l6 -6l6 6" />

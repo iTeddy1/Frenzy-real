@@ -1,111 +1,102 @@
-@extends('layouts.admin')
+@extends("layouts.admin")
 
-@section('content')
-  <x-slot:title>
+@section("content")
+    <x-slot:title>
         Create Product
     </x-slot:title>
-    <div class="p-5 flex-col justify-start items-start gap-2.5 inline-flex">
+    <div class="flex flex-col items-start justify-start gap-2.5 p-5">
         {{-- heading --}}
-        <div class="self-stretch text-gray-800 text-2xl font-bold font-['Public Sans'] leading-normal tracking-wide">
+        <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
             Create a new product</div>
         {{-- road map --}}
-        {{ Breadcrumbs::render('products.create') }}
+        {{ Breadcrumbs::render("products.create") }}
 
         {{-- form --}}
-        <form action="{{ route('admin.products.index') }}" method="POST" id="product" class="gap-2.5 flex">
+        <form class="flex flex-col md:flex-row w-full gap-6" id="product" action="{{ route("admin.products.index") }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
             {{-- left form --}}
             <div
-                class="w-[600px] p-2.5 rounded-[10px] border border-zinc-200 flex-col justify-start items-start gap-2.5 inline-flex">
-                <input class="self-stretch p-2.5 bg-white rounded border border-zinc-300 focus:outline-none"
-                    placeholder="Product Name" id="name" name="name"/>
-                <div class="text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">Description</div>
-                <textarea class="self-stretch h-[200px] p-2.5 rounded border border-zinc-300 focus:outline-none"
-                    placeholder="Write something awesome..." id="description" name="description"></textarea>
-                <div class="text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">Images</div>
-                <div class="w-full h-[200px] relative bg-black bg-opacity-5 rounded border border-zinc-200">
-                    <label for="image" class="w-[103px] h-[101px] left-[49px] top-[49px] absolute cursor-pointer">
-                        <input type="file" class="hidden" id="image" name="image">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-photo stroke-primary" width="100" height="100"
-                            viewBox="0 0 24 24" stroke-width="1" class="" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M15 8h.01" />
-                            <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" />
-                            <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
-                            <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
-                        </svg>
+                class="flex flex-col lg:w-3/4 items-start justify-start gap-2.5 rounded border border-zinc-200 p-2.5">
+                <input class="self-stretch rounded border border-zinc-300 bg-white p-2.5 focus:outline-none" id="name"
+                    name="name" placeholder="Product Name" />
+                <div class="text-base font-semibold leading-tight text-gray-400">Description</div>
+                <textarea class="h-[200px] self-stretch rounded border border-zinc-300 p-2.5 focus:outline-none" id="description"
+                    name="description" placeholder="Write something awesome..."></textarea>
+                <div class="text-base font-semibold leading-tight text-gray-400">Images</div>
+                <div class="flex flex-col w-full items-center justify-center">
+                    <label
+                        class="flex bg-gray-800 hover:bg-gray-700 text-white text-base px-5 py-3 outline-none rounded w-max cursor-pointer mx-auto "
+                        for="image">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 mr-2 fill-white inline" viewBox="0 0 32 32">
+                            <path
+                              d="M23.75 11.044a7.99 7.99 0 0 0-15.5-.009A8 8 0 0 0 9 27h3a1 1 0 0 0 0-2H9a6 6 0 0 1-.035-12 1.038 1.038 0 0 0 1.1-.854 5.991 5.991 0 0 1 11.862 0A1.08 1.08 0 0 0 23 13a6 6 0 0 1 0 12h-3a1 1 0 0 0 0 2h3a8 8 0 0 0 .75-15.956z"
+                              data-original="#000000" />
+                            <path
+                              d="M20.293 19.707a1 1 0 0 0 1.414-1.414l-5-5a1 1 0 0 0-1.414 0l-5 5a1 1 0 0 0 1.414 1.414L15 16.414V29a1 1 0 0 0 2 0V16.414z"
+                              data-original="#000000" />
+                          </svg>
+                          Upload
+                        <input class="hidden" id="image" name="image" type="file" multiple/>
                     </label>
-                    <div
-                        class="left-[187px] top-[66px] absolute text-gray-800 text-2xl font-bold font-['Inter'] leading-normal tracking-wide">
-                        Select files</div>
-                    <div class="w-[455px] h-[31px] left-[186px] top-[102px] absolute">
-                        <span class="text-black text-base font-normal font-['Public Sans'] leading-normal">
-                            Drop file here or click
-                        </span>
-                        <label for="image" class="cursor-pointer">
-                            <input type="file" class="hidden" id="image" name="images" multiple>
-                            <span
-                                class="text-green-600 text-base font-normal font-['Public Sans'] underline leading-normal">
-                                browse
-                            </span>
-                        </label>
-                        <span class="text-black text-base font-normal font-['Public Sans'] leading-normal">
-                            thorough your machine
-                        </span>
-                    </div>
+                    <div class="mb-3 w-full flex justify-center bg-black">                    
+                        <img class="" id="image-preview" src="https://cdn.dribbble.com/users/4438388/screenshots/15854247/media/0cd6be830e32f80192d496e50cfa9dbc.jpg?resize=1000x750&vertical=center"
+                              alt="preview image" style="max-height: 250px;">
+                      </div>
                 </div>
             </div>
             {{-- right form --}}
             <div
-                class="self-stretch px-[15px] py-[19px] bg-white rounded-[10px] border border-zinc-200 flex-col items-start gap-[17px] inline-flex">
-                <div class="text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">Quantity</div>
-                <input type="number" class="self-stretch p-2.5 bg-white rounded border border-zinc-300 focus:outline-none" name="quantity" min="1"/>
+                class="flex flex-col items-start gap-[17px] self-stretch rounded border border-zinc-200 bg-white px-[15px] py-[19px]">
+                <div class="text-base font-semibold leading-tight text-gray-400">Quantity</div>
+                <input class="self-stretch rounded border border-zinc-300 bg-white p-2.5 focus:outline-none" name="quantity"
+                    type="number" min="1" />
 
-                <div class="justify-center items-center gap-2.5 flex">
-                    <label for="color"
-                        class="text-black text-opacity-50 text-base font-semibold font-['Public Sans'] leading-tight">
+                <div class="flex items-center justify-center gap-2.5">
+                    <label class="text-base font-semibold leading-tight text-black text-opacity-50" for="color">
                         Color
                     </label>
-                    <input type="color" id="colors" class="w-6 h-6 border" name="color">
+                    <input class="h-6 w-6 border" id="colors" name="color" type="color">
                 </div>
-                <div class="self-stretch text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">
+                <div class="self-stretch text-base font-semibold leading-tight text-gray-400">
                     Gender
                 </div>
-                <div class="self-stretch justify-start items-center gap-5 inline-flex">
-                    <div class="justify-center items-center gap-2.5 flex">
-                        <input type="radio" name="gender" class="w-6 h-6 rounded-full border border-green-600" value="men">
-                        <label for="gender"
-                            class="text-black text-opacity-50 text-base font-semibold font-['Public Sans'] leading-tight">
+                <div class="inline-flex items-center justify-start gap-5 self-stretch">
+                    <div class="flex items-center justify-center gap-2.5">
+                        <input class="h-6 w-6 rounded-full border border-green-600" name="gender" type="radio"
+                            value="men">
+                        <label class="text-base font-semibold leading-tight text-black text-opacity-50" for="gender">
                             Men
                         </label>
                     </div>
-                    <div class="justify-center items-center gap-2.5 flex">
-                        <input type="radio" name="gender" class="w-6 h-6 rounded-full border border-green-600" value="women">
-                        <label for="gender"
-                            class="text-black text-opacity-50 text-base font-semibold font-['Public Sans'] leading-tight">
+                    <div class="flex items-center justify-center gap-2.5">
+                        <input class="h-6 w-6 rounded-full border border-green-600" name="gender" type="radio"
+                            value="women">
+                        <label class="text-base font-semibold leading-tight text-black text-opacity-50" for="gender">
                             Women
                         </label>
                     </div>
-                    <div class="justify-center items-center gap-2.5 flex">
-                        <input type="radio" name="gender" class="w-6 h-6 rounded-full border border-green-600" value="kids">
-                        <label for="gender"
-                            class="text-black text-opacity-50 text-base font-semibold font-['Public Sans'] leading-tight">
+                    <div class="flex items-center justify-center gap-2.5">
+                        <input class="h-6 w-6 rounded-full border border-green-600" name="gender" type="radio"
+                            value="kids">
+                        <label class="text-base font-semibold leading-tight text-black text-opacity-50" for="gender">
                             Kids
                         </label>
                     </div>
                 </div>
-                <div class="text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">Regular Price</div>
-                <input type="number" class="self-stretch p-2.5 bg-white rounded border border-zinc-300 focus:outline-none" name="regular_price" min="0"/>
-                <div class="text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">Sale Price</div>
-                <input type="number" class="self-stretch p-2.5 bg-white rounded border border-zinc-300 focus:outline-none" name="sale_price" min="0"/>
+                <div class="text-base font-semibold leading-tight text-gray-400">Regular Price</div>
+                <input class="self-stretch rounded border border-zinc-300 bg-white p-2.5 focus:outline-none"
+                    name="regular_price" type="number" min="0" />
+                <div class="text-base font-semibold leading-tight text-gray-400">Sale Price</div>
+                <input class="self-stretch rounded border border-zinc-300 bg-white p-2.5 focus:outline-none"
+                    name="sale_price" type="number" min="0" />
                 <button
-                    class="w-[340px] px-12 py-4 bg-green-600 rounded-[10px] justify-center items-center gap-2.5 inline-flex text-neutral-50 text-base font-semibold font-['Public Sans'] leading-tight"
-                    type="submit" form="product">
+                    class="inline-flex w-[340px] items-center justify-center gap-2.5 rounded bg-green-600 px-12 py-4 text-base font-semibold leading-tight text-neutral-50"
+                    form="product" type="submit">
                     Create Product
                 </button>
             </div>
         </form>
     </div>
 @endsection
+

@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
-Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+// Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+// Route::post('/search', [ProductController::class, 'search'])->name('search');
 
 //! Auth
 Route::middleware('auth')->group(function () {
@@ -29,6 +30,7 @@ Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admi
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     Route::get('products', [AdminProductController::class, 'index'])->name('products.index');
+    // Route::patch('products/search', [AdminProductController::class, 'liveSearch'])->name('products.search');
 
     // Route to display the form for creating a new product
     Route::get('products/create', [AdminProductController::class, 'create'])->name('products.create');

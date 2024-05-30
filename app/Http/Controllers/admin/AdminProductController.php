@@ -10,13 +10,31 @@ use Illuminate\Http\Request;
 class AdminProductController extends Controller
 {
     // Method to display all products
-    public function index()
+    public function index(Request $request)
     {
-
-        $products = Product::with('assets')->paginate(5);
         $totalQuantity = Product::with('assets')->sum('quantity');
         $averagePrice = Product::with('assets')->average('regular_price');
-        return view('admin.products.index', ['products' => $products , "totalQuantity" => $totalQuantity, "averagePrice" => $averagePrice]);
+        
+        $searchTerm = $request->input('query');
+
+        // Query products based on search term
+        $productsQuery = Product::query();
+
+        if ($searchTerm) {
+            $productsQuery->where('name', 'like', "%$searchTerm%")
+                ->orWhere('description', 'like', "%$searchTerm%");
+                
+        }
+        $products = $productsQuery->with('assets')->paginate(10);
+
+        $products->appends(request()->query());
+        // dd($products);
+        return view('admin.products.index', [
+            'products' => $products,
+            'searchTerm' => $searchTerm,
+            'totalQuantity' => $totalQuantity,
+            'averagePrice' => $averagePrice,
+        ]);
     }
 
     // Method to display the form for creating a new product
@@ -35,7 +53,7 @@ class AdminProductController extends Controller
             ->limit(4) // Adjust as needed to limit the number of related products
             ->get();
         // dd($related);
-        
+
         return view('admin.products.show', ['product' => $product, 'related' => $related]);
     }
     // Method to store a newly created product
@@ -45,9 +63,13 @@ class AdminProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ]);
-        
+        $name = $request->file('image')->getClientOriginalName();
+
+        $path = $request->file('image')->store('public/images');
         Product::create($validated);
+
         return redirect('/products');
     }
 

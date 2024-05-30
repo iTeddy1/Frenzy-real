@@ -22,8 +22,8 @@
 
 <body class="font-public">
     <div class="flex h-screen overflow-hidden">
-      @include('layouts.partials.sidebar')
-      {{-- <x-header /> --}}
+        @include("layouts.partials.sidebar")
+        {{-- <x-header /> --}}
         <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
             @include("layouts.partials.navigation")
             <main>
