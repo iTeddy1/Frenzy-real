@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
             'first_name' => 'Linh',
             'last_name' => 'Trung',
             'email' => 'teddy@example.com',
+            'email_verified_at' => now(),
             'password' => '123123123',
             'role' => 'user', // Assign the role as admin
         ]);
