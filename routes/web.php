@@ -17,7 +17,7 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 // Route::post('/search', [ProductController::class, 'search'])->name('search');
 
 //! Auth
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -48,7 +48,7 @@ Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admi
 });
 
 //! User routes
-Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('user')->name('user.')->group(function () {
 
     Route::get('/checkout/shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
     Route::post('/checkout/shipping', [CheckoutController::class, 'storeShipping'])->name('checkout.storeShipping');
