@@ -189,7 +189,7 @@
                             <h2 class="mb-4 text-2xl font-bold">Summary</h2>
                             <div class="mb-2 flex justify-between">
                                 <span class="text-text-light">Subtotal</span>
-                                <span>${{ $cart->total }}</span>
+                                <span>${{ $cart->total ?? 0}}</span>
                             </div>
                             <div class="mb-2 flex justify-between">
                                 <span class="text-text-light">Taxes</span>
@@ -202,7 +202,7 @@
                             <hr class="my-2" />
                             <div class="mb-2 flex justify-between">
                                 <span class="font-semibold">Total Price</span>
-                                <span class="font-semibold text-error">${{ $cart->total }}</span>
+                                <span class="font-semibold text-error">${{ $cart->total ?? 0 }}</span>
                             </div>
                         </div>
                         <form action="{{ route("user.checkout.shipping") }}">
