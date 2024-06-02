@@ -77,14 +77,14 @@
             <div class="flex gap-1.5">
                 @if ($saleprice)
                     <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-400 line-through">
-                        ${{ $regularprice }}
+                        {{ number_format($regularprice) }}₫
                     </span>
                     <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-800">
-                        ${{ $saleprice }}
+                        {{ number_format($saleprice) }}₫
                     </span>
                 @else
                     <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-800">
-                        ${{ $regularprice }}
+                        {{ number_format($regularprice) }}₫
                     </span>
                 @endif
             </div>

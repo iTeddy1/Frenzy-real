@@ -34,7 +34,7 @@
             <div>
                 <span class="font-medium">Average Price</span>
             </div>
-            <div class="text-3xl font-semibold">{{$averagePrice}}</div>
+            <div class="text-3xl font-semibold">{{number_format($averagePrice, 2)}}</div>
         </div>
     </div>
 
@@ -127,7 +127,7 @@
                         <td class="border-b border-gray-200 px-6 py-4">
                             {{ $product->created_at }}</td>
                         <td class="border-b border-gray-200 px-6 py-4">
-                            ${{ $product->regular_price }}
+                            {{ $product->regular_price }}₫
                         <td class="border-b border-gray-200 px-6 py-4">
                             {{ $product->quantity ?? 0}}
                         <td class="border-b border-gray-200 px-6 py-4 text-center">

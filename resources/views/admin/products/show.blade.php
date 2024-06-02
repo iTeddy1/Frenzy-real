@@ -15,7 +15,7 @@
                     <img src="{{ $product->assets->first()->path }}" alt="{{ $product->name }}" class="img-fluid">
                 </div>
                 <div class="col-md-6">
-                    <h4>Price: ${{ number_format($product->price, 2) }}</h4>
+                    <h4>Price: ${{ number_format($product->regular_price, 2) }}₫</h4>
                     {{-- <h4>Stock: {{ $product->stock }}</h4> --}}
                     {{-- <p><strong>Category:</strong> {{ $product->category->name }}</p> --}}
                     <p><strong>Description:</strong> {{ $product->description }}</p>

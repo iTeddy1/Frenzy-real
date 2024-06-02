@@ -81,7 +81,7 @@
                         </div>
                     </span>
                 </div>
-                <span class="title-font text-2xl font-medium">$ {{ $product->regular_price }}</span>
+                <span class="title-font text-2xl font-medium">{{ number_format($product->regular_price) }}₫</span>
 
                 <p class="mt-4 leading-relaxed">
                     {{ $product->description }}
@@ -247,7 +247,7 @@
                         </div>
                     </div>
 
-                    <div class="flex">
+                    <div class="flex justify-center gap-4 lg:justify-between">
                         <button
                             class="flex h-12 items-center justify-center rounded-[10px] border-0 bg-primary px-12 text-white hover:bg-primary-dark focus:outline-none"
                             form="select-product" type="submit">Add to Cart</button>
@@ -282,7 +282,7 @@
                                 </svg>
                             </button>
                         </div>
-                        <button
+                        {{-- <button
                             class="ml-4 inline-flex h-12 w-12 items-center justify-center rounded border border-divider p-0 text-active">
                             <svg class="h-5 w-5" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" viewBox="0 0 24 24">
@@ -290,7 +290,7 @@
                                     d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z">
                                 </path>
                             </svg>
-                        </button>
+                        </button> --}}
                     </div>
                 </form>
 
