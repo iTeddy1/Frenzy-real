@@ -5,6 +5,7 @@ use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\ProductController;
 use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,10 @@ Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admi
 
 //! User routes
 Route::middleware(['auth', 'verified'])->prefix('user')->name('user.')->group(function () {
+
+    // Contact
+    Route::get('/contact', [ContactController::class, 'showForm'])->name('contact');
+    Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
 
     Route::get('/checkout/shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
     Route::post('/checkout/shipping', [CheckoutController::class, 'storeShipping'])->name('checkout.storeShipping');

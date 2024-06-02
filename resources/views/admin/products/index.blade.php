@@ -116,7 +116,7 @@
                         </td>
                         <td class="w-2/5 border-b border-gray-200 px-6 py-4">
                             <a class="flex h-[50px] gap-2.5" href="{{route('admin.products.show', $product->id)}}">
-                                <img class="h-[50px] w-[50px] rounded-[10px]"
+                                <img class="h-[50px] w-[50px] rounded-[10px]" alt="{{ $product->name }}"
                                     src="{{ $product->assets->first()->path }}" />
                                 <p class="h-[26px] grow truncate text-base font-semibold text-gray-800">
                                     {{ $product->name }}
@@ -132,21 +132,17 @@
                             {{ $product->quantity ?? 0}}
                         <td class="border-b border-gray-200 px-6 py-4 text-center">
                             @if ($product->quantity !== 0)
-                            <svg style="--c-400:var(--success-400);--c-500:var(--success-500);"
-                                class="fi-ta-icon-item fi-ta-icon-item-size-lg h-6 w-6 fi-color-custom text-custom-500 dark:text-custom-400 fi-color-success"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00AC55" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                <path d="M9 12l2 2l4 -4" />
+                              </svg>
                             @else
-                            <svg style="--c-400:var(--danger-400);--c-500:var(--danger-500);"
-                                class="fi-ta-icon-item fi-ta-icon-item-size-lg h-6 w-6 fi-color-custom text-custom-500 dark:text-custom-400 fi-color-danger"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FF5630" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                <path d="M10 10l4 4m0 -4l-4 4" />
+                              </svg>
                             @endif
                         </td>
                         <td class="border-b border-gray-200 px-6 py-4">
@@ -166,35 +162,12 @@
                                     <x-dropdown-link :href="route('admin.products.edit', $product)">
                                         Edit
                                     </x-dropdown-link>
-                                    <x-dropdown-link x-on:click="$dispatch('open-modal', 'myModal')">
+                                    <x-dropdown-link :href="route('admin.products.destroy', $product)">
                                         Delete
                                     </x-dropdown-link>
                                 </x-slot>
 
                             </x-dropdown>
-                            <x-modal name="myModal" maxWidth="2xl">
-                                <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                    <h3 class="text-lg leading-6 font-medium text-gray-900">
-                                        Delete product
-                                    </h3>
-                                    <div class="mt-2">
-                                        <p class="text-sm text-gray-500">
-                                            Your modal content goes here.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                    <button form="delete_form"
-                                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
-                                        Confirm
-                                    </button>
-                                    <button x-on:click="$dispatch('close-modal', 'myModal')" type="button"
-                                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm">
-                                        Cancel
-                                    </button>
-                                </div>
-                            </x-modal>
-
                         </td>
                     </tr>
                     <form id='delete_form' method="POST"

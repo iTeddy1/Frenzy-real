@@ -42,7 +42,7 @@ class HomeController extends Controller
         $productsQuery->orderBy($sortField, $sortDirection);
 
         // Fetch products based on the search query or fetch all products
-        $products = $productsQuery->with('assets')->paginate(12);
+        $products = $productsQuery->with('assets')->latest()->paginate(12);
         $products->appends(request()->query());
         // dd($products);
         return view('home', [

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Asset;
 use App\Models\Product;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class AdminProductController extends Controller
     {
         $totalQuantity = Product::with('assets')->sum('quantity');
         $averagePrice = Product::with('assets')->average('regular_price');
-        
+
         $searchTerm = $request->input('query');
 
         // Query products based on search term
@@ -23,9 +24,9 @@ class AdminProductController extends Controller
         if ($searchTerm) {
             $productsQuery->where('name', 'like', "%$searchTerm%")
                 ->orWhere('description', 'like', "%$searchTerm%");
-                
+
         }
-        $products = $productsQuery->with('assets')->paginate(10);
+        $products = $productsQuery->with('assets')->latest()->paginate(10);
 
         $products->appends(request()->query());
         // dd($products);
@@ -62,15 +63,28 @@ class AdminProductController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'price' => 'required|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
+            'quantity' => 'required|numeric',
+            'gender' => 'required|string',       
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'required|numeric',
         ]);
-        $name = $request->file('image')->getClientOriginalName();
+        
+        $product = Product::create($validated);
+        // Tạo các asset và liên kết với sản phẩm
+        $assets = $request->file('assets');
+        // dd($request->file('assets'));
+        foreach ($assets as $index => $asset) {
+            $path = $asset->store('storage/app/public/assets');
+            $assetModel = Asset::create([
+                'filename' => 'image',
+                'path' => $path,
+                'type' => $asset->getClientMimeType(),
+            ]);
+            $type = $index == 0 ? 'main' : '';
+            $product->assets()->attach($assetModel->id, ['type' => $type]);
+        }
 
-        $path = $request->file('image')->store('public/images');
-        Product::create($validated);
-
-        return redirect('/products');
+        return redirect('admin/products');
     }
 
     // Method to display the form for editing a product
@@ -90,6 +104,7 @@ class AdminProductController extends Controller
     {
         // Gate::authorize('edit-job', $job);
 
+        $product->assets()->delete();
         $product->delete();
         return redirect()->route('admin.products.index');
     }

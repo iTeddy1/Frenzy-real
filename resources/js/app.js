@@ -10,15 +10,15 @@ Alpine.plugin(persist);
 window.Alpine = Alpine;
 Alpine.start();
 
-// Product img upload
-$(function () {
-    $("#image").on("change", function () {
-        let reader = new FileReader();
+// // Product img upload
+// $(function () {
+//     $("#image").on("change", function () {
+//         let reader = new FileReader();
 
-        reader.onload = (e) => {
-            $("#image-preview").attr("src", e.target.result);
-        };
+//         reader.onload = (e) => {
+//             $("#image-preview").attr("src", e.target.result);
+//         };
 
-        reader.readAsDataURL(this.files[0]);
-    });
-});
+//         reader.readAsDataURL(this.files[0]);
+//     });
+// });

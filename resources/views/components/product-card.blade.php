@@ -7,7 +7,7 @@
     "hoverimage" => "",
     "urlid" => "",
 ])
-<a class="mx-auto mt-4 flex w-full flex-col justify-between overflow-hidden rounded-lg border bg-white p-2 font-public shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)]"
+<a class="mx-auto mt-4 flex w-full flex-col justify-between overflow-hidden rounded-[12px] border bg-white p-2 font-public shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)]"
     href="/products/{{ $urlid }}/">
     <div class="relative">
         @if ($tag === "sale")
@@ -52,9 +52,9 @@
                 </div>
             </div>
         </div>
-        <img class="peer rounded-lg object-cover" src="{{ $image }}" alt="product image" />
+        <img class="peer rounded-lg object-cover" src="{{ $image }}" alt="{{ $name }}" />
         <img class="peer absolute -right-96 top-0 hidden h-full object-cover transition-all delay-100 duration-1000 hover:right-0 peer-hover:right-0 md:block md:w-full"
-            src="{{ $hoverimage }}" alt="product image" />
+            src="{{ $hoverimage }}" alt="{{ $name }}" />
 
     </div>
 

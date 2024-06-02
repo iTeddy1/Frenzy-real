@@ -24,6 +24,7 @@ class ProductSeeder extends Seeder
                 'description' => $product['description'],
                 'tag' => $product['tag'],
                 'regular_price' => $product['regular_price'],
+                'quantity' => rand(1, 100),
                 'sale_price' => $product['sale_price'],
                 'gender' => $product['gender'],
             ]);

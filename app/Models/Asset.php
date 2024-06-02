@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Asset extends Model
 {
     use HasFactory;
+    public $guarded = ['id'];
     public function products()
     {
         return $this->belongsToMany(Product::class, 'product_assets');
