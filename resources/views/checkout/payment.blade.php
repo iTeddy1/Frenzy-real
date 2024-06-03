@@ -107,7 +107,7 @@
                                 <p>Vua Tro Choi</p>
                             </div>
                             <div class="mb-1.5 flex justify-between">
-                                <p>Han Thuyen street, Linh Trung, Thu Duc</p>
+                                <p>{{$shipping['address']}}</p>
                             </div>
                             <div class="mb-1.5 flex justify-between">
                                 <span>0942474208 Momo</span>

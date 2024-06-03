@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -31,25 +32,25 @@ class CheckoutController extends Controller
     {
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
-            'last_name'  => 'required|string|max:255',
-            'address'    => 'required|string|max:255',
-            'city'       => 'required|string|max:255',
-            'phone_number'      => 'required|string|max:15',
+            'last_name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:15',
             // 'delivery_option' => 'required|in:0,25'
         ]);
         $validated['user_id'] = Auth::user()->id;
-        Address::create ($validated);
+        Address::create($validated);
         // Session::put('shipping', $request->only('address'));
 
         return redirect()->route('user.checkout.payment');
     }
 
-    public function payment()
+    public function payment(Request $request)
     {
         $cart = Session::get('cart', []);
         $total = array_sum(array_column($cart, 'total_price'));
-        $shipping = Session::get('shipping', []);
-
+        $shipping = Auth::user()->addresses->first();
+        // dd($shipping);
         return view('checkout.payment', ['cart' => $cart, 'total' => $total, 'shipping' => $shipping]);
     }
 
@@ -73,21 +74,24 @@ class CheckoutController extends Controller
         $requestType = "payWithMoMoATM";
         $extraData = "";
         $requestId = time() . "";
-        $rawHash = "partnerCode=".$partnerCode."&accessKey=".$accessKey."&requestId=".$requestId."&bankCode=".$bankCode."&amount=".$amount."&orderId=".$orderId."&orderInfo=".$orderInfo."&returnUrl=".$returnUrl."&notifyUrl=".$notifyurl."&extraData=".$extraData."&requestType=".$requestType;
+        $rawHash = "partnerCode=" . $partnerCode . "&accessKey=" . $accessKey . "&requestId=" . $requestId . "&bankCode=" . $bankCode . "&amount=" . $amount . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&returnUrl=" . $returnUrl . "&notifyUrl=" . $notifyurl . "&extraData=" . $extraData . "&requestType=" . $requestType;
         $signature = hash_hmac("sha256", $rawHash, $secretKey);
 
-        $data =  array('partnerCode' => $partnerCode,
-                       'accessKey' => $accessKey,
-                       'requestId' => $requestId,
-                       'amount' => $amount,
-                       'orderId' => $orderId,
-                       'orderInfo' => $orderInfo,
-                       'returnUrl' => $returnUrl,
-                       'bankCode' => $bankCode,
-                       'notifyUrl' => $notifyurl,
-                       'extraData' => $extraData,
-                       'requestType' => $requestType,
-                       'signature' => $signature);
+        $data = array(
+            'partnerCode' => $partnerCode,
+            'accessKey' => $accessKey,
+            'requestId' => $requestId,
+            'amount' => $amount,
+            'orderId' => $orderId,
+            'orderInfo' => $orderInfo,
+            'returnUrl' => $returnUrl,
+            'bankCode' => $bankCode,
+            'notifyUrl' => $notifyurl,
+            'extraData' => $extraData,
+            'requestType' => $requestType,
+            'signature' => $signature
+        );
+        
         //! Use QR payment
         // $extraData = "merchantName=MoMo Partner";
         // $requestType = "captureMoMoWallet";

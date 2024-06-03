@@ -128,8 +128,8 @@
                                                         <input name="quantity" type="number" value="{{ $item->quantity }}"
                                                             onchange="this.form.submit()"> --}}
                                                 </td>
-                                                <td class="p-4">${{ $item->price }}</td>
-                                                <td class="p-4">${{ $item->quantity * $item->price }}</td>
+                                                <td class="p-4">{{ $item->price }}₫</td>
+                                                <td class="p-4">{{ $item->quantity * $item->price }}₫</td>
                                                 <td class="p-4">
                                                     <div class="my-auto flex items-center">
                                                         <button form="update-form-{{ $item->id }}">Update</button>
@@ -189,7 +189,7 @@
                             <h2 class="mb-4 text-2xl font-bold">Summary</h2>
                             <div class="mb-2 flex justify-between">
                                 <span class="text-text-light">Subtotal</span>
-                                <span>${{ $cart->total ?? 0}}</span>
+                                <span>${{ $cart->total ?? 0}}₫</span>
                             </div>
                             <div class="mb-2 flex justify-between">
                                 <span class="text-text-light">Taxes</span>
@@ -202,7 +202,7 @@
                             <hr class="my-2" />
                             <div class="mb-2 flex justify-between">
                                 <span class="font-semibold">Total Price</span>
-                                <span class="font-semibold text-error">${{ $cart->total ?? 0 }}</span>
+                                <span class="font-semibold text-error">${{ $cart->total ?? 0 }}₫</span>
                             </div>
                         </div>
                         <form action="{{ route("user.checkout.shipping") }}">
