@@ -76,14 +76,14 @@
             <!-- Price  -->
             <div class="flex gap-1.5">
                 @if ($saleprice)
-                    <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-400 line-through">
+                    <span class="text-base font-medium leading-normal text-gray-400 line-through">
                         {{ number_format($regularprice) }}₫
                     </span>
-                    <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-800">
+                    <span class="text-base font-medium leading-normal text-gray-800">
                         {{ number_format($saleprice) }}₫
                     </span>
                 @else
-                    <span class="font-['Public Sans'] text-base font-medium leading-normal text-gray-800">
+                    <span class="text-base font-medium leading-normal text-gray-800">
                         {{ number_format($regularprice) }}₫
                     </span>
                 @endif

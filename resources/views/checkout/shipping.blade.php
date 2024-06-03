@@ -79,7 +79,7 @@
                                         <button
                                             class="mt-4 w-full rounded bg-primary px-4 py-2 font-semibold text-white hover:bg-primary-dark"
                                             href="user/checkout/shipping">
-                                            Checkout
+                                            Payment
                                         </button>
                                     </div>
                                 </div>
@@ -92,20 +92,20 @@
                                 <h2 class="mb-4 text-2xl font-bold">Summary</h2>
                                 <div class="mb-2 flex justify-between">
                                     <span class="text-text-light">Subtotal</span>
-                                    <span>${{ $total }}</span>
+                                    <span>{{ number_format($total) }}₫</span>
                                 </div>
                                 <div class="mb-2 flex justify-between">
                                     <span class="text-text-light">Taxes</span>
-                                    <span>$1.99</span>
+                                    <span>0</span>
                                 </div>
                                 <div class="mb-2 flex justify-between">
                                     <span class="text-text-light">Shipping</span>
-                                    <span>$0.00</span>
+                                    <span>0.00</span>
                                 </div>
                                 <hr class="my-2" />
                                 <div class="mb-2 flex justify-between">
                                     <span class="font-semibold">Total Price</span>
-                                    <span class="font-semibold text-error">${{ $total }}</span>
+                                    <span class="font-semibold text-error">{{ number_format($total) }}₫</span>
                                 </div>
                             </div>
                         </div>

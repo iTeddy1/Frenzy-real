@@ -128,8 +128,8 @@
                                                         <input name="quantity" type="number" value="{{ $item->quantity }}"
                                                             onchange="this.form.submit()"> --}}
                                                 </td>
-                                                <td class="p-4">{{ $item->price }}₫</td>
-                                                <td class="p-4">{{ $item->quantity * $item->price }}₫</td>
+                                                <td class="p-4">{{ number_format($item->price) }}₫</td>
+                                                <td class="p-4">{{ number_format($item->quantity * $item->price) }}₫</td>
                                                 <td class="p-4">
                                                     <div class="my-auto flex items-center">
                                                         <button form="update-form-{{ $item->id }}">Update</button>
@@ -175,10 +175,10 @@
                                         </svg>
                                         <p class="mb-4 text-lg font-semibold text-gray-600">Your shopping cart is empty.
                                         </p>
-                                        <button
+                                        <a href="/"
                                             class="rounded-md bg-blue-500 px-6 py-2 text-white shadow-md transition-colors duration-300 hover:bg-blue-600">
                                             Let's go shopping!
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             @endif
@@ -189,7 +189,7 @@
                             <h2 class="mb-4 text-2xl font-bold">Summary</h2>
                             <div class="mb-2 flex justify-between">
                                 <span class="text-text-light">Subtotal</span>
-                                <span>${{ $cart->total ?? 0}}₫</span>
+                                <span>{{ number_format($cart->total ?? 0) }}₫</span>
                             </div>
                             <div class="mb-2 flex justify-between">
                                 <span class="text-text-light">Taxes</span>
@@ -202,7 +202,7 @@
                             <hr class="my-2" />
                             <div class="mb-2 flex justify-between">
                                 <span class="font-semibold">Total Price</span>
-                                <span class="font-semibold text-error">${{ $cart->total ?? 0 }}₫</span>
+                                <span class="font-semibold text-error">{{ number_format($cart->total ?? 0) }}₫</span>
                             </div>
                         </div>
                         <form action="{{ route("user.checkout.shipping") }}">

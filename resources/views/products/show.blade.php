@@ -81,7 +81,15 @@
                         </div>
                     </span>
                 </div>
-                <span class="title-font text-2xl font-medium">{{ number_format($product->regular_price) }}₫</span>
+                <div class="flex justify-between">
+                    <span class="title-font text-2xl font-medium">{{ number_format($product->regular_price) }}₫</span>
+                    @if($product->sale_price)  
+                        <span class="title-font text-2xl font-medium text-gray-400 line-through">
+                            {{ number_format($product->sale_price) }}₫
+                        </span>
+                    @endif
+
+                </div>
 
                 <p class="mt-4 leading-relaxed">
                     {{ $product->description }}
@@ -851,7 +859,7 @@
     </script>
     <style>
         .thumbnail img.active {
-            border: 2px solid #000;
+            border: 2px solid #00AC55;
         }
 
         #mainImage {

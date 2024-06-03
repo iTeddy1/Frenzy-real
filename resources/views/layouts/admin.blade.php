@@ -20,7 +20,7 @@
     @vite(["resources/css/app.css", "resources/js/app.js"])
 </head>
 
-<body class="font-public">
+<body class="font-public" x-data="{ darkMode: false }">
     <div class="flex h-screen overflow-hidden">
         @include("layouts.partials.sidebar")
         {{-- <x-header /> --}}

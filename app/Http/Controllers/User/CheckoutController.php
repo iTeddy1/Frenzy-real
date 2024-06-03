@@ -13,19 +13,18 @@ use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
 {
-    public function cart()
-    {
-        $cart = Session::get('cart', []);
-        $total = array_sum(array_column($cart, 'total_price'));
+    // public function cart()
+    // {
+    //     $cart = Auth::user()->cart;
 
-        return view('checkout.cart', ['cart' => $cart, 'total' => $total]);
-    }
+    //     dd($cart);
+    //     return view('checkout.cart', ['cart' => $cart, 'total' => $total]);
+    // }
 
     public function shipping()
     {
-        $cart = Session::get('cart', []);
-        $total = array_sum(array_column($cart, 'total_price'));
-        return view('checkout.shipping', ['total' => $total]);
+        $cart = Auth::user()->cart;
+        return view('checkout.shipping', ['total' => $cart->total]);
     }
 
     public function storeShipping(Request $request)
@@ -47,23 +46,27 @@ class CheckoutController extends Controller
 
     public function payment(Request $request)
     {
-        $cart = Session::get('cart', []);
-        $total = array_sum(array_column($cart, 'total_price'));
+        $cart = Auth::user()->cart;
+
         $shipping = Auth::user()->addresses->first();
         // dd($shipping);
-        return view('checkout.payment', ['cart' => $cart, 'total' => $total, 'shipping' => $shipping]);
+        return view('checkout.payment', ['cart' => $cart, 'total' => $cart->total, 'shipping' => $shipping]);
     }
 
     public function momo_payment(Request $request)
     {
-        $endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
+        // 9704000000000018
+        // NGUYEN VAN A
+        // 03/07
+        $cart = Auth::user()->cart;
 
+        $endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
 
         $partnerCode = "MOMOBKUN20180529";
         $accessKey = "klm05TvNBzhg7h7j";
         $secretKey = "at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa";
         $orderInfo = "Thanh toán qua MoMo";
-        $amount = "10000";
+        $amount = "$cart->total";
         $orderId = time() . "";
         $returnUrl = "http://localhost:8000/user/checkout/success";
         $notifyurl = "http://localhost:8000/paymomo/ipn_momo.php";
@@ -124,6 +127,32 @@ class CheckoutController extends Controller
 
     public function success()
     {
+        $user = Auth::user();
+        $cart = $user->cart;
+        // Create an order record (optional, but recommended)
+        $order = Order::create([
+            'user_id' => $user->id,
+            'cart_id' => $cart->id,
+            'total' => $cart->total,
+        ]);
+
+        // Save each cart item to the order items (if you have order_items table)
+        // foreach ($cart->items as $item) {
+        //     $order->items()->create([
+        //         'product_id' => $item->product_id,
+        //         'quantity' => $item->quantity,
+        //         'price' => $item->price,
+        //         'size' => $item->size,
+        //         // Add any other order item details you need
+        //     ]);
+        // }
+
+        $order->save();
+
+        // Delete the cart and its items
+        $cart->items()->delete();
+        $cart->delete();
+
         return view('checkout.success');
     }
 }
