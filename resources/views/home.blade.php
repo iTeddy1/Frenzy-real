@@ -82,30 +82,28 @@
                         <input
                         name="query"
                         type="search"
-                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-text-normal focus:border-divider focus:ring-primary dark:border-divider dark:bg-background-default-dark dark:text-white dark:placeholder-gray-400 dark:focus:border-primary dark:focus:ring-primary"
-                            id="product-search" placeholder="Search..." required />
+                        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-text-normal focus:border-divider focus:ring-primary dark:border-divider dark:bg-background-default-dark dark:text-white dark:placeholder-gray-400 dark:focus:border-primary dark:focus:ring-primary"
+                        id="product-search" 
+                        placeholder="Search..." 
+                        required />
 
                     </div>
                 </form>
             </div>
             <div class="ml-auto inline-flex items-center justify-between">
-                <div class="font-inter ml-auto mr-16 break-words text-right text-lg font-bold leading-6 text-black">
-                    Filter:
-                </div>
-
-                <div class="flex font-public break-words text-center text-lg font-bold leading-6 ">
-                    Sort by:
+                <div class="flex break-words text-center text-lg font-bold leading-6 ">
+                    Sort by name:
                     <a class="btn btn-secondary"
                         href="{{ route("home", ["sort_field" => "name", "sort_direction" => $sortField == "name" && $sortDirection == "asc" ? "desc" : "asc"]) }}">
                         {!! $sortDirection == "asc"
                             ? '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                         <path d="M6 15l6 -6l6 6" />
-                                    </svg>'
+                                </svg>'
                             : '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                         <path d="M6 9l6 6l6 -6" />
-                                    </svg>' 
+                                </svg>' 
                         !!}
 
                     </a>

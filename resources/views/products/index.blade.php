@@ -83,10 +83,6 @@
                 </form>
             </div>
             <div class="ml-auto inline-flex items-center justify-between">
-                <div class="font-inter ml-auto mr-16 break-words text-right text-lg font-bold leading-6 text-black">
-                    Filter:
-                </div>
-
                 <div class="flex font-public break-words text-center text-lg font-bold leading-6 ">
                     Sort by:
                     <a class="btn btn-secondary"

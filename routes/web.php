@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
-// Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
-// Route::post('/search', [ProductController::class, 'search'])->name('search');
+// Contact
+Route::get('/contact', [ContactController::class, 'showForm'])->name('contact');
+Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
+
 
 //! Auth
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -50,11 +52,6 @@ Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admi
 
 //! User routes
 Route::middleware(['auth', 'verified'])->prefix('user')->name('user.')->group(function () {
-
-    // Contact
-    Route::get('/contact', [ContactController::class, 'showForm'])->name('contact');
-    Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
-
     Route::get('/checkout/shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
     Route::post('/checkout/shipping', [CheckoutController::class, 'storeShipping'])->name('checkout.storeShipping');
     Route::get('/checkout/payment', [CheckoutController::class, 'payment'])->name('checkout.payment');

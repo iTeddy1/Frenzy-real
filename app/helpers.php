@@ -1,5 +1,6 @@
 <?php
 
+// Helper function for momo payment
 if (!function_exists('execPostRequest')) {
     function execPostRequest($url, $data)
     {

@@ -5,10 +5,10 @@
     </x-slot:title>
     <div class="p-5 flex-col justify-start items-start gap-2.5 inline-flex">
         {{-- heading --}}
-        <div class="self-stretch text-gray-800 text-2xl font-bold font-['Public Sans'] leading-normal tracking-wide">
+        <div class="self-stretch text-gray-800 text-2xl font-bold leading-normal tracking-wide">
             Modify product</div>
         {{-- road map --}}
-        {{ Breadcrumbs::render('products.edit', $product) }}
+        {{ Breadcrumbs::render('admin.products.edit', $product) }}
 
         {{-- form --}}
         <form action="{{ route('admin.products.update', $product->id) }}" method="POST" id="product" class="gap-2.5 flex">
@@ -20,12 +20,12 @@
                 class="w-[600px] p-2.5 rounded-[10px] border border-zinc-200 flex-col justify-start items-start gap-2.5 inline-flex">
                 <input class="self-stretch p-2.5 bg-white rounded border border-zinc-300 focus:outline-none"
                     placeholder="Product Name" id="name" name="name" value="{{ $product->name }}" />
-                <div class="text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">Description</div>
+                <div class="text-gray-400 text-base font-semibold leading-tight">Description</div>
 
                 <textarea class="self-stretch h-[200px] p-2.5 rounded border border-zinc-300 focus:outline-none"
                     placeholder="Write something awesome..." id="description" name="description" value="{{ $product->description }}"></textarea>
 
-                <div class="text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">Images</div>
+                <div class="text-gray-400 text-base font-semibold leading-tight">Images</div>
                 <img src="{{ $product->assets->first()->path ?? '' }}" alt="">
                 <div class="w-full h-[200px] relative bg-black bg-opacity-5 rounded border border-zinc-200">
                     <label for="image" class="w-[103px] h-[101px] left-[49px] top-[49px] absolute cursor-pointer">
@@ -45,17 +45,17 @@
                         class="left-[187px] top-[66px] absolute text-gray-800 text-2xl font-bold font-['Inter'] leading-normal tracking-wide">
                         Select files</div>
                     <div class="w-[455px] h-[31px] left-[186px] top-[102px] absolute">
-                        <span class="text-black text-base font-normal font-['Public Sans'] leading-normal">
+                        <span class="text-black text-base font-normal leading-normal">
                             Drop file here or click
                         </span>
                         <label for="image" class="cursor-pointer">
                             <input type="file" class="hidden" id="image" name="images">
                             <span
-                                class="text-green-600 text-base font-normal font-['Public Sans'] underline leading-normal">
+                                class="text-green-600 text-base font-normal underline leading-normal">
                                 browse
                             </span>
                         </label>
-                        <span class="text-black text-base font-normal font-['Public Sans'] leading-normal">
+                        <span class="text-black text-base font-normal leading-normal">
                             thorough your machine
                         </span>
                     </div>
@@ -65,50 +65,50 @@
             {{-- right form --}}
             <div
                 class="self-stretch px-[15px] py-[19px] bg-white rounded-[10px] border border-zinc-200 flex-col items-start gap-[17px] inline-flex">
-                <div class="text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">Quantity</div>
+                <div class="text-gray-400 text-base font-semibold leading-tight">Quantity</div>
                 <input type="number"
                     class="self-stretch p-2.5 bg-white rounded border border-zinc-300 focus:outline-none"
                     name="quantity" min="1" value="{{ $product->quantity }}" />
 
                 <div class="justify-center items-center gap-2.5 flex">
                     <label for="color"
-                        class="text-black text-opacity-50 text-base font-semibold font-['Public Sans'] leading-tight">
+                        class="text-black text-opacity-50 text-base font-semibold leading-tight">
                         Color
                     </label>
                     <input type="color" id="colors" class="w-6 h-6 border" name="color"
                         value="{{ $product->colorway ?? '' }}">
                 </div>
 
-                <div class="self-stretch text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">
+                <div class="self-stretch text-gray-400 text-base font-semibold leading-tight">
                     Gender
                 </div>
                 <div class="self-stretch justify-start items-center gap-5 inline-flex">
                     <div class="justify-center items-center gap-2.5 flex">
                         <input type="radio" id="men" name="gender" class="w-6 h-6 rounded-full border border-green-600" value="men"   {{ old('men', $product->gender) ? 'checked' : '' }}>
-                        <label for="men" class="text-black text-opacity-50 text-base font-semibold font-['Public Sans'] leading-tight">
+                        <label for="men" class="text-black text-opacity-50 text-base font-semibold leading-tight">
                             Men
                         </label>
                     </div>
                     <div class="justify-center items-center gap-2.5 flex">
                         <input type="radio" id="women" name="gender" class="w-6 h-6 rounded-full border border-green-600" value="women"   {{ old('women', $product->gender) ? 'checked' : '' }}>
-                        <label for="women" class="text-black text-opacity-50 text-base font-semibold font-['Public Sans'] leading-tight">
+                        <label for="women" class="text-black text-opacity-50 text-base font-semibold leading-tight">
                             Women
                         </label>
                     </div>
                     <div class="justify-center items-center gap-2.5 flex">
                         <input type="radio" id="kids" name="gender" class="w-6 h-6 rounded-full border border-green-600" value="kids"   {{ old('kids', $product->gender) ? 'checked' : '' }}>
-                        <label for="kids" class="text-black text-opacity-50 text-base font-semibold font-['Public Sans'] leading-tight">
+                        <label for="kids" class="text-black text-opacity-50 text-base font-semibold leading-tight">
                             Kids
                         </label>
                     </div>
                 </div>
 
-                <div class="text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">Regular Price
+                <div class="text-gray-400 text-base font-semibold leading-tight">Regular Price
                 </div>
                 <input type="number"
                     class="self-stretch p-2.5 bg-white rounded border border-zinc-300 focus:outline-none"
                     name="regular_price" min="0" value="{{ $product->regular_price }}" />
-                <div class="text-gray-400 text-base font-semibold font-['Public Sans'] leading-tight">Sale Price</div>
+                <div class="text-gray-400 text-base font-semibold leading-tight">Sale Price</div>
                 <input type="number"
                     class="self-stretch p-2.5 bg-white rounded border border-zinc-300 focus:outline-none"
                     name="sale_price" min="0" value="{{ $product->sale_price }}" />
@@ -117,7 +117,7 @@
                         Cancel
                     </a>
                     <button
-                        class="w-[340px] px-12 py-4 bg-green-600 rounded-[10px] justify-center items-center gap-2.5 inline-flex text-neutral-50 text-base font-semibold font-['Public Sans'] leading-tight"
+                        class="w-[340px] px-12 py-4 bg-green-600 rounded-[10px] justify-center items-center gap-2.5 inline-flex text-neutral-50 text-base font-semibold leading-tight"
                         type="submit">
                         Save
                     </button>

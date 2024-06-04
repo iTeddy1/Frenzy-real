@@ -11,6 +11,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
+    
+    protected $guarded = ['id'];
 
     /**
      * Get all of the addresses for the User
@@ -32,7 +34,6 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<int, string>
      */
-    // protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.

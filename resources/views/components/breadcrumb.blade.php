@@ -6,7 +6,7 @@
             @if (!is_null($breadcrumb->url) && !$loop->last)
             <li class="breadcrumb-item ml-0">
                     <div class="flex items-center">
-                      <a class="text-sm font-bold text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white "
+                      <a class="text-sm font-bold text-gray-700 hover:text-active dark:text-gray-400 dark:hover:text-white "
                       href="{{ $breadcrumb->url }}">{{ $breadcrumb->title }}</a>
                       <svg class="mx-1 h-3 w-3 text-gray-400 rtl:rotate-180" aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
@@ -16,7 +16,7 @@
                     </div>
                 </li>
             @else
-                <li class="breadcrumb-item active">{{ $breadcrumb->title }}</li>
+                <li class="breadcrumb-item text-sm active">{{ $breadcrumb->title }}</li>
             @endif
         @endforeach
     </ol>

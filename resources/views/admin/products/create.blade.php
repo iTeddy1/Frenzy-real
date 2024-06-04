@@ -9,7 +9,7 @@
         <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
             Create a new product</div>
         {{-- road map --}}
-        {{-- {{ Breadcrumbs::render("products.create") }} --}}
+        {{ Breadcrumbs::render("admin.products.create") }}
 
         {{-- form --}}
         <form class="flex flex-col md:flex-row w-full gap-6"  action="{{ route("admin.products.index") }}" method="POST"  enctype="multipart/form-data">

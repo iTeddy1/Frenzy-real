@@ -14,25 +14,34 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
 });
 
 // Home > Products
-Breadcrumbs::for('products', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.products', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    // $trail->push('Products', route('products'));
+    $trail->push('Products', route('admin.products.index'));
 });
 
-// Home > Products > Create Product
-Breadcrumbs::for('products.create', function (BreadcrumbTrail $trail) {
+// Home > Products > New Product
+Breadcrumbs::for('admin.products.create', function (BreadcrumbTrail $trail) {
   $trail->parent('home');
-  // $trail->push('Create Product', route('products.create'));
+  $trail->push('Products', route('admin.products.index'));
+  $trail->push('New Product', route('admin.products.create'));
 });
 
 // Home > Products > Edit Product
-Breadcrumbs::for('products.edit', function (BreadcrumbTrail $trail, $id) {
-  $trail->parent('products');
-  // $trail->push('Edit Product', route('products.edit', $id));
+Breadcrumbs::for('admin.products.edit', function (BreadcrumbTrail $trail, $product) {
+  $trail->parent('home');
+  $trail->push('Products', route('admin.products.index'));
+  $trail->push('Edit Product', route('admin.products.edit', $product->id));
 });
 
-// // Home > Blog > [Category]
-// Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
-//     $trail->parent('blog');
-//     $trail->push($category->title, route('category', $category));
-// });
+// Home > Products > Show Product
+Breadcrumbs::for('admin.products.show', function (BreadcrumbTrail $trail, $product) {
+  $trail->parent('home');
+  $trail->push('Products', route('admin.products.index'));
+  $trail->push('Show Product', route('admin.products.show', $product->id));
+});
+
+// Home
+Breadcrumbs::for('contact', function (BreadcrumbTrail $trail) {
+  $trail->parent('home');
+  $trail->push('Contact', route('contact'));
+});

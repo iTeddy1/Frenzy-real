@@ -7,6 +7,7 @@ use App\Models\Asset;
 use App\Models\Product;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProductController extends Controller
 {
@@ -71,10 +72,11 @@ class AdminProductController extends Controller
         
         $product = Product::create($validated);
         // Tạo các asset và liên kết với sản phẩm
+        // $assets= Storage::putFileAs('public/assets/product' . '/' . $product->id, $request->file('assets'), $request->file('assets')->getClientOriginalName());
         $assets = $request->file('assets');
         // dd($request->file('assets'));
         foreach ($assets as $index => $asset) {
-            $path = $asset->store('storage/app/public/assets');
+            $path = Storage::putFileAs('public/assets/product' . '/' . $product->id, $assets, $assets->getClientOriginalName());
             $assetModel = Asset::create([
                 'filename' => 'image',
                 'path' => $path,

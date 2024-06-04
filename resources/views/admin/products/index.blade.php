@@ -10,7 +10,7 @@
             <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
                 Product List</div>
             {{-- roadmap --}}
-            {{ Breadcrumbs::render("products") }}
+            {{ Breadcrumbs::render("admin.products") }}
         </div>
         <div><a href="products/create">New Product</a></div>
     </div>
@@ -116,7 +116,7 @@
                         </td>
                         <td class="w-2/5 border-b border-gray-200 px-6 py-4">
                             <a class="flex h-[50px] gap-2.5" href="{{route('admin.products.show', $product->id)}}">
-                                <img class="h-[50px] w-[50px] rounded-[10px]" alt="{{ $product->name }}"
+                                <img class="h-[50px] w-[50px] rounded" alt="{{ $product->name }}"
                                     src="{{ $product->assets->first()->path }}" />
                                 <p class="h-[26px] grow truncate text-base font-semibold text-gray-800">
                                     {{ $product->name }}
@@ -127,7 +127,7 @@
                         <td class="border-b border-gray-200 px-6 py-4">
                             {{ $product->created_at }}</td>
                         <td class="border-b border-gray-200 px-6 py-4">
-                            {{ $product->regular_price }}₫
+                            {{ number_format($product->regular_price) }}₫
                         <td class="border-b border-gray-200 px-6 py-4">
                             {{ $product->quantity ?? 0}}
                         <td class="border-b border-gray-200 px-6 py-4 text-center">

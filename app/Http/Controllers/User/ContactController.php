@@ -39,10 +39,9 @@ class ContactController extends Controller
       'email' => 'required|email',
       'message' => 'required',
     ], $messages);
-
     // Process the form submission
     // You can send an email, save to database, etc.
-    Mail::to('22521579@gm.uit.edu.vn')->send(new ContactMail($validated));
+    Mail::to($validated['email'])->send(new ContactMail($validated));
 
     // Redirect back with a success message
     return redirect()->back()->with('success', 'Thank you for your message!');

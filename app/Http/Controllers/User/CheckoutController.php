@@ -59,14 +59,14 @@ class CheckoutController extends Controller
         // NGUYEN VAN A
         // 03/07
         $cart = Auth::user()->cart;
-
-        $endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
-
-        $partnerCode = "MOMOBKUN20180529";
-        $accessKey = "klm05TvNBzhg7h7j";
-        $secretKey = "at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa";
-        $orderInfo = "Thanh toán qua MoMo";
         $amount = "$cart->total";
+
+        $endpoint = env('PAYMENT_ENDPOINT');
+        $partnerCode = env('PAYMENT_PARTNER_CODE');
+        $accessKey = env('PAYMENT_ACCESS_KEY');
+        $secretKey = env('PAYMENT_SECRET_KEY');
+
+        $orderInfo = "Thanh toán qua MoMo";
         $orderId = time() . "";
         $returnUrl = "http://localhost:8000/user/checkout/success";
         $notifyurl = "http://localhost:8000/paymomo/ipn_momo.php";
@@ -118,11 +118,7 @@ class CheckoutController extends Controller
         $result = execPostRequest($endpoint, json_encode($data));
         $jsonResult = json_decode($result, true);  // decode json
 
-        //Just a example, please check more in there
         return redirect($jsonResult['payUrl']);
-        // header('Location: ' . $jsonResult['payUrl']);
-
-        // return redirect()->route('user.checkout.success');
     }
 
     public function success()
@@ -135,18 +131,7 @@ class CheckoutController extends Controller
             'cart_id' => $cart->id,
             'total' => $cart->total,
         ]);
-
-        // Save each cart item to the order items (if you have order_items table)
-        // foreach ($cart->items as $item) {
-        //     $order->items()->create([
-        //         'product_id' => $item->product_id,
-        //         'quantity' => $item->quantity,
-        //         'price' => $item->price,
-        //         'size' => $item->size,
-        //         // Add any other order item details you need
-        //     ]);
-        // }
-
+        
         $order->save();
 
         // Delete the cart and its items
