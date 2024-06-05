@@ -42,7 +42,7 @@ class CartController extends Controller
         $cart->total = $cart->items->sum(fn($item) => $item->quantity * $item->price);
         $cart->save();
 
-        return redirect()->route('user.cart.index');
+        return redirect()->route('user.checkout.cart');
     }
 
     public function update(Request $request)
