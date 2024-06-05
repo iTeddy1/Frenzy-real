@@ -3,7 +3,10 @@
 @section("content")
     <div class="lg:mx-5">
         <!-- Process -->
-
+        <div class="mx-[25px] py-4">
+            <h1 class="text-3xl font-bold mb-4">Checkout</h1>
+            {{ Breadcrumbs::render('user.checkout.payment') }}
+        </div>    
         <div>
             <h2 class="sr-only">Steps</h2>
 
@@ -14,7 +17,7 @@
 
                 <ol class="mt-4 grid grid-cols-3 text-sm font-medium">
                     <li class="flex items-center justify-start sm:gap-1.5">
-                        <span class="hidden text-primary sm:inline">Cart</span>
+                        <span class="hidden text-primary sm:inline"><a href="{{route('user.checkout.cart')}}">Cart</a></span>
 
                         <svg class="icon icon-tabler icon-tabler-shopping-cart-check stroke-primary"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -28,7 +31,7 @@
                     </li>
 
                     <li class="flex items-center justify-center sm:gap-1.5">
-                        <span class="hidden text-primary sm:inline">Address</span>
+                        <span class="hidden text-primary sm:inline"><a href="{{route('user.checkout.shipping')}}">Address</a></span>
 
                         <svg class="icon icon-tabler icon-tabler-map-pin-check stroke-primary"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -104,13 +107,13 @@
                         <div class="mb-12 rounded border bg-white p-4 shadow-md">
                             <h2 class="mb-4 text-2xl font-bold">Address</h2>
                             <div class="mb-1.5 flex justify-between">
-                                <p>Vua Tro Choi</p>
+                                <p>{{$shipping['first_name'] . ' ' .$shipping['last_name']}}</p>
                             </div>
                             <div class="mb-1.5 flex justify-between">
                                 <p>{{$shipping['address']}}</p>
                             </div>
                             <div class="mb-1.5 flex justify-between">
-                                <span>0942474208 Momo</span>
+                                <span>{{$shipping['phone_number']}}</span>
                             </div>
                         </div>
 

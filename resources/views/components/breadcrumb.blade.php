@@ -1,7 +1,7 @@
 {{-- resources/views/partials/breadcrumbs.blade.php --}}
 <nav class="flex mr-auto" aria-label="Breadcrumb">
 @unless ($breadcrumbs->isEmpty())
-    <ol class="breadcrumb inline-flex items-center space-x-1 rtl:space-x-reverse md:space-x-2">
+    <ol class="breadcrumb inline-flex items-center space-x-1 rtl:space-x-reverse">
         @foreach ($breadcrumbs as $breadcrumb)
             @if (!is_null($breadcrumb->url) && !$loop->last)
             <li class="breadcrumb-item ml-0">

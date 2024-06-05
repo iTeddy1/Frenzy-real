@@ -27,3 +27,11 @@ if (!function_exists('execPostRequest')) {
         return $result;
     }
 }
+
+function getImageUrl($assetPath)
+{
+    if (str_contains($assetPath, 'https')) {
+        return $assetPath;
+    }
+    return url('storage/assets/product/' . $assetPath);
+}

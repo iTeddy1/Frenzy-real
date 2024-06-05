@@ -2,15 +2,14 @@
 <div class="flex h-screen overflow-hidden bg-white">
   <div class="hidden md:flex md:flex-shrink-0">
     <div class="flex flex-col w-64">
-      <div class="flex flex-col flex-grow pt-5 overflow-y-auto bg-white border-r">
-        <div class="flex flex-col flex-shrink-0 px-4">
+      <div class="flex flex-col flex-grow overflow-y-auto bg-white border-r">
+        <div class="flex flex-shrink-0 items-center px-4">
           <a class="text-lg font-semibold tracking-tighter text-black focus:outline-none focus:ring" href="/">
-            <span class="inline-flex items-center gap-2">
-              <svg class="size-5 mx-auto" viewBox="0 0 232 232" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M166.524 51.4683L116.367 101.625L65.5235 51.4683L116.367 0.62434L166.524 51.4683ZM231.11 116.054L180.953 166.898L130.796 116.054L180.953 65.8969L231.11 116.054ZM101.939 116.054L51.0948 166.898L0.250934 116.054L51.0948 65.8969L101.939 116.054ZM166.524 181.326L116.367 231.483L65.5235 181.326L116.367 130.482L166.524 181.326Z" fill="#0c0c0c"></path>
-              </svg>
-            
-              windstatic
+            <span class="flex items-center gap-2 mt-auto">
+              <span class="size-12">
+                <img src="{{ Vite::asset("/public/images/logo.png") }}" >
+              </span>
+              <span>Frenzy</span>
             </span>
           </a>
           <button class="hidden rounded-lg focus:outline-none focus:shadow-outline">
@@ -23,7 +22,7 @@
         <div class="flex flex-col flex-grow px-4 mt-5">
           <nav class="flex-1 space-y-1 bg-white">
             <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
-              Analytics
+              Home
             </p>
             <ul>
               <li>
@@ -40,19 +39,19 @@
               </li>
             </ul>
             <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
-              Content
+              ECOMMERCE
             </p>
             <ul>
               <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-blue-500" href="#_">
+                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-blue-500" href="{{route('home')}}">
                   <ion-icon class="size-4 md hydrated" name="newspaper-outline" role="img" aria-label="newspaper outline"></ion-icon>
-                  <span class="ml-4"> Guides </span>
+                  <span class="ml-4"> List </span>
                 </a>
               </li>
               <li>
                 <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-blue-500" href="#_">
                   <ion-icon class="size-4 md hydrated" name="sync-outline" role="img" aria-label="sync outline"></ion-icon>
-                  <span class="ml-4"> Hotspots </span>
+                  <span class="ml-4"> Create </span>
                   <span class="inline-flex ml-auto items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-500">
                     25
                   </span>
@@ -65,20 +64,20 @@
                 </a>
               </li>
               <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-blue-500" href="#_">
+                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-blue-500" href="">
                   <ion-icon class="size-4 md hydrated" name="thumbs-up-outline" role="img" aria-label="thumbs up outline"></ion-icon>
                   <span class="ml-4"> TLD </span>
                 </a>
               </li>
             </ul>
             <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
-              Customization
+              Contact
             </p>
             <ul>
               <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-blue-500" href="#_">
+                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-gray-100 hover:scale-95 hover:text-blue-500" href="{{route('contact')}}">
                   <ion-icon class="size-4 md hydrated" name="albums-outline" role="img" aria-label="albums outline"></ion-icon>
-                  <span class="ml-4"> Segments </span>
+                  <span class="ml-4"> Contact </span>
                   <span class="inline-flex ml-auto items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-500">
                     25
                   </span>

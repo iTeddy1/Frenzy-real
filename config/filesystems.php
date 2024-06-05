@@ -43,6 +43,13 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        
+        'product_assets' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/assets/products'),
+            'url' => env('APP_URL') . '/storage/assets/products',
+            'visibility' => 'public',  // Optional, set to 'public' if needed for external access
+        ],
 
         's3' => [
             'driver' => 's3',

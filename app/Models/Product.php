@@ -5,18 +5,34 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
 
-    // public function asset(string $id): void
-    // {
-    //     $asset = Asset::firstOrCreate(['product_id' => strtolower($id)]);
+    protected static function boot()
+    {
+        parent::boot();
 
-    //     $this->assets()->attach($asset);
-    // }
+        static::deleting(function ($product) {
+            // Delete all assets associated with the product
+            foreach ($product->assets as $asset) {
+                $asset->delete();
+            }
+            
+            // Delete pivot table records
+            $product->assets()->detach(); 
+
+            // Delete the product directory
+            $directory = 'assets/products/' . $product->id;
+            if (Storage::disk('public')->exists($directory)) {
+                Storage::disk('public')->deleteDirectory($directory);
+            }
+
+        });
+    }
 
     public function assets(): BelongsToMany
     {

@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Frenzy') }}</title>
+        <link rel="shortcut icon"  href="{{ Vite::asset("/public/images/logo.png") }}">
 
         <!-- Fonts -->
 
@@ -14,12 +15,6 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center bg-gray-100">
-            {{-- <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div> --}}
-
             <div class="w-full shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>

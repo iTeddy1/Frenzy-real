@@ -1,7 +1,6 @@
 {{-- @props(['products']) --}}
 @extends("layouts.app")
     <div class="mx-auto w-full max-w-screen-2xl p-4 md:p-6 2xl:p-8">
-        <x-carousel />
         {{-- <div class="relative w-full" id="carousel-example">
             <!-- Carousel wrapper -->
             <div class="relative left-[-1.5%] h-56 overflow-hidden rounded-lg sm:h-64 xl:h-80 2xl:h-96">

@@ -4,11 +4,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="/">
-                        <img src="{{ Vite::asset("/public/images/3636.svg") }}" alt="">
-                    </a>
-                </div>
+    
 
                 <!-- Navigation Links -->
                 {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

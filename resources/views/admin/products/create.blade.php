@@ -38,7 +38,7 @@
                           </svg>
                           Upload
                     </label>
-                        <input class="hidden" id="images" name="assets[]" type="file" max="4" multiple/>
+                        <input class="hidden" id="images" name="assets[]" type="file" min="5" multiple/>
                     <div class="mb-3 w-full flex justify-center flex-col">                    
                         <img class="" id="image-preview" src="https://cdn.dribbble.com/users/4438388/screenshots/15854247/media/0cd6be830e32f80192d496e50cfa9dbc.jpg?resize=1000x750&vertical=center"
                               alt="preview image" style="max-height: 2fff50px;">

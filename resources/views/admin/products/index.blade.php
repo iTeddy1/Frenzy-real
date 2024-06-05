@@ -32,7 +32,7 @@
 
         <div class="p-6 border rounded bg-white">
             <div>
-                <span class="font-medium">Average Price</span>
+                <span class="font-medium overflow-auto">Average Price</span>
             </div>
             <div class="text-3xl font-semibold">{{number_format($averagePrice, 2)}}</div>
         </div>
@@ -110,14 +110,15 @@
                 <tbody id="product-list">
                     @foreach ($products as $product)
                     {{-- {{ $product }} --}}
-                    <tr class="">
+                    <tr>
                         <td class="border-b border-divider px-6 py-4">
                             <input name="" type="checkbox">
                         </td>
                         <td class="w-2/5 border-b border-gray-200 px-6 py-4">
                             <a class="flex h-[50px] gap-2.5" href="{{route('admin.products.show', $product->id)}}">
                                 <img class="h-[50px] w-[50px] rounded" alt="{{ $product->name }}"
-                                    src="{{ $product->assets->first()->path }}" />
+                                src="{{$product->assets->first()->path }}" />
+                                {{-- {{str_contains($product->assets->first()->path, 'https') ? $product->assets->first()->path :  url('storage/assets/product/' . $product->assets->first()->path) }} --}}
                                 <p class="h-[26px] grow truncate text-base font-semibold text-gray-800">
                                     {{ $product->name }}
                                 </p>
@@ -162,19 +163,21 @@
                                     <x-dropdown-link :href="route('admin.products.edit', $product)">
                                         Edit
                                     </x-dropdown-link>
-                                    <x-dropdown-link :href="route('admin.products.destroy', $product)">
-                                        Delete
-                                    </x-dropdown-link>
+                                    <form id='delete_form' method="POST" action="{{ route('admin.products.destroy', ['product' => $product->id]) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <x-dropdown-link :href="route('admin.products.destroy', $product)" 
+                                        onclick="event.preventDefault();
+                                        if(confirm('Are you sure you want to delete this product?')) this.closest('form').submit();">
+                                            Delete
+                                        </x-dropdown-link>
+                                    </form>
                                 </x-slot>
 
                             </x-dropdown>
                         </td>
                     </tr>
-                    <form id='delete_form' method="POST"
-                        action="{{ route('admin.products.destroy', ['product' => $product->id]) }}">
-                        @csrf
-                        @method('DELETE')
-                    </form>
+                    
                     @endforeach
                 </tbody>
             </table>

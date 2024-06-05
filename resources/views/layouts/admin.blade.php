@@ -7,7 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config("app.name", "Frenzy") }}</title>
-    <link rel="shortcut icon" href="{{ Vite::asset("/public/images/3636.svg") }}">
+    <link rel="shortcut icon"  href="{{ Vite::asset("/public/images/logo.png") }}">
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet" />
@@ -21,7 +22,7 @@
 
 <body class="font-public" x-data="{ darkMode: false }">
     <div class="flex h-screen overflow-hidden">
-        @include("layouts.partials.sidebar")
+        @include("layouts.partials.admin-sidebar")
         {{-- <x-header /> --}}
         <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
             @include("layouts.partials.navigation")

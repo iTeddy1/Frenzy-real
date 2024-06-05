@@ -13,13 +13,11 @@ use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
 {
-    // public function cart()
-    // {
-    //     $cart = Auth::user()->cart;
-
-    //     dd($cart);
-    //     return view('checkout.cart', ['cart' => $cart, 'total' => $total]);
-    // }
+    public function cart()
+    {
+        $cart = Auth::user()->cart;
+        return view('checkout.cart', ['cart' => $cart]);
+    }
 
     public function shipping()
     {

@@ -30,7 +30,6 @@ require __DIR__ . '/auth.php';
 
 //! Admin routes
 Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     Route::get('products', [AdminProductController::class, 'index'])->name('products.index');
     // Route::patch('products/search', [AdminProductController::class, 'liveSearch'])->name('products.search');
@@ -57,12 +56,11 @@ Route::middleware(['auth', 'verified'])->prefix('user')->name('user.')->group(fu
     Route::get('/checkout/payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
     Route::post('/checkout/payment', [CheckoutController::class, 'momo_payment'])->name('checkout.storePayment');
     Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
-    // Route::get('/checkout/vnpay_return', [CheckoutController::class, 'payment'])->name('checkout.payment');
 
     // Cart 
     // Route::get('/checkout/cart/index', [CheckoutController::class, 'cart'])->name('checkout.cart');
     Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
     Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
     Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 });

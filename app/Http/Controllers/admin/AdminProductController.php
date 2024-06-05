@@ -61,25 +61,31 @@ class AdminProductController extends Controller
     // Method to store a newly created product
     public function store(Request $request)
     {
+        //? Dummy Data
+        // name: Air Jordan 8 Retro,
+        // description: The Air Jordan 8 Retro recaptures the memorable look of the '93 original. It features the same bootie construction and iconic details, with a stretchy, padded collar that feels snug and supportive.
+        // quantity: 10,
+        // regular_price: 7900000,
+        // sale_price: 5000000,
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'quantity' => 'required|numeric',
             'gender' => 'required|string',       
-            'regular_price' => 'required|numeric',
+            'regular_price' => 'required|numeric|gt:sale_price',
             'sale_price' => 'required|numeric',
-        ]);
+        ], ['regular_price.gt' => 'The regular price must be greater than the sale price.']);
         
         $product = Product::create($validated);
-        // Tạo các asset và liên kết với sản phẩm
-        // $assets= Storage::putFileAs('public/assets/product' . '/' . $product->id, $request->file('assets'), $request->file('assets')->getClientOriginalName());
         $assets = $request->file('assets');
-        // dd($request->file('assets'));
+        // dd($assets);
         foreach ($assets as $index => $asset) {
-            $path = Storage::putFileAs('public/assets/product' . '/' . $product->id, $assets, $assets->getClientOriginalName());
+            // dd($asset);
+            $path = Storage::disk('product_assets')->putFileAs($product->id, $asset, $asset->getClientOriginalName());
             $assetModel = Asset::create([
                 'filename' => 'image',
-                'path' => $path,
+                'path' => url('storage/assets/products/' . $path),
                 'type' => $asset->getClientMimeType(),
             ]);
             $type = $index == 0 ? 'main' : '';
@@ -106,7 +112,6 @@ class AdminProductController extends Controller
     {
         // Gate::authorize('edit-job', $job);
 
-        $product->assets()->delete();
         $product->delete();
         return redirect()->route('admin.products.index');
     }

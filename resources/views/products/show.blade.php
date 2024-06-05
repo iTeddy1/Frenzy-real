@@ -1,7 +1,12 @@
 @extends("layouts.app")
 <x-slot:title>Product Detail</x-slot:title>
 @section("content")
-    <div class="transition-transform lg:mx-auto">
+
+<div class="transition-transform lg:mx-auto">
+        <div class="mx-[25px] py-4">
+            <h1 class="text-3xl font-bold mb-4">Product Details</h1>
+            {{ Breadcrumbs::render('products.show', $product) }}
+        </div>
         <!-- Process -- Product  -->
         <section class="mx-auto grid max-w-4xl grid-cols-1 items-start gap-12 lg:mx-[25px] lg:max-w-7xl lg:grid-cols-5">
             <!-- class="mx-auto flex flex-wrap overflow-hidden lg:w-full xl:justify-center" -->
@@ -35,7 +40,6 @@
             </section>
 
             <section class="lg:col-span-2 lg:py-6">
-                <!-- class="mt-6 flex flex-col justify-between lg:mt-0 lg:px-6 lg:py-6 xl:w-[450px]" -->
                 <h1 class="mb-1 text-3xl font-medium">
                     {{ $product->name }}
                 </h1>

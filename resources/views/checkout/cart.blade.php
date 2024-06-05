@@ -3,7 +3,10 @@
 
 @section("content")
     <div class="mx-5 flex flex-col justify-center">
-        {{-- Process --}}
+        <div class="mx-[25px] py-4">
+            <h1 class="text-3xl font-bold mb-4">Checkout</h1>
+            {{ Breadcrumbs::render('user.checkout.cart', $cart) }}
+        </div>        
         <div>
             <h2 class="sr-only">Steps</h2>
 
@@ -15,7 +18,6 @@
                 <ol class="mt-4 grid grid-cols-3 text-sm font-medium">
                     <li class="flex items-center justify-start sm:gap-1.5">
                         <span class="hidden text-primary sm:inline">Cart</span>
-
                         <svg class="icon icon-tabler icon-tabler-shopping-cart size-6 sm:size-5 stroke-primary"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="#000000"
                             fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -56,7 +58,11 @@
             <div class="container mx-auto pl-4">
                 <div class="flex flex-col gap-4 md:flex-row">
                     <div class="w-full rounded border shadow-md md:w-3/4">
-                        <h1 class="my-4 px-4 text-2xl font-bold">Cart</h1>
+                       
+                        <div class="mx-4 flex flex-col">
+                            <h1 class="mt-4 text-2xl font-bold">Cart</h1>
+                            <span class="">({{$cart->items->count() >=1 ?  $cart->items->count() . ' item' : $cart->items->count() .' items'}})</span>
+                        </div>
                         <div class="mb-4 overflow-auto rounded-lg bg-white">
                             @if ($cart && $cart->items->count())
                                 <table class="w-full overflow-auto">
@@ -216,8 +222,8 @@
                 </div>
             </div>
         </div>
-
     </div>
+
     <script>
         function updateQuantity(itemId, operation) {
             let quantityInput = document.getElementById('quantity-input-' + itemId);
@@ -230,5 +236,4 @@
             }
         }
     </script>
-
 @endsection
