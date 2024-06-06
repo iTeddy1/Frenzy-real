@@ -4,7 +4,7 @@
       <div class="flex flex-col flex-grow overflow-y-auto bg-white border-r">
         <div class="flex flex-shrink-0 items-center px-4">
           <a class="text-lg font-semibold tracking-tighter text-black focus:outline-none focus:ring" href="/">
-            <span class="flex items-center gap-2 mt-auto">
+            <span class="flex items-center gap-2 mt-auto p-[10px]">
               <span class="size-12">
                 <img src="{{ Vite::asset("/public/images/logo.png") }}" >
               </span>
