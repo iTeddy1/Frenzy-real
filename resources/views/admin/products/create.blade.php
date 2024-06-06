@@ -47,7 +47,7 @@
             </div>
             {{-- right form --}}
             <div
-                class="flex flex-col items-start gap-[17px] self-stretch rounded border border-zinc-200 bg-white px-[15px] py-[19px]">
+                class="flex flex-col items-start gap-[16px] self-stretch rounded border border-zinc-200 bg-white px-[15px] py-[19px]">
                 <div class="text-base font-semibold leading-tight text-gray-400">Quantity</div>
                 <input class="self-stretch rounded border border-zinc-300 bg-white p-2.5 focus:outline-none" name="quantity"
                     type="number" min="0" />

@@ -30,9 +30,7 @@ require __DIR__ . '/auth.php';
 
 //! Admin routes
 Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admin.')->group(function () {
-
     Route::get('products', [AdminProductController::class, 'index'])->name('products.index');
-    // Route::patch('products/search', [AdminProductController::class, 'liveSearch'])->name('products.search');
 
     // Route to display the form for creating a new product
     Route::get('products/create', [AdminProductController::class, 'create'])->name('products.create');

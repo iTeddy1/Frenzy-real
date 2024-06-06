@@ -11,7 +11,7 @@
         {{ Breadcrumbs::render('admin.products.edit', $product) }}
 
         {{-- form --}}
-        <form action="{{ route('admin.products.update', $product->id) }}" method="POST" id="product" class="gap-2.5 flex">
+        <form action="{{ route('admin.products.update', $product->id) }}" method="POST" id="product" class="gap-2.5 flex"       enctype="multipart/form-data">
             @csrf
             @method('PATCH')
 
@@ -26,45 +26,33 @@
                     placeholder="Write something awesome..." id="description" name="description" value="{{ $product->description }}"></textarea>
 
                 <div class="text-gray-400 text-base font-semibold leading-tight">Images</div>
-                <img src="{{ $product->assets->first()->path ?? '' }}" alt="">
-                <div class="w-full h-[200px] relative bg-black bg-opacity-5 rounded border border-zinc-200">
-                    <label for="image" class="w-[103px] h-[101px] left-[49px] top-[49px] absolute cursor-pointer">
-                        <input type="file" class="hidden" id="image" name="images">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-photo stroke-primary" width="100" height="100"
-                            viewBox="0 0 24 24" stroke-width="1" class="" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M15 8h.01" />
-                            <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" />
-                           <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
-                            <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
-                        </svg>
-                    </label>
-                    <div
-                        class="left-[187px] top-[66px] absolute text-gray-800 text-2xl font-bold font-['Inter'] leading-normal tracking-wide">
-                        Select files</div>
-                    <div class="w-[455px] h-[31px] left-[186px] top-[102px] absolute">
-                        <span class="text-black text-base font-normal leading-normal">
-                            Drop file here or click
-                        </span>
-                        <label for="image" class="cursor-pointer">
-                            <input type="file" class="hidden" id="image" name="images">
-                            <span
-                                class="text-green-600 text-base font-normal underline leading-normal">
-                                browse
-                            </span>
-                        </label>
-                        <span class="text-black text-base font-normal leading-normal">
-                            thorough your machine
-                        </span>
+                <div>
+                    <div>
+                        <label for="">Update Images</label>
+                        <input type="file" name="assets[]" id="" multiple>
+                    </div>
+                    <div class="flex">
+                        @if($product->assets)
+                            @foreach ($product->assets as $asset)
+                            <div>
+                                <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                                    <span class="sr-only">Close menu</span>
+                                    <!-- Heroicon name: outline/x -->
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                                <img src="{{ $asset->path }}" width="80" height="80" alt="">
+                            </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
 
             {{-- right form --}}
             <div
-                class="self-stretch px-[15px] py-[19px] bg-white rounded-[10px] border border-zinc-200 flex-col items-start gap-[17px] inline-flex">
+                class="self-stretch px-[15px] py-[19px] bg-white rounded border border-zinc-200 flex-col items-start gap-[17px] inline-flex">
                 <div class="text-gray-400 text-base font-semibold leading-tight">Quantity</div>
                 <input type="number"
                     class="self-stretch p-2.5 bg-white rounded border border-zinc-300 focus:outline-none"

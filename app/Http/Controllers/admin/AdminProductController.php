@@ -72,11 +72,11 @@ class AdminProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'quantity' => 'required|numeric',
-            'gender' => 'required|string',       
+            'gender' => 'required|string',
             'regular_price' => 'required|numeric|gt:sale_price',
             'sale_price' => 'required|numeric',
         ], ['regular_price.gt' => 'The regular price must be greater than the sale price.']);
-        
+
         $product = Product::create($validated);
         $assets = $request->file('assets');
         // dd($assets);
@@ -114,5 +114,12 @@ class AdminProductController extends Controller
 
         $product->delete();
         return redirect()->route('admin.products.index');
+    }
+
+    public function destroyImage(Product $product, Asset $asset)
+    {
+        $product->assets()->detach($asset->id);
+        $asset->delete();
+        return redirect()->back();
     }
 }
