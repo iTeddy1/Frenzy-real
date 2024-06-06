@@ -12,15 +12,15 @@
     <div class="relative">
         @if ($tag === "sale")
             <div
-                class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] items-center justify-center gap-2.5 rounded bg-red-500 px-3 py-1">
-                <div class="font-['Poppins'] text-xs font-bold uppercase leading-[18px] text-neutral-50">
+                class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] items-center justify-center gap-2.5 rounded bg-error px-3 py-1">
+                <div class="text-xs font-bold uppercase leading-[18px] text-neutral-50">
                     Sale
                 </div>
             </div>
         @elseif($tag === "new")
             <div
-                class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] items-center justify-center gap-2.5 rounded bg-blue-500 px-3 py-1">
-                <div class="font-['Poppins'] text-xs font-bold uppercase leading-[18px] text-neutral-50">
+                class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] items-center justify-center gap-2.5 rounded bg-info px-3 py-1">
+                <div class=" text-xs font-bold uppercase leading-[18px] text-neutral-50">
                     New
                 </div>
             </div>

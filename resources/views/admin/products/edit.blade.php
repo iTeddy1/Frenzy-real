@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="p-5 flex-col justify-start items-start gap-2.5 inline-flex">
+    <div class="p-5 flex-col justify-between items-start gap-2.5 inline-flex">
         {{-- heading --}}
         <div class="mb-10">
             <div class="self-stretch text-gray-800 text-2xl font-bold leading-normal tracking-wide ">
@@ -28,8 +28,17 @@
                     placeholder="Write something awesome..." id="description" name="description" value="{{ $product->description }}"></textarea>
 
                 <div class="text-gray-400 text-base font-semibold leading-tight">Images</div>
-                <div class="w-[200px]">
-                    <img src="{{ $product->assets->first()->path ?? '' }}" alt="">
+                <div class="">
+                    @foreach($product->assets as $index => $asset)
+                    @if($index == 4)
+                        @break
+                    @endif
+                    <div
+                    class="thumbnail inline-flex h-[100px] w-[100px] cursor-pointer items-center justify-center rounded bg-neutral-100">
+                        <img class=" rounded border-transparent" alt="{{ $asset->filename}}" id="thumbnail-{{ $product->id }}"
+                            src="{{ $asset->path }}" />
+                    </div>
+                @endforeach
                 </div>
             </div>
 
