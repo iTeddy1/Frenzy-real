@@ -123,20 +123,12 @@ class CheckoutController extends Controller
         $user = Auth::user();
         $cart = $user->cart;
         $shipping = $user->addresses->first();
-        dd($shipping, $cart, $user);
-
-        $order = Order::create([
-            'user_id' => $user->id,
-            'cart_id' => $cart->id,
-            'total' => $cart->total,
-        ]);
-        $order->save();
 
         // Delete the cart and its items
         $cart->items()->delete();
         $cart->delete();
 
-        return view('checkout.success', ['order' => $order, 'shipping' => $shipping]);
+        return view('checkout.success', ['shipping' => $shipping]);
     }
 }
 

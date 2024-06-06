@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="flex flex-col items-center justify-start gap-2.5 p-5">
-    {{-- heading --}}
     <div class="flex items-center justify-between w-full mb-10">
         <div class="">
             <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800 ">
@@ -12,7 +11,10 @@
             {{ Breadcrumbs::render("admin.products") }}
         </div>
         
-        <div><a href="products/create">New Product</a></div>
+        <div>
+            <a href="products/create" class="bg-primary px-4 py-2 rounded font-semibold hover:bg-primary-dark">New Product
+            </a>
+        </div>    
     </div>
 
     <div class="w-full grid gap-6 md:grid-cols-3 mb-8">

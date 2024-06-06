@@ -36,15 +36,13 @@ class ContactController extends Controller
 
     // Validate the form data
     $details = $request->validate([
-      'name' => 'required',
+      'name' => 'required|max:255',
       'email' => 'required|email',
-      'message' => 'required',
+      'message' => 'required|max:255',
     ], $messages);
-    // Process the form submission
-    // You can send an email, save to database, etc.
+
     Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactMail($details));
 
-    // Redirect back with a success message
     return redirect()->back()->with('success', 'Thank you for your message!');
   }
 }

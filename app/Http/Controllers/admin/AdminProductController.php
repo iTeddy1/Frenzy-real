@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Asset;
 use App\Models\Product;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -47,17 +46,9 @@ class AdminProductController extends Controller
 
     public function show(Product $product)
     {
-        $gender = $product->gender;
-
-        // Fetch related products with the same gender
-        $related = Product::where('gender', $gender)
-            ->where('id', '!=', $product->id) // Exclude the current product
-            ->limit(4) // Adjust as needed to limit the number of related products
-            ->get();
-        // dd($related);
-
-        return view('admin.products.show', ['product' => $product, 'related' => $related]);
+        return view('admin.products.show', ['product' => $product]);
     }
+
     // Method to store a newly created product
     public function store(Request $request)
     {
@@ -79,9 +70,8 @@ class AdminProductController extends Controller
 
         $product = Product::create($validated);
         $assets = $request->file('assets');
-        // dd($assets);
+
         foreach ($assets as $index => $asset) {
-            // dd($asset);
             $path = Storage::disk('product_assets')->putFileAs($product->id, $asset, $asset->getClientOriginalName());
             $assetModel = Asset::create([
                 'filename' => 'image',
@@ -110,8 +100,6 @@ class AdminProductController extends Controller
 
     public function destroy(Product $product)
     {
-        // Gate::authorize('edit-job', $job);
-
         $product->delete();
         return redirect()->route('admin.products.index');
     }
