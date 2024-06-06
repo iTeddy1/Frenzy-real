@@ -81,18 +81,18 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-red-50 z-10">
-        {{-- <div class="pt-2 pb-3 space-y-1">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden z-10">
+        <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('/')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-        </div> --}}
+        </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->first_name?? 'guest' }}</div>
-                {{-- <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email ?? ''}}</div> --}}
+                <div class="font-medium text-base text-gray-800">{{ Auth::user()->first_name ?? 'Guest' }}</div>
+                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email ?? ''}}</div>
             </div>
 
             <div class="mt-3 space-y-1">

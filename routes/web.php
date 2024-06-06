@@ -34,14 +34,11 @@ Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admi
 
     // Route to display the form for creating a new product
     Route::get('products/create', [AdminProductController::class, 'create'])->name('products.create');
-    // Route to store a newly created product
     Route::post('products', [AdminProductController::class, 'store']);
 
     Route::get('products/show/{product}', [AdminProductController::class, 'show'])->name('products.show');
-    // Route to display the form for editing a product
-    Route::get('products/{product}/edit', [AdminProductController::class, 'edit'])->name('products.edit');
 
-    // Route to update a product
+    Route::get('products/{product}/edit', [AdminProductController::class, 'edit'])->name('products.edit');
     Route::patch('products/{product}', [AdminProductController::class, 'update'])->name('products.update');
 
     Route::delete('products/show/{product}', [AdminProductController::class, 'destroy'])->name('products.destroy');
@@ -51,14 +48,17 @@ Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admi
 Route::middleware(['auth', 'verified'])->prefix('user')->name('user.')->group(function () {
     Route::get('/checkout/shipping', [CheckoutController::class, 'shipping'])->name('checkout.shipping');
     Route::post('/checkout/shipping', [CheckoutController::class, 'storeShipping'])->name('checkout.storeShipping');
+
     Route::get('/checkout/payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
     Route::post('/checkout/payment', [CheckoutController::class, 'momo_payment'])->name('checkout.storePayment');
+
     Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 
     // Cart 
     // Route::get('/checkout/cart/index', [CheckoutController::class, 'cart'])->name('checkout.cart');
     Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
     Route::get('/cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
+    
     Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
     Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 });

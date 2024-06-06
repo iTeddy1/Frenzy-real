@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-<x-slot:title>
-    Product List
-</x-slot:title>
+
 @section('content')
 <div class="flex flex-col items-center justify-start gap-2.5 p-5">
     {{-- heading --}}
@@ -43,17 +41,9 @@
         class="flex flex-col items-start justify-start gap-2.5 self-stretch rounded border border-divider bg-white py-5 shadow">
         {{-- filter --}}
         <div class="flex items-center justify-center gap-4 self-stretch px-4">
-            <select
-                class="flex w-[200px] items-center justify-between self-stretch rounded-small border border-divider p-2.5 text-opacity-50 focus:outline-none"
-                id="status" name="status">
-                <option value="">Status</option>
-                <option value="in_stock">In stock</option>
-                <option value="low_stock">Low stock</option>
-                <option value="out_of_stock">Out of stock</option>
-            </select>
             <div class="align-center relative flex shrink grow basis-0 justify-start self-stretch">
 
-                <form class="ml-auto" action='{{route("admin.products.index")}}' method="GET">
+                <form class="mr-auto" action='{{route("admin.products.index")}}' method="GET">
                     <label class="sr-only mb-2 text-sm font-medium text-text-dark"
                         for="admin-search">Search</label>
                     <div class="relative">
@@ -96,7 +86,7 @@
                             <div class="text-base font-bold text-gray-400">Price</div>
                         </td>
                         <td class="px-6 py-4 text-left font-bold text-gray-600">
-                            Quantity
+                            <div class="text-base font-bold text-gray-400">Quantity</div>
                         </td>
                         <td class="px-6 py-4 text-center font-bold text-gray-600">
                             <div class="self-stretch text-base font-bold text-gray-400">
@@ -112,7 +102,7 @@
                     {{-- {{ $product }} --}}
                     <tr>
                         <td class="border-b border-divider px-6 py-4">
-                            <input name="" type="checkbox">
+                            <input name="ids[]" value="{{ $product->id }}" type="checkbox">
                         </td>
                         <td class="w-2/5 border-b border-gray-200 px-6 py-4">
                             <a class="flex h-[50px] gap-2.5" href="{{route('admin.products.show', $product->id)}}">
@@ -187,5 +177,4 @@
 
 </div>
 <div class="w-full px-4">{{ $products->links() }}</div>
-
 @endsection

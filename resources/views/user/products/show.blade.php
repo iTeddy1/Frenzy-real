@@ -1,14 +1,14 @@
 @extends("layouts.app")
-<x-slot:title>Product Detail</x-slot:title>
+
 @section("content")
 
-<div class="transition-transform lg:mx-auto">
-        <div class="mx-[25px] py-4">
-            <h1 class="text-3xl font-bold mb-4">Product Details</h1>
+<div class="transition-transform mx-5">
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold">Product Details</h1>
             {{ Breadcrumbs::render('products.show', $product) }}
         </div>
         <!-- Process -- Product  -->
-        <section class="mx-auto grid max-w-4xl grid-cols-1 items-start gap-12 lg:mx-[25px] lg:max-w-7xl lg:grid-cols-5">
+        <section class="mx-auto grid max-w-4xl grid-cols-1 items-start gap-12 lg:max-w-7xl lg:grid-cols-5">
             <!-- class="mx-auto flex flex-wrap overflow-hidden lg:w-full xl:justify-center" -->
             <section class="mb-5 w-full lg:col-span-3">
                 <div class="">
@@ -16,26 +16,18 @@
                         id="mainImage" src="{{ $product->assets->first()->path }}" alt="ecommerce" />
                 </div>
                 <div class="m-auto mt-3 flex h-[100px] w-[475px] justify-between">
-                    <div
+                    @foreach($product->assets as $index => $asset)
+                        @if($index == 4)
+                            @break
+                        @endif
+                        <div
                         class="thumbnail inline-flex h-[100px] w-[100px] cursor-pointer items-center justify-center rounded bg-neutral-100">
-                        <img class="h-[100px] w-[100px] rounded border-transparent" id="thumbnail-{{ $product->id }}"
-                            src="{{ $product->assets->skip(1)->first()->path }}" />
-                    </div>
-                    <div
-                        class="thumbnail inline-flex h-[100px] w-[100px] items-center justify-center rounded bg-neutral-100">
-                        <img class="h-[100px] w-[100px] rounded border-transparent"
-                            id="thumbnail-{{ $product->id }}" src="{{ $product->assets->skip(2)->first()->path }}" />
-                    </div>
-                    <div
-                        class="thumbnail h-[100px]bg-neutral-100 inline-flex w-[100px] items-center justify-center rounded">
-                        <img class="h-[100px] w-[100px] rounded border-transparent"
-                            id="thumbnail-{{ $product->id }}" src="{{ $product->assets->skip(3)->first()->path }}" />
-                    </div>
-                    <div
-                        class="thumbnail h-[100px]bg-neutral-100 inline-flex w-[100px] items-center justify-center rounded">
-                        <img class="h-[100px] w-[100px] rounded border-transparent"
-                            id="thumbnail-{{ $product->id }}" src="{{ $product->assets->skip(4)->first()->path }}" />
-                    </div>
+                            <img class="h-[100px] w-[100px] rounded border-transparent" alt="{{ $asset->filename}}" id="thumbnail-{{ $product->id }}"
+                                src="{{ $asset->path }}" />
+                        </div>
+                    @endforeach
+                    
+                
                 </div>
             </section>
 
@@ -86,11 +78,13 @@
                     </span>
                 </div>
                 <div class="flex justify-between">
-                    <span class="title-font text-2xl font-medium">{{ number_format($product->regular_price) }}₫</span>
                     @if($product->sale_price)  
-                        <span class="title-font text-2xl font-medium text-gray-400 line-through">
+                        <span class="title-font text-2xl font-medium text-gray-400 line-through">{{ number_format($product->regular_price) }}₫</span>
+                        <span class="title-font text-2xl font-medium">
                             {{ number_format($product->sale_price) }}₫
                         </span>
+                    @else
+                        <span class="title-font text-2xl font-medium">{{ number_format($product->regular_price) }}₫</span>
                     @endif
 
                 </div>

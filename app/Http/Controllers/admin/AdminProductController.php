@@ -122,4 +122,14 @@ class AdminProductController extends Controller
         $asset->delete();
         return redirect()->back();
     }
+
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        if (!empty($ids)) {
+            Product::whereIn('id', $ids)->delete();
+            return redirect()->route('admin.products.index')->with('success', 'Selected products deleted successfully');
+        }
+        return redirect()->route('admin.products.index')->with('error', 'No products selected for deletion');
+    }
 }

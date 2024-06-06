@@ -21,20 +21,20 @@
         </div>
         <div class="flex flex-col flex-grow px-4 mt-5">
           <nav class="flex-1 space-y-1 bg-white">
-            <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
+            <p class="px-4 pt-4 text-xs font-bold text-gray-400 uppercase">
               Home
             </p>
             <ul>
               <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-[#00AC55]" href="#_">
+                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{ route('user.checkout.cart') }}">
                   <ion-icon class="size-4 md hydrated" name="aperture-outline" role="img" aria-label="aperture outline"></ion-icon>
-                  <span class="ml-4"> Dashboard </span>
+                  <span class="ml-4 font-semibold"> Cart </span>
                 </a>
               </li>
               <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-[#00AC55]" href="#_">
+                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="#_">
                   <ion-icon class="size-4 md hydrated" name="trending-up-outline" role="img" aria-label="trending up outline"></ion-icon>
-                  <span class="ml-4"> Performance </span>
+                  <span class="ml-4 font-semibold"> Performance </span>
                 </a>
               </li>
             </ul>
@@ -43,30 +43,30 @@
             </p>
             <ul>
               <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-[#00AC55]" href="{{route('home')}}">
+                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{route('home')}}">
                   <ion-icon class="size-4 md hydrated" name="newspaper-outline" role="img" aria-label="newspaper outline"></ion-icon>
-                  <span class="ml-4"> List </span>
+                  <span class="ml-4 font-semibold"> List </span>
                 </a>
               </li>
               <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-[#00AC55]" href="#_">
+                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="#_">
                   <ion-icon class="size-4 md hydrated" name="sync-outline" role="img" aria-label="sync outline"></ion-icon>
-                  <span class="ml-4"> Create </span>
+                  <span class="ml-4 font-semibold"> Create </span>
                   <span class="inline-flex ml-auto items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-500">
                     25
                   </span>
                 </a>
               </li>
               <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-[#00AC55]" href="#_">
+                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="#_">
                   <ion-icon class="size-4 md hydrated" name="shield-checkmark-outline" role="img" aria-label="shield checkmark outline"></ion-icon>
-                  <span class="ml-4"> Checklist </span>
+                  <span class="ml-4 font-semibold"> Checklist </span>
                 </a>
               </li>
               <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-[#00AC55]" href="">
+                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="">
                   <ion-icon class="size-4 md hydrated" name="thumbs-up-outline" role="img" aria-label="thumbs up outline"></ion-icon>
-                  <span class="ml-4"> TLD </span>
+                  <span class="ml-4 font-semibold"> TLD </span>
                 </a>
               </li>
             </ul>
@@ -75,21 +75,28 @@
             </p>
             <ul>
               <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-[#00AC55]" href="{{route('contact')}}">
+                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{route('contact')}}">
                   <ion-icon class="size-4 md hydrated" name="albums-outline" role="img" aria-label="albums outline"></ion-icon>
-                  <span class="ml-4"> Contact </span>
+                  <span class="ml-4 font-semibold"> Contact </span>
                   <span class="inline-flex ml-auto items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-500">
                     25
                   </span>
                 </a>
               </li>
+            </ul>
+            @if (Auth::user() && !Auth::user()->hasVerifiedEmail())
+            <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
+              Verify Email
+            </p>
+            <ul>
               <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-[#00AC55]" href="#_">
-                  <ion-icon class="size-4 md hydrated" name="link-outline" role="img" aria-label="link outline"></ion-icon>
-                  <span class="ml-4"> Links </span>
+                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{route('verification.notice')}}">
+                  <ion-icon class="size-4 md hydrated" name="albums-outline" role="img" aria-label="albums outline"></ion-icon>
+                  <span class="ml-4 font-semibold"> Verify </span>
                 </a>
               </li>
             </ul>
+            @endif
           </nav>
         </div>
       </div>

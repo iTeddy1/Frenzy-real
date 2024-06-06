@@ -1,8 +1,8 @@
-Dear [Customer name],
+<h1>New Contact Message</h1>
+<p>You have received a new message from the contact form on your website:</p>
 
-I just wanted to make sure you benefit from our 24/7 assistance with any technical issues you may be experiencing. Our team is available to provide you with the support you need to ensure a smooth and seamless product experience.
+<p><strong>Name:</strong> {{ $details["name"] }}</p>
+<p><strong>Email:</strong> {{ $details["email"] }}</p>
+<p><strong>Message:</strong>{{ $details["message"] }}</p>
 
-If you’re experiencing any difficulties or have questions about our product, please don’t hesitate to reach out. We’re here to help and will do our best to resolve your issue as quickly as possible.
-
-Regards,
-Frenzy
+<p>This email was sent from your website contact form.</p>

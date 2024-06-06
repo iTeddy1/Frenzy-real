@@ -1,20 +1,18 @@
 @extends("layouts.app")
 
 @section("content")
-    <div class="lg:mx-5">
-        <!-- Process -->
-        <div class="mx-[25px] py-4">
-            <h1 class="text-3xl font-bold mb-4">Checkout</h1>
+    <div class="mx-5">
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold">Checkout</h1>
             {{ Breadcrumbs::render('user.checkout.payment') }}
         </div>    
         <div>
             <h2 class="sr-only">Steps</h2>
 
-            <div class="mx-auto md:w-2/5">
+            <div class="mx-auto lg:w-2/5">
                 <div class="overflow-hidden rounded-full bg-background-default-dark">
                     <div class="h-2 w-full rounded-full bg-primary"></div>
                 </div>
-
                 <ol class="mt-4 grid grid-cols-3 text-sm font-medium">
                     <li class="flex items-center justify-start sm:gap-1.5">
                         <span class="hidden text-primary sm:inline"><a href="{{route('user.checkout.cart')}}">Cart</a></span>
@@ -57,16 +55,16 @@
         </div>
 
         <div class="mx-auto h-screen pt-12">
-            <div class=" mx-auto px-4">
-                <form class="flex flex-col gap-12 md:flex-row" action="{{ route("user.checkout.storePayment") }}"
+            <div class="container mx-auto">
+                <form class="flex flex-col gap-12 lg:flex-row" action="{{ route("user.checkout.storePayment") }}"
                     method="POST">
                     @csrf
-                    <div class="h-fit rounded border border-divider md:w-2/3">
+                    <div class="h-fit rounded border border-divider lg:w-2/3 shadow-md">
                         <h1 class="my-4 px-4 text-2xl font-bold">Payment</h1>
                         <div class="p-4">
                             <!-- Payment Method -->
                             <div class="mb-6">
-                                <div class="w-full max-w-2xl rounded-md">
+                                <div class="w-full rounded-md">
                                     <div class="flex flex-col gap-2">
                                         <label
                                             class="my-3 flex cursor-pointer gap-8 rounded-small border border-divider px-3 py-4 text-text-dark hover:bg-background-neutral-light">
@@ -102,9 +100,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="rounded md:w-1/3">
+                    <div class="rounded lg:w-1/3">
                         <!-- Address  -->
-                        <div class="mb-12 rounded border bg-white p-4 shadow-md">
+                        <div class="mb-10 rounded border bg-white p-4 shadow-md">
                             <h2 class="mb-4 text-2xl font-bold">Address</h2>
                             <div class="mb-1.5 flex justify-between">
                                 <p>{{$shipping['first_name'] . ' ' .$shipping['last_name']}}</p>
@@ -122,20 +120,16 @@
                             <h2 class="mb-4 text-2xl font-bold">Order Summary</h2>
                             <div class="mb-2 flex justify-between">
                                 <span class="text-text-light">Subtotal</span>
-                                <span>$19.99</span>
-                            </div>
-                            <div class="mb-2 flex justify-between">
-                                <span class="text-text-light">Taxes</span>
-                                <span>$1.99</span>
+                                <span>{{ number_format($cart->total) }}₫</span>
                             </div>
                             <div class="mb-2 flex justify-between">
                                 <span class="text-text-light">Shipping</span>
-                                <span>$0.00</span>
+                                <span>0₫</span>
                             </div>
                             <hr class="my-2" />
                             <div class="mb-2 flex justify-between">
                                 <span class="font-semibold">Total Price</span>
-                                <span class="font-semibold text-error">$21.98</span>
+                                <span class="font-semibold text-error">{{ number_format($cart->total) }}₫</span>
                             </div>
                         </div>
                     </div>

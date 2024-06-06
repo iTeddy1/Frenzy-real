@@ -5,8 +5,6 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Order;
-use App\Models\Product;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,6 +24,7 @@ class CheckoutController extends Controller
 
     public function storeShipping(Request $request)
     {
+        $cart = Auth::user()->cart;
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -38,7 +37,7 @@ class CheckoutController extends Controller
         Address::create($validated);
         // Session::put('shipping', $request->only('address'));
 
-        return redirect()->route('user.checkout.payment');
+        return redirect()->route('user.checkout.payment', ['cart' => $cart]);
     }
 
     public function payment(Request $request)
@@ -47,7 +46,7 @@ class CheckoutController extends Controller
 
         $shipping = Auth::user()->addresses->first();
         // dd($shipping);
-        return view('checkout.payment', ['cart' => $cart, 'total' => $cart->total, 'shipping' => $shipping]);
+        return view('checkout.payment', ['cart' => $cart, 'shipping' => $shipping]);
     }
 
     public function momo_payment(Request $request)
@@ -62,7 +61,7 @@ class CheckoutController extends Controller
         $partnerCode = env('PAYMENT_PARTNER_CODE');
         $accessKey = env('PAYMENT_ACCESS_KEY');
         $secretKey = env('PAYMENT_SECRET_KEY');
-
+        // dd($endpoint, $partnerCode, $accessKey, $secretKey);
         $orderInfo = "Thanh toán qua MoMo";
         $orderId = time() . "";
         $returnUrl = "http://localhost:8000/user/checkout/success";
@@ -113,6 +112,7 @@ class CheckoutController extends Controller
         // );
 
         $result = execPostRequest($endpoint, json_encode($data));
+        // dd($result);
         $jsonResult = json_decode($result, true);  // decode json
 
         return redirect($jsonResult['payUrl']);
@@ -122,20 +122,21 @@ class CheckoutController extends Controller
     {
         $user = Auth::user();
         $cart = $user->cart;
-        // Create an order record (optional, but recommended)
+        $shipping = $user->addresses->first();
+        dd($shipping, $cart, $user);
+
         $order = Order::create([
             'user_id' => $user->id,
             'cart_id' => $cart->id,
             'total' => $cart->total,
         ]);
-        
         $order->save();
 
         // Delete the cart and its items
         $cart->items()->delete();
         $cart->delete();
 
-        return view('checkout.success');
+        return view('checkout.success', ['order' => $order, 'shipping' => $shipping]);
     }
 }
 

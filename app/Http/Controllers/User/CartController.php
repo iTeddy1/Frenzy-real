@@ -42,7 +42,7 @@ class CartController extends Controller
         $cart->total = $cart->items->sum(fn($item) => $item->quantity * $item->price);
         $cart->save();
 
-        return redirect()->route('user.checkout.cart');
+        return redirect()->back();
     }
 
     public function update(Request $request)
@@ -52,9 +52,10 @@ class CartController extends Controller
         $cartItem->quantity === '0' ? $cartItem->delete() : $cartItem->save();
         $cart = $cartItem->cart;
         $cart->total = $cart->items->sum(fn($item) => $item->quantity * $item->price);
+        
         $cart->save();
 
-        return redirect()->route('user.cart.index');
+        return redirect()->route('user.checkout.cart');
     }
 
     public function remove(Request $request)
@@ -66,6 +67,6 @@ class CartController extends Controller
         $cart->total = $cart->items->sum(fn($item) => $item->quantity * $item->price);
         $cart->save();
 
-        return redirect()->route('user.cart.index');
+        return redirect()->route('user.checkout.cart');
     }
 }

@@ -22,11 +22,16 @@
 
 <body class="font-public bg-white">
     <div class="flex h-screen overflow-hidden">
-        @include("layouts.partials.sidebar")
-        {{-- <x-header /> --}}
+        @auth
+        @if(Auth::user()->role === 'admin')
+            @include('layouts.partials.admin-sidebar')
+        @elseif(Auth::user()->role === 'user')
+            @include('layouts.partials.sidebar')
+        @endif
+        @endauth        
         <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
             @include("layouts.partials.navigation")
-            <main>
+            <main class="">
                 <div class="mx-auto 2xl:mx-0 p-4 md:p-6 2xl:p-10">
                     @yield('content')
                 </div>

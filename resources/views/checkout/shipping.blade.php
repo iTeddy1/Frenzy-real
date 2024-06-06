@@ -1,15 +1,15 @@
 @extends("layouts.app")
 
 @section("content")
-    <div class="">
-        <div class="mx-[25px] py-4">
-            <h1 class="text-3xl font-bold mb-4">Checkout</h1>
+    <div class="mx-5 ">
+        <div class="mb-8" >
+            <h1 class="text-2xl font-bold">Checkout</h1>
             {{ Breadcrumbs::render('user.checkout.shipping') }}
         </div>    
         <div>
             <h2 class="sr-only">Steps</h2>
 
-            <div class="md:w-2/5 mx-auto">
+            <div class="mx-auto lg:w-2/5">
               <div
                 class="overflow-hidden rounded-full bg-background-default-dark"
               >
@@ -80,10 +80,10 @@
           </div>
         <form action="{{ route("user.checkout.storeShipping") }}" method="POST">
             @csrf
-            <div class="h-screen pt-12">
-                <div class="container mx-auto px-4">
-                    <div class="flex flex-col gap-12 md:flex-row">
-                        <div class="rounded border border-divider md:w-2/3">
+            <div class="h-screen pt-12 ">
+                <div class="container mx-auto">
+                    <div class="flex flex-col gap-12 lg:flex-row">
+                        <div class="rounded border border-divider lg:w-2/3">
                             <h1 class="my-4 px-4 text-2xl font-bold">Address</h1>
                             <div class="rounded p-4 shadow-md">
                                 <!-- Shipping Address -->
@@ -147,9 +147,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="flex w-1/2">
+                                    <div class="flex">
                                         <button
-                                            class="mt-4 w-full rounded bg-primary py-2 font-semibold text-white hover:bg-primary-dark"
+                                            class="mt-4 ml-auto rounded bg-primary px-4 py-2 font-semibold text-white hover:bg-primary-dark"
                                             type="submit">
                                             Payment
                                         </button>
@@ -158,7 +158,7 @@
                             </div>
                         </div>
 
-                        <div class="md:w-1/3 rounded">
+                        <div class="lg:w-1/3 rounded">
                             <div class="w-full rounded border bg-white p-4 shadow-md">
                                 <h2 class="mb-4 text-2xl font-bold">Summary</h2>
                                 <div class="mb-2 flex justify-between">
@@ -167,11 +167,11 @@
                                 </div>
                                 <div class="mb-2 flex justify-between">
                                     <span class="text-text-light">Taxes</span>
-                                    <span>0</span>
+                                    <span>0₫</span>
                                 </div>
                                 <div class="mb-2 flex justify-between">
                                     <span class="text-text-light">Shipping</span>
-                                    <span>0.00</span>
+                                    <span>0₫</span>
                                 </div>
                                 <hr class="my-2" />
                                 <div class="mb-2 flex justify-between">

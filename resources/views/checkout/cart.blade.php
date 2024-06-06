@@ -2,15 +2,15 @@
 @extends("layouts.app")
 
 @section("content")
-    <div class="mx-5 flex flex-col justify-center">
-        <div class="mx-[25px] py-4">
-            <h1 class="text-3xl font-bold mb-4">Checkout</h1>
+    <div class="mx-5 ">
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold">Checkout</h1>
             {{ Breadcrumbs::render('user.checkout.cart', $cart) }}
         </div>        
         <div>
             <h2 class="sr-only">Steps</h2>
 
-            <div class="mx-auto md:w-2/5">
+            <div class="mx-auto lg:w-2/5">
                 <div class="overflow-hidden rounded-full bg-background-default-dark">
                     <div class="h-2 w-0 rounded-full bg-primary"></div>
                 </div>
@@ -55,20 +55,23 @@
 
         {{-- Cart table  --}}
         <div class="h-screen pt-12">
-            <div class="container mx-auto pl-4">
-                <div class="flex flex-col gap-4 md:flex-row">
-                    <div class="w-full rounded border shadow-md md:w-3/4">
-                       
+            <div class="container mx-auto">
+                <div class="flex flex-col gap-4 lg:flex-row">
+                    <div class="w-full rounded border shadow-md lg:w-3/4">
                         <div class="mx-4 flex flex-col">
                             <h1 class="mt-4 text-2xl font-bold">Cart</h1>
-                            <span class="">({{$cart->items->count() >=1 ?  $cart->items->count() . ' item' : $cart->items->count() .' items'}})</span>
+                            <span class="mb-6">
+                                @if($cart)
+                                    ({{ $cart->items->count() === 0 ?  '0 item' : $cart->items->count() .' items' }})
+                                @endif
+                            </span>
                         </div>
-                        <div class="mb-4 overflow-auto rounded-lg bg-white">
+                        <div class="mb-4 w-full overflow-auto rounded-lg bg-white">
                             @if ($cart && $cart->items->count())
-                                <table class="w-full overflow-auto">
+                            <table class="w-full ">
                                     <thead class="h-[70px] bg-background-neutral-light text-left font-bold text-text-light">
                                         <tr>
-                                            <th class="px-4">Product</th>
+                                            <th class="w-2/5 px-4">Product</th>
                                             <th class="px-4">Quantity</th>
                                             <th class="px-4">Price</th>
                                             <th class="px-4">Total</th>
@@ -92,15 +95,15 @@
                                                     </div>
                                                 </td>
                                                 <td class="p-4">
-                                                    <form id="update-form-{{ $item->id }}"
+                                                    <form class="flex flex-col justify-center items-center w-fit" id="update-form-{{ $item->id }}"
                                                         action="{{ route("user.cart.update") }}" method="POST">
                                                         @csrf
-                                                        <div class="flex h-9 max-w-[8rem] items-center">
+                                                        <div class="flex h-9 max-w-[8rem] justify-center items-center">
                                                             <input name="cart_item_id" type="hidden"
                                                                 value="{{ $item->id }}">
-
+                                                            <div></div>
                                                             <button
-                                                                class="h-9 rounded-s border border-divider p-3 text-black hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100"
+                                                                class="h-9 rounded-s border border-divider p-3  hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100"
                                                                 type="button"
                                                                 onclick="updateQuantity({{ $item->id }}, 'decrement')">
                                                                 <svg class="text-black-900 h-3 w-3"
@@ -127,18 +130,14 @@
                                                                         d="M9 1v16M1 9h16" />
                                                                 </svg>
                                                             </button>
-                                                        </div>
+                                                            </div>
+                                                        <button class="text-sm " form="update-form-{{ $item->id }}">Update</button>
                                                     </form>
-                                                    {{-- <input name="cart_item_id" type="hidden"
-                                                            value="{{ $item->id }}">
-                                                        <input name="quantity" type="number" value="{{ $item->quantity }}"
-                                                            onchange="this.form.submit()"> --}}
                                                 </td>
                                                 <td class="p-4">{{ number_format($item->price) }}₫</td>
                                                 <td class="p-4">{{ number_format($item->quantity * $item->price) }}₫</td>
                                                 <td class="p-4">
                                                     <div class="my-auto flex items-center">
-                                                        <button form="update-form-{{ $item->id }}">Update</button>
                                                         <form action="{{ route("user.cart.remove") }}" method="POST">
                                                             @csrf
                                                             <div>
@@ -182,7 +181,7 @@
                                         <p class="mb-4 text-lg font-semibold text-gray-600">Your shopping cart is empty.
                                         </p>
                                         <a href="/"
-                                            class="rounded-md bg-blue-500 px-6 py-2 text-white shadow-md transition-colors duration-300 hover:bg-blue-600">
+                                            class="rounded-md bg-primary px-6 py-2 text-white shadow-md transition-colors duration-300 hover:bg-primary-darker">
                                             Let's go shopping!
                                         </a>
                                     </div>
@@ -190,7 +189,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="w-full rounded md:w-1/4">
+                    <div class="w-full overflow-auto rounded lg:w-1/4">
                         <div class="w-full rounded border bg-white p-4 shadow-md">
                             <h2 class="mb-4 text-2xl font-bold">Summary</h2>
                             <div class="mb-2 flex justify-between">
@@ -198,12 +197,8 @@
                                 <span>{{ number_format($cart->total ?? 0) }}₫</span>
                             </div>
                             <div class="mb-2 flex justify-between">
-                                <span class="text-text-light">Taxes</span>
-                                <span>$0</span>
-                            </div>
-                            <div class="mb-2 flex justify-between">
                                 <span class="text-text-light">Shipping</span>
-                                <span>$0.00</span>
+                                <span>0₫</span>
                             </div>
                             <hr class="my-2" />
                             <div class="mb-2 flex justify-between">

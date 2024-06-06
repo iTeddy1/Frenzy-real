@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 <x-slot:title>
         Modify Product

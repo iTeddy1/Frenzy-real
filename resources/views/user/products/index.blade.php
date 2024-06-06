@@ -1,6 +1,7 @@
-{{-- @props(['products']) --}}
 @extends("layouts.app")
-    <div class="mx-auto w-full max-w-screen-2xl p-4 md:p-6 2xl:p-8">
+
+@section("content")
+    <div class="mx-auto w-full max-w-screen-2xl px-4 md:px-6 2xl:px-8">
         {{-- <div class="relative w-full" id="carousel-example">
             <!-- Carousel wrapper -->
             <div class="relative left-[-1.5%] h-56 overflow-hidden rounded-lg sm:h-64 xl:h-80 2xl:h-96">
@@ -64,7 +65,7 @@
         <div class="mt-10 flex">
             <div>
                 <form class="mx-auto max-w-md" action='/' method="GET">
-                    <label class="sr-only mb-2 text-sm font-medium text-text-dark"
+                    <label class="sr-only mb-2 text-sm font-medium text-text-dark bg-background-neutral-light"
                         for="default-search">Search</label>
                     <div class="relative">
                         <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
@@ -131,3 +132,4 @@
             <div>{{ $products->links() }}</div>
         </section>
     </div>
+@endsection

@@ -5,7 +5,7 @@
     </x-slot:title>
     @section('content')
 
-    <div class="mx-auto w-full max-w-screen-2xl p-4 md:p-6 2xl:p-8">
+    <div class="mx-auto w-full max-w-screen-2xl px-4 md:px-6 2xl:px-8 ">
         {{-- <div class="relative w-full" id="carousel-example">
             <!-- Carousel wrapper -->
             <div class="relative left-[-1.5%] h-56 overflow-hidden rounded-lg sm:h-64 xl:h-80 2xl:h-96">
