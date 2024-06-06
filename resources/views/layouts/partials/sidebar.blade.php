@@ -63,12 +63,6 @@
                   <span class="ml-4 font-semibold"> Checklist </span>
                 </a>
               </li>
-              <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="">
-                  <ion-icon class="size-4 md hydrated" name="thumbs-up-outline" role="img" aria-label="thumbs up outline"></ion-icon>
-                  <span class="ml-4 font-semibold"> TLD </span>
-                </a>
-              </li>
             </ul>
             <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
               Contact
@@ -78,9 +72,6 @@
                 <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{route('contact')}}">
                   <ion-icon class="size-4 md hydrated" name="albums-outline" role="img" aria-label="albums outline"></ion-icon>
                   <span class="ml-4 font-semibold"> Contact </span>
-                  <span class="inline-flex ml-auto items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-500">
-                    25
-                  </span>
                 </a>
               </li>
             </ul>

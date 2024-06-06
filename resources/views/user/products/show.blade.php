@@ -2,8 +2,8 @@
 
 @section("content")
 
-<div class="transition-transform mx-5">
-        <div class="mb-8">
+<div class="transition-transform mx-auto w-full max-w-screen-2xl px-4 md:px-6 2xl:px-8">
+        <div class="mb-10">
             <h1 class="text-2xl font-bold">Product Details</h1>
             {{ Breadcrumbs::render('products.show', $product) }}
         </div>
@@ -26,8 +26,6 @@
                                 src="{{ $asset->path }}" />
                         </div>
                     @endforeach
-                    
-                
                 </div>
             </section>
 
@@ -253,7 +251,7 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-center gap-4 lg:justify-between">
+                    <div class="flex gap-4 justify-between">
                         <button
                             class="flex h-12 items-center justify-center rounded border-0 bg-primary px-12 text-white hover:bg-primary-dark focus:outline-none"
                             form="select-product" type="submit">Add to Cart</button>

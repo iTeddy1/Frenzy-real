@@ -1,15 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
-<x-slot:title>
-        Modify Product
-    </x-slot:title>
+
     <div class="p-5 flex-col justify-start items-start gap-2.5 inline-flex">
         {{-- heading --}}
-        <div class="self-stretch text-gray-800 text-2xl font-bold leading-normal tracking-wide">
-            Modify product</div>
-        {{-- road map --}}
-        {{ Breadcrumbs::render('admin.products.edit', $product) }}
+        <div class="mb-10">
+            <div class="self-stretch text-gray-800 text-2xl font-bold leading-normal tracking-wide ">
+                Edit product
+            {{-- road map --}}
+            </div>
+            {{ Breadcrumbs::render('admin.products.edit', $product) }}
+        </div>
 
         {{-- form --}}
         <form action="{{ route('admin.products.update', $product->id) }}" method="POST" id="product" class="gap-2.5 flex">
@@ -27,39 +28,8 @@
                     placeholder="Write something awesome..." id="description" name="description" value="{{ $product->description }}"></textarea>
 
                 <div class="text-gray-400 text-base font-semibold leading-tight">Images</div>
-                <img src="{{ $product->assets->first()->path ?? '' }}" alt="">
-                <div class="w-full h-[200px] relative bg-black bg-opacity-5 rounded border border-zinc-200">
-                    <label for="image" class="w-[103px] h-[101px] left-[49px] top-[49px] absolute cursor-pointer">
-                        <input type="file" class="hidden" id="image" name="images">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-photo stroke-primary" width="100" height="100"
-                            viewBox="0 0 24 24" stroke-width="1" class="" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M15 8h.01" />
-                            <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12z" />
-                           <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
-                            <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
-                        </svg>
-                    </label>
-                    <div
-                        class="left-[187px] top-[66px] absolute text-gray-800 text-2xl font-bold font-['Inter'] leading-normal tracking-wide">
-                        Select files</div>
-                    <div class="w-[455px] h-[31px] left-[186px] top-[102px] absolute">
-                        <span class="text-black text-base font-normal leading-normal">
-                            Drop file here or click
-                        </span>
-                        <label for="image" class="cursor-pointer">
-                            <input type="file" class="hidden" id="image" name="images">
-                            <span
-                                class="text-green-600 text-base font-normal underline leading-normal">
-                                browse
-                            </span>
-                        </label>
-                        <span class="text-black text-base font-normal leading-normal">
-                            thorough your machine
-                        </span>
-                    </div>
+                <div class="w-[200px]">
+                    <img src="{{ $product->assets->first()->path ?? '' }}" alt="">
                 </div>
             </div>
 

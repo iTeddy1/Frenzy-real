@@ -1,5 +1,4 @@
 <?php
-use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\HomeController;

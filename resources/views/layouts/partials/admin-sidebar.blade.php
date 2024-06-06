@@ -1,4 +1,3 @@
-
 <div class="flex h-screen overflow-hidden bg-white">
   <div class="hidden md:flex md:flex-shrink-0">
     <div class="flex flex-col w-64">
@@ -20,7 +19,30 @@
           </button>
         </div>
         <div class="flex flex-col flex-grow px-4 mt-5">
-          <nav class="flex-1 space-y-1 bg-white">
+          <nav class="flex-1 space-y-1 bg-white">         
+          <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
+            ECOMMERCE
+          </p>
+          <ul>            
+            <li>
+              <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{route('home')}}">
+                <ion-icon class="size-4 md hydrated" name="sync-outline" role="img" aria-label="sync outline"></ion-icon>
+                <span class="ml-4 font-semibold"> Home </span>
+              </a>
+            </li>
+            <li>
+              <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{route('admin.products.index')}}">
+                <ion-icon class="size-4 md hydrated" name="newspaper-outline" role="img" aria-label="newspaper outline"></ion-icon>
+                <span class="ml-4 font-semibold"> Shop </span>
+              </a>
+            </li>
+            <li>
+              <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{ route('user.checkout.cart')}}">
+                <ion-icon class="size-4 md hydrated" name="shield-checkmark-outline" role="img" aria-label="shield checkmark outline"></ion-icon>
+                <span class="ml-4 font-semibold"> Checkout </span>
+              </a>
+            </li>
+          </ul>
             <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
               PRODUCTS
             </p>
@@ -38,42 +60,7 @@
                 </a>
               </li>
             </ul>
-            <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
-              ECOMMERCE
-            </p>
-            <ul>
-              <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{route('admin.products.index')}}">
-                  <ion-icon class="size-4 md hydrated" name="newspaper-outline" role="img" aria-label="newspaper outline"></ion-icon>
-                  <span class="ml-4 font-semibold"> Shop </span>
-                  
-      {{-- @if($products->total())
-                    {{ $products->total() }}
-                    @else
-                    0
-                    @endif               --}}
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{route('admin.products.create')}}">
-                  <ion-icon class="size-4 md hydrated" name="sync-outline" role="img" aria-label="sync outline"></ion-icon>
-                  <span class="ml-4 font-semibold"> Create </span>
-                </a>
-              </li>
-              <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{ route('user.checkout.cart')}}">
-                  <ion-icon class="size-4 md hydrated" name="shield-checkmark-outline" role="img" aria-label="shield checkmark outline"></ion-icon>
-                  <span class="ml-4 font-semibold"> Checkout </span>
-                </a>
-              </li>
-              <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="">
-                  <ion-icon class="size-4 md hydrated" name="thumbs-up-outline" role="img" aria-label="thumbs up outline"></ion-icon>
-                  <span class="ml-4 font-semibold"> TLD </span>
-                </a>
-              </li>
-            </ul>
+   
             <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
               Contact
             </p>
@@ -82,15 +69,6 @@
                 <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{route('contact')}}">
                   <ion-icon class="size-4 md hydrated" name="albums-outline" role="img" aria-label="albums outline"></ion-icon>
                   <span class="ml-4 font-semibold"> Contact </span>
-                  <span class="inline-flex ml-auto items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-500">
-                    25
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="#_">
-                  <ion-icon class="size-4 md hydrated" name="link-outline" role="img" aria-label="link outline"></ion-icon>
-                  <span class="ml-4 font-semibold"> Links </span>
                 </a>
               </li>
             </ul>

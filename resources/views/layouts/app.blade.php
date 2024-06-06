@@ -20,7 +20,7 @@
     @vite(["resources/css/app.css", "resources/js/app.js"])
 </head>
 
-<body class="font-public bg-white">
+<body class="font-public">
     <div class="flex h-screen overflow-hidden">
         @auth
         @if(Auth::user()->role === 'admin')

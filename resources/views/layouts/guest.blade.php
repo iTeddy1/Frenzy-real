@@ -8,8 +8,6 @@
         <title>{{ config('app.name', 'Frenzy') }}</title>
         <link rel="shortcut icon"  href="{{ Vite::asset("/public/images/logo.png") }}">
 
-        <!-- Fonts -->
-
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>

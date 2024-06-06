@@ -3,19 +3,22 @@
 @section("content")
     <div class="flex flex-col items-start justify-start gap-2.5 p-5">
         {{-- heading --}}
-        <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
-            Create a new product</div>
+        <div class="mb-10">
+            <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
+                Create a new product
+            </div>
+            {{ Breadcrumbs::render("admin.products.create") }}
+        </div>
         {{-- road map --}}
-        {{ Breadcrumbs::render("admin.products.create") }}
 
         {{-- form --}}
-        <form class="flex flex-col md:flex-row w-full gap-6"  action="{{ route("admin.products.index") }}" method="POST"  enctype="multipart/form-data">
+        <form class="flex flex-col md:flex-row w-full gap-6" action="{{ route("admin.products.index") }}" method="POST"  enctype="multipart/form-data">
             @csrf
             {{-- left form --}}
             <div
-                class="flex flex-col lg:w-3/4 items-start justify-start gap-2.5 rounded border border-zinc-200 p-2.5">
+                class="flex flex-col lg:w-3/4 items-start justify-start gap-2.5 rounded border bg-white border-zinc-200 p-2.5">
                 <input class="self-stretch rounded border border-zinc-300 bg-white p-2.5 focus:outline-none" id="name"
-                    name="name" placeholder="Product Name" />
+                    name="name" placeholder="Product Name"/>
                 <div class="text-base font-semibold leading-tight text-gray-400">Description</div>
                 <textarea class="h-[200px] self-stretch rounded border border-zinc-300 p-2.5 focus:outline-none" id="description"
                     name="description" placeholder="Write something awesome..."></textarea>

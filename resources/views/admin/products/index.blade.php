@@ -3,13 +3,15 @@
 @section('content')
 <div class="flex flex-col items-center justify-start gap-2.5 p-5">
     {{-- heading --}}
-    <div class="flex items-center justify-between w-full ">
-        <div>
-            <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
-                Product List</div>
+    <div class="flex items-center justify-between w-full mb-10">
+        <div class="">
+            <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800 ">
+                Product List
+            </div>
             {{-- roadmap --}}
             {{ Breadcrumbs::render("admin.products") }}
         </div>
+        
         <div><a href="products/create">New Product</a></div>
     </div>
 

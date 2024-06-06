@@ -58,14 +58,16 @@
                 </span>
             </button>
         </div> --}}
-        <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
-            Shop</div>
-        {{ Breadcrumbs::render("home") }}
+        <div>
+            <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
+                Shop</div>
+            {{ Breadcrumbs::render("home") }}
+        </div>
 
         <div class="mt-10 flex">
             <div>
                 <form class="mx-auto max-w-md" action='/' method="GET">
-                    <label class="sr-only mb-2 text-sm font-medium text-text-dark bg-background-neutral-light"
+                    <label class="sr-only mb-2 text-sm font-medium text-text-dark "
                         for="default-search">Search</label>
                     <div class="relative">
                         <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
