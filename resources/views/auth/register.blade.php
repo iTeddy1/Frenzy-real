@@ -162,7 +162,7 @@
                                 class="mb-3 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 focus:outline-none"
                                 checked name="remember">
                             <span
-                                class="ml-2 mb-3 text-[16px] text-white lg:text-gray-700 dark:text-gray-300">{{ __('I accept the Terms of Use & Privacy Policy') }}</span>
+                                class="ml-2 mb-3 text-[16px] text-white lg:text-gray-700">{{ __('I accept the Terms of Use & Privacy Policy') }}</span>
                         </label>
                     </div>
 

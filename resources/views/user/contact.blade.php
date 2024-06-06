@@ -19,7 +19,7 @@
       <div>
         <label
           for="email"
-          class="block mb-2 text-lg font-medium text-gray-900 dark:text-gray-300"
+          class="block mb-2 text-lg font-medium text-gray-900"
           >Your email</label
         >
         <input
@@ -34,7 +34,7 @@
       <div>
         <label
           for="name"
-          class="block my-2 text-lg font-medium text-gray-900 dark:text-gray-300"
+          class="block my-2 text-lg font-medium text-gray-900"
           >Name</label
         >
         <input
@@ -49,7 +49,7 @@
       <div class="sm:col-span-2">
         <label
           for="message"
-          class="block my-2 text-lg font-medium text-gray-900 dark:text-gray-400"
+          class="block my-2 text-lg font-medium text-gray-900"
           >Your message</label
         >
         <textarea

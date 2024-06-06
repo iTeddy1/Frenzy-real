@@ -17,23 +17,23 @@
                 </div>
                 <div class="m-auto mt-3 flex h-[100px] w-[475px] justify-between">
                     <div
-                        class="thumbnail inline-flex h-[100px] w-[100px] cursor-pointer items-center justify-center rounded-[10px] bg-neutral-100">
+                        class="thumbnail inline-flex h-[100px] w-[100px] cursor-pointer items-center justify-center rounded bg-neutral-100">
                         <img class="h-[100px] w-[100px] rounded border-transparent" id="thumbnail-{{ $product->id }}"
                             src="{{ $product->assets->skip(1)->first()->path }}" />
                     </div>
                     <div
-                        class="thumbnail inline-flex h-[100px] w-[100px] items-center justify-center rounded-[10px] bg-neutral-100">
-                        <img class="h-[100px] w-[100px] rounded-[10px] border-transparent"
+                        class="thumbnail inline-flex h-[100px] w-[100px] items-center justify-center rounded bg-neutral-100">
+                        <img class="h-[100px] w-[100px] rounded border-transparent"
                             id="thumbnail-{{ $product->id }}" src="{{ $product->assets->skip(2)->first()->path }}" />
                     </div>
                     <div
-                        class="thumbnail h-[100px]bg-neutral-100 inline-flex w-[100px] items-center justify-center rounded-[10px]">
-                        <img class="h-[100px] w-[100px] rounded-[10px] border-transparent"
+                        class="thumbnail h-[100px]bg-neutral-100 inline-flex w-[100px] items-center justify-center rounded">
+                        <img class="h-[100px] w-[100px] rounded border-transparent"
                             id="thumbnail-{{ $product->id }}" src="{{ $product->assets->skip(3)->first()->path }}" />
                     </div>
                     <div
-                        class="thumbnail h-[100px]bg-neutral-100 inline-flex w-[100px] items-center justify-center rounded-[10px]">
-                        <img class="h-[100px] w-[100px] rounded-[10px] border-transparent"
+                        class="thumbnail h-[100px]bg-neutral-100 inline-flex w-[100px] items-center justify-center rounded">
+                        <img class="h-[100px] w-[100px] rounded border-transparent"
                             id="thumbnail-{{ $product->id }}" src="{{ $product->assets->skip(4)->first()->path }}" />
                     </div>
                 </div>
@@ -261,17 +261,16 @@
 
                     <div class="flex justify-center gap-4 lg:justify-between">
                         <button
-                            class="flex h-12 items-center justify-center rounded-[10px] border-0 bg-primary px-12 text-white hover:bg-primary-dark focus:outline-none"
+                            class="flex h-12 items-center justify-center rounded border-0 bg-primary px-12 text-white hover:bg-primary-dark focus:outline-none"
                             form="select-product" type="submit">Add to Cart</button>
 
-                        <label class="block text-sm font-medium dark:text-white" for="quantity"></label>
+                        <label class="block text-sm font-medium" for="quantity"></label>
                         <div class="flex h-12 max-w-[8rem] items-center">
                             <button
                                 class="h-12 rounded-s border border-divider p-3 hover:bg-active-light focus:outline-none focus:ring-2 focus:ring-gray-100"
                                 id="decrement-button" type="button"
                                 onclick="updateQuantity({{ $product->id }}, 'decrement')">
-                                <!-- dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 dark:focus:ring-gray-700 -->
-                                <svg class="text-black-900 h-3 w-3 dark:text-black" aria-hidden="true"
+                                <svg class="text-black-900 h-3 w-3" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M1 1h16" />
@@ -281,12 +280,10 @@
                                 class="block h-12 w-full border border-x-0 border-divider text-center text-sm focus:outline-none"
                                 id="quantity-input-{{ $product->id }}" name="quantity" type="text" value="1"
                                 aria-describedby="helper-text-explanation" aria-valuenow="1" required />
-                            <!-- dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" -->
                             <button
                                 class="h-12 rounded-e border border-divider p-3 hover:bg-active-light focus:outline-none focus:ring-2 focus:ring-gray-100"
                                 id="increment-button" type="button"
                                 onclick="updateQuantity({{ $product->id }}, 'increment')">
-                                <!-- dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 dark:focus:ring-gray-700 -->
                                 <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 18 18">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -310,12 +307,12 @@
         </section>
 
         <!-- Feature Section  -->
-        <section class="bg-white dark:bg-gray-900">
+        <section class="bg-white">
             <div class="sm:py-18 mx-auto max-w-screen-xl px-4 py-24 lg:px-6">
                 <div class="space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3">
                     <div class="flex flex-col items-center">
                         <div
-                            class="dark:bg-primary-900 mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#abaeb1]">
+                            class="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#abaeb1]">
                             <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary">
                                 <svg class="icon icon-tabler icon-tabler-discount-check"
                                     xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
@@ -328,10 +325,10 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="mb-2 text-xl font-bold dark:text-white">
+                        <h3 class="mb-2 text-xl font-bold">
                             100% Original
                         </h3>
-                        <p class="text-center text-gray-500 dark:text-gray-400">
+                        <p class="text-center text-gray-500">
                             Plan it, create it, launch it. Collaborate seamlessly
                             with all the organization and hit your marketing goals
                             every month with our marketing plan.
@@ -340,7 +337,7 @@
 
                     <div class="flex flex-col items-center">
                         <div
-                            class="dark:bg-primary-900 mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#abaeb1]">
+                            class="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#abaeb1]">
                             <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary">
                                 <svg class="icon icon-tabler icon-tabler-clock" xmlns="http://www.w3.org/2000/svg"
                                     width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5"
@@ -351,10 +348,10 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="mb-2 text-xl font-bold dark:text-white">
+                        <h3 class="mb-2 text-xl font-bold">
                             10 Day Replacement
                         </h3>
-                        <p class="text-center text-gray-500 dark:text-gray-400">
+                        <p class="text-center text-gray-500">
                             Plan it, create it, launch it. Collaborate seamlessly
                             with all the organization and hit your marketing goals
                             every month with our marketing plan.
@@ -363,7 +360,7 @@
 
                     <div class="flex flex-col items-center">
                         <div
-                            class="dark:bg-primary-900 mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#abaeb1]">
+                            class="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#abaeb1]">
                             <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary">
                                 <svg class="icon icon-tabler icon-tabler-shield" xmlns="http://www.w3.org/2000/svg"
                                     width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5"
@@ -374,10 +371,10 @@
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="mb-2 text-xl font-bold dark:text-white">
+                        <h3 class="mb-2 text-xl font-bold">
                             1 Year Warranty
                         </h3>
-                        <p class="text-center text-gray-500 dark:text-gray-400">
+                        <p class="text-center text-gray-500">
                             Plan it, create it, launch it. Collaborate seamlessly
                             with all the organization and hit your marketing goals
                             every month with our marketing plan.

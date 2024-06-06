@@ -103,7 +103,7 @@
                                                                 class="h-9 rounded-s border border-divider p-3 text-black hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100"
                                                                 type="button"
                                                                 onclick="updateQuantity({{ $item->id }}, 'decrement')">
-                                                                <svg class="text-black-900 h-3 w-3 dark:text-black"
+                                                                <svg class="text-black-900 h-3 w-3"
                                                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                                     fill="none" viewBox="0 0 18 2">
                                                                     <path stroke="currentColor" stroke-linecap="round"
@@ -119,7 +119,7 @@
                                                                 class="h-9 rounded-e border border-divider p-3 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100"
                                                                 type="button"
                                                                 onclick="updateQuantity({{ $item->id }}, 'increment')">
-                                                                <svg class="h-3 w-3 text-gray-900 dark:text-black"
+                                                                <svg class="h-3 w-3 text-gray-900"
                                                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                                     fill="none" viewBox="0 0 18 18">
                                                                     <path stroke="currentColor" stroke-linecap="round"

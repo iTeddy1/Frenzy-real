@@ -39,8 +39,8 @@
                 class="group absolute left-44 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
                 id="data-carousel-prev" type="button">
                 <span
-                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
-                    <svg class="h-4 w-4 text-white dark:text-gray-800" aria-hidden="true"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white">
+                    <svg class="h-4 w-4 text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M5 1 1 5l4 4" />
@@ -52,8 +52,8 @@
                 class="group absolute right-44 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
                 id="data-carousel-next" type="button">
                 <span
-                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
-                    <svg class="h-4 w-4 text-white dark:text-gray-800" aria-hidden="true"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white">
+                    <svg class="h-4 w-4 text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 9 4-4-4-4" />
@@ -69,11 +69,11 @@
         <div class="mt-10 flex">
             <div>
                 <form class="mx-auto max-w-md" action="#" method="GET">
-                    <label class="sr-only mb-2 text-sm font-medium text-text-dark dark:text-white"
+                    <label class="sr-only mb-2 text-sm font-medium text-text-dark"
                         for="product-search">Search</label>
                     <div class="relative">
                         <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-                            <svg class="h-4 w-4 text-text-normal dark:text-text-normal" aria-hidden="true"
+                            <svg class="h-4 w-4 text-text-normal" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -82,7 +82,7 @@
                         <input
                         name="query"
                         type="search"
-                        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-text-normal focus:border-divider focus:ring-primary dark:border-divider dark:bg-background-default-dark dark:text-white dark:placeholder-gray-400 dark:focus:border-primary dark:focus:ring-primary"
+                        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-text-normal focus:border-divider focus:ring-primary"
                         id="product-search" 
                         placeholder="Search..." 
                         required />

@@ -88,7 +88,7 @@
                                     class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:outline-none focus:ring-indigo-500"
                                     id="remember_me" name="remember" type="checkbox" checked>
                                 <span
-                                    class="ml-2 text-[16px] text-white dark:text-gray-300 lg:text-gray-700">{{ __("Remember me") }}</span>
+                                    class="ml-2 text-[16px] text-white lg:text-gray-700">{{ __("Remember me") }}</span>
                             </label>
                         </div>
 

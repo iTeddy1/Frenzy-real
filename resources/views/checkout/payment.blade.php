@@ -63,7 +63,7 @@
                     @csrf
                     <div class="h-fit rounded border border-divider md:w-2/3">
                         <h1 class="my-4 px-4 text-2xl font-bold">Payment</h1>
-                        <div class="p-4 dark:border-gray-700 dark:bg-background-default-dark">
+                        <div class="p-4">
                             <!-- Payment Method -->
                             <div class="mb-6">
                                 <div class="w-full max-w-2xl rounded-md">
@@ -95,7 +95,7 @@
 
                             <div class="mt-8 flex max-w-2xl justify-end">
                                 <button
-                                    class="rounded border bg-primary px-8 py-2 text-white hover:bg-primary-dark dark:bg-teal-600 dark:text-white dark:hover:bg-teal-900"
+                                    class="rounded border bg-primary px-8 py-2 text-white hover:bg-primary-dark"
                                     type="submit">
                                     Place Order
                                 </button>

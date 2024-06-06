@@ -40,11 +40,11 @@
 
     {{-- main --}}
     <div
-        class="flex flex-col items-start justify-start gap-2.5 self-stretch rounded-[10px] border border-divider bg-white py-5 shadow">
+        class="flex flex-col items-start justify-start gap-2.5 self-stretch rounded border border-divider bg-white py-5 shadow">
         {{-- filter --}}
         <div class="flex items-center justify-center gap-4 self-stretch px-4">
             <select
-                class="flex w-[200px] items-center justify-between self-stretch rounded-[5px] border border-divider p-2.5 text-opacity-50 focus:outline-none"
+                class="flex w-[200px] items-center justify-between self-stretch rounded-small border border-divider p-2.5 text-opacity-50 focus:outline-none"
                 id="status" name="status">
                 <option value="">Status</option>
                 <option value="in_stock">In stock</option>
@@ -54,18 +54,18 @@
             <div class="align-center relative flex shrink grow basis-0 justify-start self-stretch">
 
                 <form class="ml-auto" action='{{route("admin.products.index")}}' method="GET">
-                    <label class="sr-only mb-2 text-sm font-medium text-text-dark dark:text-white"
+                    <label class="sr-only mb-2 text-sm font-medium text-text-dark"
                         for="admin-search">Search</label>
                     <div class="relative">
                         <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-                            <svg class="h-4 w-4 text-text-normal dark:text-text-normal" aria-hidden="true"
+                            <svg class="h-4 w-4 text-text-normal" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
                         <input
-                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-text-normal focus:border-divider focus:ring-primary dark:border-divider dark:bg-background-default-dark dark:text-white dark:placeholder-gray-400 dark:focus:border-primary dark:focus:ring-primary"
+                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-text-normal focus:border-divider focus:ring-primary "
                             id="admin-search" name="query" type="search" placeholder="Search..." required />
 
                     </div>

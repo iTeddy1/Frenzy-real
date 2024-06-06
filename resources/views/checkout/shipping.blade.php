@@ -85,61 +85,61 @@
                     <div class="flex flex-col gap-12 md:flex-row">
                         <div class="rounded border border-divider md:w-2/3">
                             <h1 class="my-4 px-4 text-2xl font-bold">Address</h1>
-                            <div class="rounded p-4 shadow-md dark:border-gray-700 dark:bg-gray-800">
+                            <div class="rounded p-4 shadow-md">
                                 <!-- Shipping Address -->
                                 <div class="mb-6">
                                     <div class="grid grid-cols-2 gap-8">
                                         <div>
-                                            <label class="mb-2 block text-text-light dark:text-white" for="first_name">
+                                            <label class="mb-2 block text-text-light" for="first_name">
                                                 First Name
                                             </label>
                                             <input name="first_name"
-                                                class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-gray-700 dark:text-white"
+                                                class="w-full rounded-small border px-3 py-2"
                                                 id="first_name" type="text" required />
                                         </div>
                                         <div>
-                                            <label class="mb-2 block text-text-light dark:text-white" for="last_name">
+                                            <label class="mb-2 block text-text-light" for="last_name">
                                                 Last Name
                                             </label>
                                             <input name="last_name"
-                                                class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-gray-700 dark:text-white"
+                                                class="w-full rounded-small border px-3 py-2"
                                                 id="last_name" type="text" required />
                                         </div>
                                     </div>
 
                                     <div class="mt-4">
-                                        <label class="mb-2 block text-text-light dark:text-white" for="address">
+                                        <label class="mb-2 block text-text-light" for="address">
                                             Address
                                         </label>
                                         <input name="address"
-                                            class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-gray-700 dark:text-white"
+                                            class="w-full rounded-small border px-3 py-2"
                                             id="address" type="text" required />
                                     </div>
 
                                     <div class="mt-4">
-                                        <label class="mb-2 block text-text-light dark:text-white" for="city">
+                                        <label class="mb-2 block text-text-light" for="city">
                                             City
                                         </label>
                                         <input name="city"
-                                            class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-gray-700 dark:text-white"
+                                            class="w-full rounded-small border px-3 py-2"
                                             id="city" type="text" required />
                                     </div>
 
                                     <div class="mt-4 grid grid-cols-2 gap-8">
                                         <div>
-                                            <label class="mb-2 block text-text-light dark:text-white" for="phone">
+                                            <label class="mb-2 block text-text-light" for="phone">
                                                 Phone
                                             </label>
                                             <input name="phone_number"
-                                                class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-gray-700 dark:text-white"
+                                                class="w-full rounded-small border px-3 py-2"
                                                 id="phone_number" type="text" required />
                                         </div>
                                         <div>
-                                            <label class="mb-2 block text-text-light dark:text-white" for="shippingOption">
+                                            <label class="mb-2 block text-text-light" for="shippingOption">
                                                 Delivery options
                                             </label>
                                             <select
-                                                class="w-full rounded-small border px-3 py-2 dark:border-none dark:bg-background-paper-dark dark:text-white"
+                                                class="w-full rounded-small border px-3 py-2"
                                                 id="" name="delivery_option">
                                                 <option value="0">Standard delivery (Free)</option>
                                                 <option value="25">Fast delivery ($2)</option>
