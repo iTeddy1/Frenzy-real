@@ -13,7 +13,7 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center bg-background-default-dark">
-            <div class="w-full p-4 overflow-hidden sm:rounded-lg ">
+            <div class="w-full overflow-hidden sm:rounded-lg ">
                 {{ $slot }}
             </div>
         </div>

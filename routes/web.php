@@ -49,12 +49,11 @@ Route::middleware(['auth', 'verified'])->prefix('user')->name('user.')->group(fu
     Route::post('/checkout/shipping', [CheckoutController::class, 'storeShipping'])->name('checkout.storeShipping');
 
     Route::get('/checkout/payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
-    Route::post('/checkout/payment', [CheckoutController::class, 'momo_payment'])->name('checkout.storePayment');
+    Route::post('/checkout/payment', [CheckoutController::class, 'storePayment'])->name('checkout.storePayment');
 
     Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 
     // Cart 
-    // Route::get('/checkout/cart/index', [CheckoutController::class, 'cart'])->name('checkout.cart');
     Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
     Route::get('/cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
     

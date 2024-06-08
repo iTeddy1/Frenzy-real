@@ -83,7 +83,7 @@
             <div class="h-screen pt-12 ">
                 <div class="container mx-auto">
                     <div class="flex flex-col gap-12 lg:flex-row">
-                        <div class="rounded border border-divider lg:w-2/3">
+                        <div class="rounded border border-divider lg:w-2/3 bg-white">
                             <h1 class="my-4 px-4 text-2xl font-bold">Address</h1>
                             <div class="rounded p-4 shadow-md">
                                 <!-- Shipping Address -->
@@ -164,10 +164,6 @@
                                 <div class="mb-2 flex justify-between">
                                     <span class="text-text-light">Subtotal</span>
                                     <span>{{ number_format($total) }}₫</span>
-                                </div>
-                                <div class="mb-2 flex justify-between">
-                                    <span class="text-text-light">Taxes</span>
-                                    <span>0₫</span>
                                 </div>
                                 <div class="mb-2 flex justify-between">
                                     <span class="text-text-light">Shipping</span>

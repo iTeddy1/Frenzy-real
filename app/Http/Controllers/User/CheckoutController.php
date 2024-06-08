@@ -49,11 +49,19 @@ class CheckoutController extends Controller
         return view('checkout.payment', ['cart' => $cart, 'shipping' => $shipping]);
     }
 
-    public function momo_payment(Request $request)
+    public function storePayment(Request $request)
     {
         // 9704000000000018
         // NGUYEN VAN A
         // 03/07
+        $paymentMethod = $request->input('payment_method');
+        session(['payment_method' => $paymentMethod]);
+
+        if($paymentMethod === 'cod') {
+            return redirect()->route('user.checkout.success');
+        }
+
+
         $cart = Auth::user()->cart;
         $amount = "$cart->total";
 
@@ -61,7 +69,7 @@ class CheckoutController extends Controller
         $partnerCode = env('PAYMENT_PARTNER_CODE');
         $accessKey = env('PAYMENT_ACCESS_KEY');
         $secretKey = env('PAYMENT_SECRET_KEY');
-        // dd($endpoint, $partnerCode, $accessKey, $secretKey);
+
         $orderInfo = "Thanh toán qua MoMo";
         $orderId = time() . "";
         $returnUrl = "http://localhost:8000/user/checkout/success";
@@ -124,11 +132,21 @@ class CheckoutController extends Controller
         $cart = $user->cart;
         $shipping = $user->addresses->first();
 
-        // Delete the cart and its items
-        $cart->items()->delete();
-        $cart->delete();
+        // Create the order
+        $order = new Order([
+            'user_id' => $user->id,
+            'cart_id' => $cart->id,
+            'payment_method' => session('payment_method'), // 'atm' or 'cod
+            'total' => $cart->total,
+        ]);
+        $order->save();
 
-        return view('checkout.success', ['shipping' => $shipping]);
+        // Delete the cart and its items
+        // $cart->items()->delete();
+        // $user->addresses->first()->delete();
+        // $cart->delete();
+
+        return view('checkout.success', ['shipping' => $shipping, 'order' => $order]);
     }
 }
 

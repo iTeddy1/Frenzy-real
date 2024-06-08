@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class, 'user_id')->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Cart::class, 'cart_id')->constrained()->cascadeOnDelete();
+            $table->string('payment_method')->default('cod');
             $table->integer('total');
             $table->timestamps();
         });

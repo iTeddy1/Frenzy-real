@@ -53,7 +53,6 @@ if (!empty($_GET)) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>MoMo Sandbox</title>
     <script type="text/javascript" src="./statics/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="./statics/moment/min/moment.min.js"></script>
     <script type="text/javascript" src="./statics/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -67,7 +66,7 @@ if (!empty($_GET)) {
     <section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
         <div class="mx-auto max-w-2xl px-4 2xl:px-0">
             <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl mb-2">Thanks for your order!</h2>
-            <p class="text-gray-500 dark:text-gray-400 mb-6 md:mb-8">Your order <a href="#" class="font-medium text-gray-900 dark:text-white hover:underline">#{{ $orderId }}</a> will be processed within 24 hours during working days. We will notify you by email once your order has been shipped.</p>
+            {{-- <p class="text-gray-500 dark:text-gray-400 mb-6 md:mb-8">Your order <a href="#" class="font-medium text-gray-900 dark:text-white hover:underline">#{{ $orderId }}</a> will be processed within 24 hours during working days. We will notify you by email once your order has been shipped.</p> --}}
             <div class="space-y-4 sm:space-y-2 rounded-lg border border-gray-100 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800 mb-6 md:mb-8">
                 <dl class="sm:flex items-center justify-between gap-4">
                     <dt class="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400">Date</dt>
@@ -75,11 +74,11 @@ if (!empty($_GET)) {
                 </dl>
                 <dl class="sm:flex items-center justify-between gap-4">
                     <dt class="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400">Payment Method</dt>
-                    <dd class="font-medium text-gray-900 dark:text-white sm:text-end">{{ $payType }}</dd>
+                    <dd class="font-medium text-gray-900 dark:text-white sm:text-end">{{ $order->payment_method }}</dd>
                 </dl>
                 <dl class="sm:flex items-center justify-between gap-4">
                     <dt class="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400">Name</dt>
-                    <dd class="font-medium text-gray-900 dark:text-white sm:text-end">{{ $shipping->first_name . $shipping->last_name}}</dd>
+                    <dd class="font-medium text-gray-900 dark:text-white sm:text-end">{{ $shipping->first_name . ' ' . $shipping->last_name}}</dd>
                 </dl>
                 <dl class="sm:flex items-center justify-between gap-4">
                     <dt class="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400">Address</dt>

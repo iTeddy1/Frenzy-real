@@ -56,9 +56,9 @@
         {{-- Cart table  --}}
         <div class="h-screen pt-12">
             <div class="container mx-auto">
-                <div class="flex flex-col gap-4 lg:flex-row">
-                    <div class="w-full rounded border shadow-md lg:w-3/4">
-                        <div class="mx-4 flex flex-col">
+                <div class="flex flex-col gap-4 lg:flex-row ">
+                    <div class="w-full rounded border shadow-md lg:w-3/4 bg-white">
+                        <div class="mx-4 flex flex-col ">
                             <h1 class="mt-4 text-2xl font-bold">Cart</h1>
                             <span class="mb-6">
                                 @if($cart)
@@ -218,12 +218,10 @@
             </div>
         </div>
     </div>
-
     <script>
         function updateQuantity(itemId, operation) {
             let quantityInput = document.getElementById('quantity-input-' + itemId);
             let currentQuantity = +(quantityInput.value);
-
             if (operation === 'increment') {
                 quantityInput.value = currentQuantity + 1;
             } else if (operation === 'decrement' && currentQuantity > 1) {

@@ -59,7 +59,7 @@
                 <form class="flex flex-col gap-12 lg:flex-row" action="{{ route("user.checkout.storePayment") }}"
                     method="POST">
                     @csrf
-                    <div class="h-fit rounded border border-divider lg:w-2/3 shadow-md">
+                    <div class="h-fit rounded border border-divider lg:w-2/3 shadow-md bg-white">
                         <h1 class="my-4 px-4 text-2xl font-bold">Payment</h1>
                         <div class="p-4">
                             <!-- Payment Method -->
@@ -68,7 +68,7 @@
                                     <div class="flex flex-col gap-2">
                                         <label
                                             class="my-3 flex cursor-pointer gap-8 rounded-small border border-divider px-3 py-4 text-text-dark hover:bg-background-neutral-light">
-                                            <input class="ml-2" name="Country" type="radio" />
+                                            <input class="ml-2" name="payment_method" value="atm" type="radio" />
                                             <div class="pl-2">
                                                 <p>Pay with Momo</p>
                                                 <p class="text-text-light">
@@ -79,7 +79,7 @@
 
                                         <label
                                             class="my-3 flex cursor-pointer gap-8 rounded-small border border-divider px-3 py-4 text-text-dark hover:bg-background-neutral-light">
-                                            <input class="ml-2" name="Country" type="radio" disabled/>
+                                            <input class="ml-2" name="payment_method" value="cod" type="radio"/>
                                             <div class="pl-2">
                                                 <p>Cash on deliver</p>
                                                 <p class="text-text-light">
