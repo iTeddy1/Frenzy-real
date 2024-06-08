@@ -141,10 +141,12 @@ class CheckoutController extends Controller
         ]);
         $order->save();
 
+        session()->forget('payment_method');
+
         // Delete the cart and its items
-        // $cart->items()->delete();
-        // $user->addresses->first()->delete();
-        // $cart->delete();
+        $cart->items()->delete();
+        $user->addresses->first()->delete();
+        $cart->delete();
 
         return view('checkout.success', ['shipping' => $shipping, 'order' => $order]);
     }

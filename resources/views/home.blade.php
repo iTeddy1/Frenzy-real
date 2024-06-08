@@ -26,7 +26,6 @@
                         id="product-search" 
                         placeholder="Search..." 
                         required />
-
                     </div>
                 </form>
             </div>
