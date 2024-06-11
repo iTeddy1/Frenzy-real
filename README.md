@@ -1,66 +1,47 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <a href="https://www.uit.edu.vn/" title="Trường Đại học Công nghệ Thông tin" style="border: none;">
+    <img src="https://i.imgur.com/WmMnSRt.png" alt="Trường Đại học Công nghệ Thông tin | University of Information Technology">
+  </a>
+</p>
+<p align="center">
+  <a href="http://maichedaimat.id.vn/wp-content/uploads/2024/06/logo.png" title="Frenzy" style="border: none;">
+    <img src="http://maichedaimat.id.vn/wp-content/uploads/2024/06/logo.png" alt="Logo Frenzy" width="70" height="70">
+  </a>
 </p>
 
-## About Laravel
+<h1 align="center"><b>Frenzy</b></h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### HƯỚNG DẪN CHẠY DỰ ÁN FRENZY
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Yêu cầu cài đặt
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Trình chỉnh sửa văn bản, VD: [Visual Studio Code](https://code.visualstudio.com/download)
+- Web server XAMPP để cài đặt Apache và PHP: [XAMPP](https://www.apachefriends.org/download.html)
+- Composer để quản lý các thư viện PHP: [Composer](https://getcomposer.org/download/)
+- Node.js: [Node.js](https://nodejs.org/en/download)
 
-## Learning Laravel
+## Cài đặt phần Backend
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Bước 1:** Chạy xampp và start Apache và MySQL, cạnh MySQL có button Admin, bấm vào để đến đến trang http://localhost/phpmyadmin/ . Tạo mới 1 database trong phpmyadmin, đặt tên database là frenzy.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**Bước 2:** Import cơ sở dữ liệu trong folder database từ [đây](https://github.com/iTeddy1/Frenzy-real) vào database của bạn.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Cài đặt phần Frontend
 
-## Laravel Sponsors
+**Bước 3:** Clone Project thông qua [link Github](https://github.com/iTeddy1/Frenzy-real).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**Bước 4:** Sau khi clone hoặc giải nén, mở project bằng Visual Code Studio, mở terminal và chạy các lệnh sau: `composer install` >> `php artisan serve` >> Vào đường dẫn http://localhost:8000/ để đi đến trang web.
 
-### Premium Partners
+**Bước 5:** Mở session mới trong terminal của Visual Code Studio (không tắt session cũ): `npm install` >> `npm run dev`.
+## Đăng nhập tài khoản sau để vào trang Admin
+Email: admin@example.com
+Password: 123123123
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## THÀNH VIÊN NHÓM
+| STT | MSSV     | Họ và Tên             | GitHub                                   | Email                  |
+| :-- | :------- | :-------------------- | :--------------------------------------- | :--------------------- |
+| 1   | 22521565 | Nguyễn Duy Trung      | https://github.com/iTeddy1               | 22521565@gm.uit.edu.vn |
+| 2   | 22521006 | Phùng Lê Toàn Nhân    | https://github.com/leenhan2104           | 22521006@gm.uit.edu.vn |
+| 3   | 22521024 | Phạm Quang Nhật       | https://github.com/Wnhatt                | 22521024@gm.uit.edu.vn |
+| 4   | 22521579 | Nguyễn Hữu Nam Trường | https://github.com/nguyenhuunamtruong    | 22521579@gm.uit.edu.vn |
+| 5   | 22521436 | Bùi Nguyễn Anh Thư    | https://github.com/Anh-Thu-1             | 22521436@gm.uit.edu.vn |
