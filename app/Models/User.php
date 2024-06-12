@@ -11,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
-    
+
     protected $guarded = ['id'];
 
     /**
@@ -19,6 +19,12 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+    
     public function addresses(): HasMany
     {
         return $this->hasMany(Address::class);

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Cart;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +16,15 @@ class OrderFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+
+    public function definition()
     {
         return [
-            //
+            'user_id' => 1,
+            'cart_id' => 1,
+            'payment_method' => fake()->randomElement(['cod', 'momo']),
+            'total' => fake()->numberBetween(1000, 5000),
+            'status' => fake()->randomElement(['pending', 'processing', 'shipped', 'delivered', 'cancelled']),
         ];
     }
 }

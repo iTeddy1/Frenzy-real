@@ -14,4 +14,19 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function status()
+    {
+        return $this->belongsTo(OrderStatus::class, 'status_id');
+    }
+
+    public function address()
+{
+    return $this->belongsToMany(Address::class, 'order_address');
+}
+
+    public function histories()
+    {
+        return $this->hasMany(OrderHistory::class);
+    }
 }

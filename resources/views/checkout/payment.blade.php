@@ -56,7 +56,7 @@
 
         <div class="mx-auto h-screen pt-12">
             <div class="container mx-auto">
-                <form class="flex flex-col gap-12 lg:flex-row" action="{{ route("user.checkout.storePayment") }}"
+                <form class="flex flex-col gap-12 lg:flex-row" action="{{ route("user.checkout.momoPayment") }}"
                     method="POST">
                     @csrf
                     <div class="h-fit rounded border border-divider lg:w-2/3 shadow-md bg-white">
