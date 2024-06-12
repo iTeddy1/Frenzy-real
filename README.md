@@ -18,7 +18,7 @@
 - Trình chỉnh sửa văn bản, VD: [Visual Studio Code](https://code.visualstudio.com/download)
 - Web server XAMPP để cài đặt Apache và PHP: [XAMPP](https://www.apachefriends.org/download.html)
 - Composer để quản lý các thư viện PHP: [Composer](https://getcomposer.org/download/)
-- Node.js: [Node.js](https://nodejs.org/en/download)
+- Tailwind: [Tailwind](https://tailwindcss.com/docs/installation)
 
 ## Cài đặt phần Backend
 
