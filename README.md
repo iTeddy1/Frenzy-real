@@ -11,6 +11,23 @@
 
 <h1 align="center"><b>Frenzy</b></h1>
 
+ ## THÀNH VIÊN NHÓM
+| STT | MSSV     | Họ và Tên             | GitHub                                   | Email                  |
+| :-- | :------- | :-------------------- | :--------------------------------------- | :--------------------- |
+| 1   | 22521565 | Nguyễn Duy Trung      | https://github.com/iTeddy1               | 22521565@gm.uit.edu.vn |
+| 2   | 22521006 | Phùng Lê Toàn Nhân    | https://github.com/leenhan2104           | 22521006@gm.uit.edu.vn |
+| 3   | 22521024 | Phạm Quang Nhật       | https://github.com/Wnhatt                | 22521024@gm.uit.edu.vn |
+| 4   | 22521579 | Nguyễn Hữu Nam Trường | https://github.com/nguyenhuunamtruong    | 22521579@gm.uit.edu.vn |
+| 5   | 22521436 | Bùi Nguyễn Anh Thư    | https://github.com/Anh-Thu-1             | 22521436@gm.uit.edu.vn |
+
+## GIỚI THIỆU MÔN HỌC
+* **Tên môn học:** Phát triển ứng dụng Web
+* **Mã môn học:** IS207
+* **Mã lớp:** IS207.O21
+* **Năm học:** HK2 (2023 - 2024)
+* **Giảng viên**: Nguyễn Dương Tùng
+
+ 
 ### HƯỚNG DẪN CHẠY DỰ ÁN FRENZY
 
 ## Yêu cầu cài đặt
@@ -37,11 +54,4 @@
 Email: admin@example.com
 Password: 123123123
 
-## THÀNH VIÊN NHÓM
-| STT | MSSV     | Họ và Tên             | GitHub                                   | Email                  |
-| :-- | :------- | :-------------------- | :--------------------------------------- | :--------------------- |
-| 1   | 22521565 | Nguyễn Duy Trung      | https://github.com/iTeddy1               | 22521565@gm.uit.edu.vn |
-| 2   | 22521006 | Phùng Lê Toàn Nhân    | https://github.com/leenhan2104           | 22521006@gm.uit.edu.vn |
-| 3   | 22521024 | Phạm Quang Nhật       | https://github.com/Wnhatt                | 22521024@gm.uit.edu.vn |
-| 4   | 22521579 | Nguyễn Hữu Nam Trường | https://github.com/nguyenhuunamtruong    | 22521579@gm.uit.edu.vn |
-| 5   | 22521436 | Bùi Nguyễn Anh Thư    | https://github.com/Anh-Thu-1             | 22521436@gm.uit.edu.vn |
+
