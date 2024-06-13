@@ -20,10 +20,15 @@ class Order extends Model
         return $this->belongsTo(OrderStatus::class, 'status_id');
     }
 
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
     public function address()
-{
-    return $this->belongsToMany(Address::class, 'order_address');
-}
+    {
+        return $this->hasOneThrough(Address::class, OrderAddress::class, 'order_id', 'id', 'id', 'address_id');
+    }
 
     public function histories()
     {

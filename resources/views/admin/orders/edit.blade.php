@@ -8,10 +8,10 @@
             Edit order
             {{-- road map --}}
         </div>
-        {{-- {{ Breadcrumbs::render("admin.orders.edit", $order) }} --}}
+        {{ Breadcrumbs::render("admin.orders.edit", $orderDetails) }}
     </div>
         {{-- form --}}
-    <form class="flex w-full gap-2.5" id="order" action="{{ route("admin.orders.update", $order->id) }}" method="POST">
+    <form class="flex w-full gap-2.5" id="order" action="{{ route("admin.orders.update", $orderDetails->id) }}" method="POST">
         @csrf
         @method("PATCH")
 
@@ -22,12 +22,12 @@
                 <div class="block w-1/2">
                     <div class="text-base font-semibold leading-tight text-gray-400">Order Id</div>
                     <input class=" self-stretch rounded border border-zinc-300 bg-white p-2.5 focus:outline-none" id="name"
-                        name="name" value="{{ $order->id }}" disabled/>
+                        name="name" value="{{ $orderDetails->id }}" disabled/>
                 </div>
                 <div class="w-1/2">
                     <div class="text-base font-semibold leading-tight text-gray-400">Customer</div>
                     <input class="self-stretch rounded border border-zinc-300 bg-white p-2.5 focus:outline-none" id="name"
-                        name="name" value="{{ $order->user->first_name }}" />
+                        name="name" value="{{ $orderDetails->user->first_name }}" />
                 </div>
             </div>
             <div class="text-base font-semibold leading-tight text-gray-400">Status</div>
@@ -65,7 +65,19 @@
             </div>
             <div  class="w-full">
                 <div class="text-base font-semibold leading-tight text-gray-400">Street Address</div>
-                <input class="w-full mt-2 self-stretch rounded border border-zinc-300 bg-white p-2.5 focus:outline-none" id="name" /> 
+                <div class="flex justify-between">
+                    <select class="rounded-small border px-3 py-2" name="city" id="city" required>
+                      <option class="p-2" value="{{ $orderDetails->address->city}}" selected>{{ $orderDetails->address->city}}</option>           
+                      </select>
+                                
+                      <select class="rounded-small border px-3 py-2" name="district" id="district" required>
+                      <option class="p-2" value="{{ $orderDetails->address->district}}" selected>{{ $orderDetails->address->district}}</option>
+                      </select>
+                      
+                      <select class="rounded-small border px-3 py-2" name="ward" id="ward" required>
+                      <option class="p-2" value="{{ $orderDetails->address->ward}}" selected>{{ $orderDetails->address->ward}}</option>
+                    </select>                     
+                  </div>
             </div>
         </div>
 
@@ -81,7 +93,7 @@
                     Created at
                 </div>
                 <div>
-                    {{ $order->created_at->format("d M Y")}}
+                    {{ $orderDetails->created_at->format("d M Y")}}
                 </div>
             </div>
 
@@ -90,7 +102,7 @@
                     Last modified at
                 </div>
                 <div>
-                    {{ $order->updated_at->format("d M Y")}}
+                    {{ $orderDetails->updated_at->format("d M Y")}}
                 </div>
             </div>
             <div class="self-stretch text-base font-semibold leading-tight text-gray-400">
@@ -111,4 +123,59 @@
         </div>
     </form>
 </div>
+
+<script>
+    var cities = document.getElementById("city");
+    var districts = document.getElementById("district");
+    var wards = document.getElementById("ward");
+    var Parameter = {
+      url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json", 
+      method: "GET", 
+      responseType: "application/json", 
+    };
+    var promise = axios(Parameter);
+    promise.then(function (result) {
+      renderCity(result.data);
+    });
+
+    function renderCity(data) {
+      for (const x of data) {
+      var opt = document.createElement('option');
+      opt.value = x.Name;
+      opt.text = x.Name;
+      opt.setAttribute('data-id', x.Id);
+      cities.options.add(opt);
+      }
+      cities.onchange = function () {
+        district.length = 1;
+        ward.length = 1;
+        if(this.options[this.selectedIndex].dataset.id != ""){
+          const result = data.filter(n => n.Id === this.options[this.selectedIndex].dataset.id);
+
+          for (const k of result[0].Districts) {
+        var opt = document.createElement('option');
+        opt.value = k.Name;
+        opt.text = k.Name;
+        opt.setAttribute('data-id', k.Id);
+        district.options.add(opt);
+          }
+        }
+      };
+      district.onchange = function () {
+        ward.length = 1;
+        const dataCity = data.filter((n) => n.Id === cities.options[cities.selectedIndex].dataset.id);
+        if (this.options[this.selectedIndex].dataset.id != "") {
+          const dataWards = dataCity[0].Districts.filter(n => n.Id === this.options[this.selectedIndex].dataset.id)[0].Wards;
+
+          for (const w of dataWards) {
+        var opt = document.createElement('option');
+        opt.value = w.Name;
+        opt.text = w.Name;
+        opt.setAttribute('data-id', w.Id);
+        wards.options.add(opt);
+          }
+        }
+      };
+    }
+</script>
 @endsection

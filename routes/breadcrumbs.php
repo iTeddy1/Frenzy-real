@@ -42,6 +42,26 @@ Breadcrumbs::for('admin.products.show', function (BreadcrumbTrail $trail, $produ
   $trail->push('Show Product', route('admin.products.show', $product->id));
 });
 
+// Home > Orders  
+Breadcrumbs::for('admin.orders', function (BreadcrumbTrail $trail) {
+  $trail->parent('home');
+  $trail->push('Orders', route('admin.orders.index'));
+});
+
+// Home > Orders > Show Order
+Breadcrumbs::for('admin.orders.show', function (BreadcrumbTrail $trail, $order) {
+  $trail->parent('home');
+  $trail->push('Orders', route('admin.orders.index'));
+  $trail->push('Show Order', route('admin.orders.show', $order));
+});
+
+// Home > Orders > Edit Order
+Breadcrumbs::for('admin.orders.edit', function (BreadcrumbTrail $trail, $order) {
+  $trail->parent('home');
+  $trail->push('Orders', route('admin.orders.index'));
+  $trail->push('Edit Order', route('admin.orders.edit', $order));
+});
+
 // Contact
 Breadcrumbs::for('contact', function (BreadcrumbTrail $trail) {
   $trail->parent('home');
@@ -72,4 +92,17 @@ Breadcrumbs::for('user.checkout.shipping', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('user.checkout.payment', function (BreadcrumbTrail $trail) {
   $trail->parent('home');
   $trail->push('Checkout', route('user.checkout.cart'));
+});
+
+// Home > Orders
+Breadcrumbs::for('user.orders', function (BreadcrumbTrail $trail) {
+  $trail->parent('home');
+  $trail->push('Orders', route('user.orders.index'));
+});
+
+// Home > Orders > Show Order
+Breadcrumbs::for('user.orders.show', function (BreadcrumbTrail $trail, $order) {
+  $trail->parent('home');
+  $trail->push('Orders', route('user.orders.index'));
+  $trail->push('Show Order', route('user.orders.show', $order));
 });

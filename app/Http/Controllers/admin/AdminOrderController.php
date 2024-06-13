@@ -24,7 +24,10 @@ class AdminOrderController extends Controller
 
     public function edit(Order $order)
     {
-        return view('admin.orders.edit', compact('order'));
+        $orderDetails = Order::with(['items.product', 'address', 'status'])
+        ->findOrFail($order->id);
+        // dd($orderDetails);
+        return view('admin.orders.edit', compact('orderDetails'));
     }
 
     // Admin: Update order status

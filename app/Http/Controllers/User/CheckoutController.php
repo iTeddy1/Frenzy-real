@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\Order;
 use App\Models\OrderHistory;
+use App\Models\OrderItem;
 use App\Models\OrderStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class CheckoutController extends Controller
@@ -23,6 +25,7 @@ class CheckoutController extends Controller
     public function shipping()
     {
         $cart = Auth::user()->cart;
+
         return view('checkout.shipping', ['total' => $cart->total]);
     }
 
@@ -35,6 +38,8 @@ class CheckoutController extends Controller
             'last_name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:255',
+            'district' => 'required|string|max:255',
+            'ward' => 'required|string|max:255',
             'phone_number' => 'required|string|max:15',
             // 'delivery_option' => 'required|in:0,25'
         ]);
@@ -129,6 +134,16 @@ class CheckoutController extends Controller
 
         $order = Order::create($orderData);
 
+        // Create order items
+        foreach ($cart->items as $item) {
+            OrderItem::create([
+                'order_id' => $order->id,
+                'product_id' => $item->product_id,
+                'quantity' => $item->quantity,
+                'price' => $item->price,
+            ]);
+        }
+
         OrderHistory::create([
             'order_id' => $order->id,
             'status_id' => OrderStatus::where('status', 'pending')->first()->id,
@@ -170,9 +185,9 @@ class CheckoutController extends Controller
     {
         $order = session('order');
         $shipping = (DB::table('addresses')
-        ->join('order_address', 'addresses.id', '=', 'order_address.address_id')
-        ->where('order_address.order_id', $order->id)
-        ->first());
+            ->join('order_address', 'addresses.id', '=', 'order_address.address_id')
+            ->where('order_address.order_id', $order->id)
+            ->first());
         Log::info($order);
 
         return view('checkout.success', ['shipping' => $shipping, 'order' => $order]);

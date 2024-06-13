@@ -5,7 +5,7 @@
 <div class="transition-transform mx-auto w-full max-w-screen-2xl px-4 md:px-6 2xl:px-8">
         <div class="mb-10">
             <h1 class="text-2xl font-bold">Order Details</h1>
-            {{-- {{ Breadcrumbs::render('products.show', $product) }} --}}
+            {{ Breadcrumbs::render('user.orders.show', $order) }}
         </div>
         <div class="container">
             <h1>Order Details</h1>
@@ -18,15 +18,17 @@
         
             <div>
                 <h3>Shipping Address</h3>
-                <p>{{ $order->address->first()->first_name }} {{ $order->address->first()->last_name }}</p>
-                <p>{{ $order->address->first()->address }}</p>
-                <p>{{ $order->address->first()->city }}</p>
-                <p>{{ $order->address->first()->phone_number }}</p>
+                @if ($orderDetails->address)
+                    <p>{{ $orderDetails->address->first_name }} {{ $orderDetails->address->last_name }}</p>
+                    <p>{{ $orderDetails->address->address }}</p>
+                    <p>{{ $orderDetails->address->city }}</p>
+                    <p>{{ $orderDetails->address->phone_number }}</p>
+                @endif
             </div>
         
             <div>
                 <h3>Order Items</h3>
-                {{-- <table class="table">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Product</th>
@@ -35,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($order->items as $item)
+                        @foreach($orderDetails->items as $item)
                             <tr>
                                 <td>{{ $item->product->name }}</td>
                                 <td>{{ $item->quantity }}</td>
@@ -43,7 +45,7 @@
                             </tr>
                         @endforeach
                     </tbody>
-                </table> --}}
+                </table>
             </div>
         </div>
 

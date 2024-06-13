@@ -111,6 +111,9 @@
                                 <p>{{$shipping['address']}}</p>
                             </div>
                             <div class="mb-1.5 flex justify-between">
+                                <span>{{$shipping['ward'] . ', ' . $shipping['district'] . ', ' . $shipping['city']}}</span>
+                            </div>
+                            <div class="mb-1.5 flex justify-between">
                                 <span>{{$shipping['phone_number']}}</span>
                             </div>
                         </div>
