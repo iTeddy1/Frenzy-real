@@ -39,17 +39,17 @@
 
 ## Cài đặt phần Backend
 
-**Bước 1:** Chạy xampp và start Apache và MySQL, cạnh MySQL có button Admin, bấm vào để đến đến trang http://localhost/phpmyadmin/ . Tạo mới 1 database trong phpmyadmin, đặt tên database là frenzy.
+**Bước 1:** Chạy xampp và start Apache và MySQL
 
-**Bước 2:** Import cơ sở dữ liệu trong folder database từ [đây](https://github.com/iTeddy1/Frenzy-real) vào database của bạn.
+**Bước 2:** Mở project bằng VSCode , mở terminal và chạy các lệnh sau: `npm i` >>`composer i` >>`php artisan migrate ` >>`php artisan migrate:fresh --seed`  để import cơ sở dữ liệu trong folder database từ [đây](https://github.com/iTeddy1/Frenzy-real) vào database của bạn.
 
 ## Cài đặt phần Frontend
 
 **Bước 3:** Clone Project thông qua [link Github](https://github.com/iTeddy1/Frenzy-real).
 
-**Bước 4:** Sau khi clone hoặc giải nén, mở project bằng Visual Code Studio, mở terminal và chạy các lệnh sau: `composer install` >> `php artisan serve` >> Vào đường dẫn http://localhost:8000/ để đi đến trang web.
+**Bước 4:** Sau khi clone hoặc giải nén, mở project bằng Visual Code Studio, mở terminal và chạy các lệnh sau: `php artisan serve` >> Vào đường dẫn http://localhost:8000/ để đi đến trang web.
 
-**Bước 5:** Mở session mới trong terminal của Visual Code Studio (không tắt session cũ): `npm install` >> `npm run dev`.
+**Bước 5:** Mở session mới trong terminal của Visual Code Studio (không tắt session cũ): `npm run dev`.
 ## Đăng nhập tài khoản sau để vào trang Admin
 Email: admin@example.com
 Password: 123123123
