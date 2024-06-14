@@ -41,7 +41,9 @@
 
 **Bước 1:** Chạy xampp và start Apache và MySQL
 
-**Bước 2:** Mở project bằng VSCode , mở terminal và chạy các lệnh sau: `npm i` >>`composer i` >>`php artisan migrate ` >>`php artisan migrate:fresh --seed`  để import cơ sở dữ liệu trong folder database từ [đây](https://github.com/iTeddy1/Frenzy-real) vào database của bạn.
+**Bước 2:** Tạo file dữ liệu json với đường dẫn: storage/app/json/nike_db.json
+
+**Bước 3:** Mở project bằng VSCode, mở terminal và chạy các lệnh sau: `npm i` >>`composer i` >>`php artisan migrate ` >>`php artisan migrate:fresh --seed`  để import cơ sở dữ liệu trong folder database từ [đây](https://github.com/iTeddy1/Frenzy-real/blob/main/database/data/nike_db.json) vào database của bạn.
 
 ## Cài đặt phần Frontend
 
