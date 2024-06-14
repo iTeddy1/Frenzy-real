@@ -1,27 +1,24 @@
-@php
-  $status = $orderstatus ?? 'pending';
-  $color = '';
+@props(["status" => ""])
+@switch($status)
+    @case("pending")
+        <div class="flex justify-center rounded text-white bg-secondary">{{ $status }}</div>
+    @break
 
-  switch ($status) {
-    case 'pending':
-      $color = 'yellow';
-      break;
-    case 'processing':
-      $color = 'blue';
-      break;
-    case 'shipped':
-      $color = 'green';
-      break;
-    case 'delivered':
-      $color = 'teal';
-      break;
-    case 'cancelled':
-      $color = 'red';
-      break;
-    default:
-      $color = 'gray';
-      break;
-  }
-@endphp
+    @case("processing")
+        <div class="flex justify-center rounded text-white bg-warning">{{ $status }}</div>
+    @break
 
-<span class="status-tag bg-{{ $color }}">{{ ucfirst($status) }}</span>
+    @case("shipped")
+        <div class="flex justify-center rounded text-white bg-primary-dark">{{ $status }}</div>
+    @break
+
+    @case("delivered")
+        <div class="flex justify-center rounded text-white bg-primary">{{ $status }}</div>
+    @break
+
+    @case("cancelled")
+        <div class="flex justify-center rounded text-white bg-error">{{ $status }}</div>
+    @break
+
+    @default
+@endswitch

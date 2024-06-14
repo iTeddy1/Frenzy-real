@@ -113,7 +113,7 @@
                                     <!-- Active: "ring-2 ring-indigo-500" -->
                                     <div>
                                         <label
-                                            class="flex h-12 cursor-not-allowed items-center justify-center rounded-md border text-base text-gray-200 hover:bg-gray-50 focus:outline-none sm:flex-1"
+                                            class="flex h-12 cursor-pointer items-center justify-center rounded-md border bg-white text-base text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none peer-checked:border-active sm:flex-1"
                                             for="size-choice-0-label">
                                             <input class="peer sr-only" id="size-choice-0-label" name="size-choice"
                                                 type="radio" required value="37" />

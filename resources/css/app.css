@@ -25,3 +25,9 @@ body {
   text-align: left;
   background-color: #f8fafc;
 }
+
+.active-link {
+  background-color: #C8FBCD;
+  transform: scale(0.95);
+  color: #00AC55;
+}

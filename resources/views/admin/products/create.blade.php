@@ -22,11 +22,11 @@
                 <div class="text-base font-semibold leading-tight text-gray-400">Description</div>
                 <textarea class="h-[200px] self-stretch rounded border border-zinc-300 p-2.5 focus:outline-none" id="description"
                     name="description" placeholder="Write something awesome..."></textarea>
-                <div class="text-base font-semibold leading-tight text-gray-400">Images</div>
+                <div class="text-base font-semibold leading-tight text-gray-400">Images <u>(5 images)</u></div>
                 {{-- <x-forms.input-error :messages="$errors->get('image')" class="mt-2" /> --}}
                 <div class="flex flex-col w-full items-center justify-center">
                     <label
-                        class="flex bg-gray-800 hover:bg-gray-700 text-white text-base px-5 py-3 outline-none rounded w-max cursor-pointer mx-auto "
+                        class="flex bg-primary hover:bg-primary-light text-white text-base px-5 py-3 outline-none rounded w-max cursor-pointer mx-auto "
                         for="images">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 mr-2 fill-white inline" viewBox="0 0 32 32">
                             <path
@@ -38,7 +38,7 @@
                           </svg>
                           Upload
                     </label>
-                        <input class="hidden" id="images" name="assets[]" type="file" min="5" multiple/>
+                        <input class="hidden" id="images" name="assets[]" type="file" max="5" min="5" multiple/>
                 </div>
             </div>
             {{-- right form --}}

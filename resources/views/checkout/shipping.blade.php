@@ -85,7 +85,7 @@
                     <div class="flex flex-col gap-12 lg:flex-row">
                         <div class="rounded border border-divider lg:w-2/3 bg-white">
                             <h1 class="my-4 px-4 text-2xl font-bold">Address</h1>
-                            <div class="rounded p-4 shadow-md">
+                            <div class="rounded p-4 pt-0 shadow-md">
                                 <!-- Shipping Address -->
                                 <div class="mb-6">
                                     <div class="grid grid-cols-2 gap-8">
@@ -120,16 +120,16 @@
                                         <label class="mb-2 block text-text-light" for="city">
                                             City
                                         </label>
-                                        <div class="flex justify-between">
-                                          <select class="rounded-small border px-3 py-2" name="city" id="city" required>
+                                        <div class="flex gap-8">
+                                          <select class="rounded-small w-full border px-3 py-2" name="city" id="city" required>
                                             <option class="p-2" value="" selected>City</option>           
                                             </select>
                                                       
-                                            <select class="rounded-small border px-3 py-2" name="district" id="district" required>
+                                            <select class="rounded-small w-full border px-3 py-2" name="district" id="district" required>
                                             <option class="p-2" value="" selected>District</option>
                                             </select>
                                             
-                                            <select class="rounded-small border px-3 py-2" name="ward" id="ward" required>
+                                            <select class="rounded-small w-full border px-3 py-2" name="ward" id="ward" required>
                                             <option class="p-2" value="" selected>Ward</option>
                                           </select>                     
                                         </div>

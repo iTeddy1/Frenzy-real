@@ -61,11 +61,11 @@ Route::middleware(['auth', 'verified'])->prefix('user')->name('user.')->group(fu
     Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 
     // Cart 
-    Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
-    Route::get('/cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
+    Route::post('/checkout/cart', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/checkout/cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
     
-    Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
-    Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/checkout/cart/update', [CartController::class, 'update'])->name('cart.update');
+    Route::post('/checkout/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
     
     Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');

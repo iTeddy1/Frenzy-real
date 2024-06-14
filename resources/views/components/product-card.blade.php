@@ -12,21 +12,21 @@
     <div class="relative">
         @if ($tag === "sale")
             <div
-                class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] items-center justify-center gap-2.5 rounded bg-error px-3 py-1">
+                class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] z-10 items-center justify-center gap-2.5 rounded bg-error px-3 py-1">
                 <div class="text-xs font-bold uppercase leading-[18px] text-neutral-50">
                     Sale
                 </div>
             </div>
         @elseif($tag === "new")
             <div
-                class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] items-center justify-center gap-2.5 rounded bg-info px-3 py-1">
+                class="absolute left-[12px] top-[7px] inline-flex h-[26px] w-[53px] z-10 items-center justify-center gap-2.5 rounded bg-info px-3 py-1">
                 <div class=" text-xs font-bold uppercase leading-[18px] text-neutral-50">
                     New
                 </div>
             </div>
         @endif
         <div
-            class="absolute right-[6px] top-[7px] inline-flex h-[76px] w-[34px] flex-col items-start justify-start gap-2">
+            class="absolute z-10 right-[6px] top-[7px] inline-flex h-[76px] w-[34px] flex-col items-start justify-start gap-2">
             <div class="relative h-[34px] w-[34px]">
                 <div class="absolute left-0 top-0 h-[34px] w-[34px] rounded-full bg-white"></div>
                 <div class="absolute left-[5px] top-[5px] h-6 w-6">
@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <div class="relative h-[34px] w-[34px]">
+            <div class="relative z-10 h-[34px] w-[34px]">
                 <div class="absolute left-0 top-0 h-[34px] w-[34px] rounded-full bg-white"></div>
                 <div class="absolute left-[5px] top-[5px] inline-flex h-6 w-6 items-center justify-center">
                     <svg class="icon icon-tabler icon-tabler-eye" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -53,7 +53,7 @@
             </div>
         </div>
         <img class="peer rounded-lg object-cover" src="{{ $image }}" alt="{{ $name }}" />
-        <img class="peer absolute -right-96 top-0 hidden h-full object-cover transition-all delay-100 duration-1000 hover:right-0 peer-hover:right-0 md:block md:w-full"
+        <img class="peer rounded-lg absolute -right-96 top-0 hidden h-full object-cover transition-all delay-100 duration-1000 hover:right-0 peer-hover:right-0 md:block md:w-full"
             src="{{ $hoverimage }}" alt="{{ $name }}" />
 
     </div>

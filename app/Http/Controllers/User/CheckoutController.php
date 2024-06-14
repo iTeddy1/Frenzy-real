@@ -11,14 +11,13 @@ use App\Models\OrderStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 class CheckoutController extends Controller
 {
     public function cart()
     {
         $cart = Auth::user()->cart;
+
         return view('checkout.cart', ['cart' => $cart]);
     }
 
@@ -65,7 +64,7 @@ class CheckoutController extends Controller
         // NGUYEN VAN A
         // 03/07
         $paymentMethod = $request->input('payment_method');
-
+        
         if ($paymentMethod === 'cod') {
             return $this->storePayment($request);
         }
@@ -74,6 +73,20 @@ class CheckoutController extends Controller
         $cart = $user->cart;
         $amount = "$cart->total";
 
+        // Create Order
+        $orderData = [
+            'user_id' => $user->id,
+            'payment_method' => 'atm',
+            'total' => $cart->total,
+            'status' => 'pending',
+        ];
+        // dd($orderData);
+        $order = $this->createOrder(
+            $orderData,
+            $user,
+            session('address_id')
+        );
+
         $endpoint = env('PAYMENT_ENDPOINT');
         $partnerCode = env('PAYMENT_PARTNER_CODE');
         $accessKey = env('PAYMENT_ACCESS_KEY');
@@ -81,7 +94,7 @@ class CheckoutController extends Controller
 
         $orderInfo = "Thanh toán qua MoMo";
         $orderId = time() . "";
-        $returnUrl = "http://localhost:8000/user/checkout/success";
+        $returnUrl = route('user.checkout.success', ['order_id' => $order->id]);
         $notifyurl = route('user.checkout.storePayment');
         // Lưu ý: link notifyUrl không phải là dạng localhost
 
@@ -110,22 +123,7 @@ class CheckoutController extends Controller
 
         $result = execPostRequest($endpoint, json_encode($data));
         $jsonResult = json_decode($result, true);
-        // decode json
-        if ($jsonResult['message'] == 'Success') {
-            // dd($cart);
-            $orderData = [
-                'user_id' => $user->id,
-                'payment_method' => 'atm',
-                'total' => $cart->total,
-                'status' => 'pending',
-            ];
-            // dd($orderData);
-            $this->createOrder(
-                $orderData,
-                $user,
-                session('address_id')
-            );
-        }
+        
         return redirect($jsonResult['payUrl']);
     }
     public function createOrder($orderData, $user, $addressId)
@@ -180,16 +178,15 @@ class CheckoutController extends Controller
         return redirect()->route('user.checkout.success')->with('order', $order);
     }
 
-
     public function success(Request $request)
     {
         $order = session('order');
         $shipping = (DB::table('addresses')
-            ->join('order_address', 'addresses.id', '=', 'order_address.address_id')
-            ->where('order_address.order_id', $order->id)
-            ->first());
-        Log::info($order);
-
+        ->join('order_address', 'addresses.id', '=', 'order_address.address_id')
+        ->where('order_address.order_id', $order->id)
+        ->first());
+        
+        session()->forget('payment_token');
         return view('checkout.success', ['shipping' => $shipping, 'order' => $order]);
     }
 }

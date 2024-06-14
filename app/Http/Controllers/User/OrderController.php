@@ -10,8 +10,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-
-        $orders = Order::where('user_id', Auth::id())->with('status')->get();
+        $orders = Order::where('user_id', Auth::id())->with('status')->latest()->paginate(12);
         // dd($orders);
         return view('user.orders.index', compact('orders'));
     }
@@ -20,7 +19,7 @@ class OrderController extends Controller
     {
         $orderDetails = Order::with(['items.product', 'address', 'status'])
         ->findOrFail($order->id);
-        // dd($orderDetails);
+        // dd($orderDetails->items);
         return view('user.orders.show', compact('order', 'orderDetails'));
     }
 }

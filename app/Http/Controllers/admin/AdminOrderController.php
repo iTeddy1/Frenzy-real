@@ -15,13 +15,6 @@ class AdminOrderController extends Controller
         return view('admin.orders.index', ['orders' => $orders]);
     }
 
-    // Admin: Show specific order
-    public function show(Order $order)
-    {
-        $order->load('user');
-        return view('admin.orders.show', compact('order'));
-    }
-
     public function edit(Order $order)
     {
         $orderDetails = Order::with(['items.product', 'address', 'status'])
@@ -34,11 +27,25 @@ class AdminOrderController extends Controller
     public function update(Request $request, Order $order)
     {
         $validated = $request->validate([
-            'status_id' => 'required|exists:order_statuses,id',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'status' => 'required|string|in:pending,processing,shipped,delivered,cancelled',
+            'city' => 'required|string|max:255',
+            'district' => 'required|string|max:255',
+            'ward' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:15',
         ]);
 
+        $order->user->update($validated);
+        $order->address->update($validated);
         $order->update($validated);
 
-        return redirect()->route('admin.orders.show', $order)->with('success', 'Order status updated.');
+        return redirect()->route('admin.orders.index', $order)->with('success', 'Order status updated.');
+    }
+
+    public function destroy(Order $order)
+    {
+        $order->delete();
+        return redirect()->route('admin.orders.index')->with('success', 'Order deleted.');
     }
 }

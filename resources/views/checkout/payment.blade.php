@@ -59,7 +59,7 @@
                 <form class="flex flex-col gap-12 lg:flex-row" action="{{ route("user.checkout.momoPayment") }}"
                     method="POST">
                     @csrf
-                    <div class="h-fit rounded border border-divider lg:w-2/3 shadow-md bg-white">
+                    <div class="rounded border border-divider lg:w-2/3 shadow-md bg-white">
                         <h1 class="my-4 px-4 text-2xl font-bold">Payment</h1>
                         <div class="p-4">
                             <!-- Payment Method -->
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
 
-                            <div class="mt-8 flex max-w-2xl justify-end">
+                            <div class="mt-8 flex w-full justify-end">
                                 <button
                                     class="rounded border bg-primary px-8 py-2 text-white hover:bg-primary-dark"
                                     type="submit">

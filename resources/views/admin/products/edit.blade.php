@@ -46,7 +46,7 @@
             class="inline-flex flex-col items-start gap-[17px] self-stretch rounded border border-zinc-200 bg-white px-[15px] py-[19px]">
             <div class="text-base font-semibold leading-tight text-gray-400">Quantity</div>
             <input class="self-stretch rounded border border-zinc-300 bg-white p-2.5 focus:outline-none" name="quantity"
-                type="number" value="{{ $product->quantity }}" min="1" />
+                type="number" value="{{ $product->quantity }}" min="0" />
 
             <div class="flex items-center justify-center gap-2.5">
                 <label class="text-base font-semibold leading-tight text-black text-opacity-50" for="color">
@@ -91,7 +91,7 @@
             <input class="self-stretch rounded border border-zinc-300 bg-white p-2.5 focus:outline-none"
                 name="sale_price" type="number" value="{{ $product->sale_price }}" min="0" />
             <div class="flex gap-3 self-stretch">
-                <a class="rounded border px-4 py-4" href="admin/products">
+                <a class="rounded border px-4 py-4" href="{{ route('admin.products.index')}}">
                     Cancel
                 </a>
                 <button
