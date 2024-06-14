@@ -16,7 +16,7 @@
         </div>
     
         <div class="mb-6">
-            <h3 class="text-lg font-semibold text-gray-700 mb-2">Shipping Address</h3>
+            <h3 class="text-lg font-semibold text-gray-700 ">Shipping Address</h3>
             @if ($orderDetails->address)
                 <p class="text-gray-600">Customer name: {{ $orderDetails->address->first_name }} {{ $orderDetails->address->last_name }}</p>
                 <p class="text-gray-600">
@@ -27,7 +27,7 @@
         </div>
     
         <div>
-            <h3 class="text-lg font-semibold text-gray-700 mb-4">Order Items</h3>
+            <h3 class="text-lg font-semibold text-gray-700">Order Items</h3>
             <div class="overflow-x-auto rounded">
                 <table class="min-w-full border border-gray-200">
                     <thead class="rounded">

@@ -70,7 +70,7 @@
                                             class="my-3 flex cursor-pointer gap-8 rounded-small border border-divider px-3 py-4 text-text-dark hover:bg-background-neutral-light">
                                             <input class="ml-2" name="payment_method" value="atm" type="radio" />
                                             <div class="pl-2">
-                                                <p>Pay with Momo</p>
+                                                <p>Pay with Momo ATM</p>
                                                 <p class="text-text-light">
                                                     Pay with mobile banking application or e-Wallet
                                                 </p>
