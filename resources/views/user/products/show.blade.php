@@ -69,14 +69,12 @@
                     </span>
                     <span class="ml-3 flex border-l-2 border-gray-200 py-2 pl-3">
                         <div class="relative h-4 w-8">
-                            <div class="absolute left-[-0px] top-0 h-4 w-4 rounded-full bg-zinc-300"></div>
-                            <div class="absolute left-[8px] top-0 h-4 w-4 rounded-full bg-red-600"></div>
-                            <div class="absolute left-[16px] top-0 h-4 w-4 rounded-full bg-blue-700"></div>
+                            <div class="absolute left-[-0px] top-0 h-4 w-4 rounded-full bg-[{{ $product->colorway }}]"></div>
                         </div>
                     </span>
                 </div>
                 <div class="flex justify-between">
-                    @if($product->sale_price)  
+                    @if($product->sale_price)
                         <span class="title-font text-2xl font-medium text-gray-400 line-through">{{ number_format($product->regular_price) }}₫</span>
                         <span class="title-font text-2xl font-medium">
                             {{ number_format($product->sale_price) }}₫

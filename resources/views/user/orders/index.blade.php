@@ -1,7 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-<div class="mx-auto w-full max-w-screen-2xl px-4 md:px-6 2xl:px-8">
+<div class="mx-auto w-full h-dvh max-w-screen-2xl px-4 md:px-6 2xl:px-8">
     <div>
         <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
             Shop</div>
@@ -64,7 +64,7 @@
                             <td class="border-b border-gray-200 px-6 py-4">
                                 {{ number_format($order->total) }}₫</td>
                             <td class="border-b border-gray-200 px-6 py-4">
-                                <x-order-status :status="$order['status']"/> 
+                                <x-order-status :status="$order['status']"/>
                             </td>
                             <td class="border-b border-gray-200 px-6 py-4 text-center">
                                 {{ $order->created_at->format('d M Y') }}</td>
@@ -73,7 +73,7 @@
                                 <a href="{{ route('user.orders.show', $order->id) }}" class="btn btn-primary">View</a>
                             </td>
                         </tr>
-                        
+
                         @endforeach
                     </tbody>
                 </table>

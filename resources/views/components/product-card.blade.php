@@ -6,6 +6,7 @@
     "image" => "",
     "hoverimage" => "",
     "urlid" => "",
+    "colorway" => "s"
 ])
 <a class="mx-auto mt-4 flex w-full flex-col justify-between overflow-hidden rounded-[12px] border bg-white p-2 font-public shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)]"
     href="/products/{{ $urlid }}/">
@@ -65,11 +66,12 @@
             <!-- Color Pallette  -->
             <span class="flex">
                 <div class="relative h-4 w-8">
-                    <div class="absolute left-[-0px] top-0 h-4 w-4 rounded-full bg-cyan-400"></div>
+                    <div class="absolute left-0 top-0 h-4 w-4 rounded-full bg-[{{ $colorway }}]"></div>
+                    <!-- <div class="absolute left-[-0px] top-0 h-4 w-4 rounded-full bg-cyan-400"></div>
                     <div class="absolute left-[8px] top-0 h-4 w-4 rounded-full bg-orange-500">
                     </div>
                     <div class="absolute left-[16px] top-0 h-4 w-4 rounded-full bg-stone-100">
-                    </div>
+                    </div> -->
                 </div>
             </span>
 

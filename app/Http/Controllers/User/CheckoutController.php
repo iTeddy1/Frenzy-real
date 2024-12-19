@@ -60,11 +60,12 @@ class CheckoutController extends Controller
 
     public function momoPayment(Request $request)
     {
-        // 9704000000000018
+        // 4111111111111111
         // NGUYEN VAN A
-        // 03/07
+        // 01/25
+        // 123
         $paymentMethod = $request->input('payment_method');
-        
+
         if ($paymentMethod === 'cod') {
             return $this->storePayment($request);
         }
@@ -80,51 +81,57 @@ class CheckoutController extends Controller
             'total' => $cart->total,
             'status' => 'pending',
         ];
-        // dd($orderData);
+
         $order = $this->createOrder(
             $orderData,
             $user,
             session('address_id')
         );
+        session(['order' => $order]);
 
-        $endpoint = env('PAYMENT_ENDPOINT');
-        $partnerCode = env('PAYMENT_PARTNER_CODE');
-        $accessKey = env('PAYMENT_ACCESS_KEY');
-        $secretKey = env('PAYMENT_SECRET_KEY');
+        $config = [
+            "appid" => 553,
+            "key1" => "9phuAOYhan4urywHTh0ndEXiV3pKHr5Q",
+            "key2" => "Iyz2habzyr7AG8SgvoBCbKwKi3UzlLi3",
+            "endpoint" => "https://sandbox.zalopay.com.vn/v001/tpe/createorder"
+          ];
 
-        $orderInfo = "Thanh toán qua MoMo";
-        $orderId = time() . "";
-        $returnUrl = route('user.checkout.success', ['order_id' => $order->id]);
-        $notifyurl = route('user.checkout.storePayment');
-        // Lưu ý: link notifyUrl không phải là dạng localhost
+        $embeddata = [
+        "merchantinfo" => "embeddata123",
+        "redirecturl" => route('user.checkout.success'),
+        ];
+        $items = [
+        [ "itemid" => "knb", "itemname" => "kim nguyen bao", "itemprice" => 198400, "itemquantity" => 1 ]
+        ];
+        $order = [
+        "appid" => $config["appid"],
+        "apptime" => round(microtime(true) * 1000), // miliseconds
+        "apptransid" => date("ymd")."_".uniqid(), // mã giao dich có định dạng yyMMdd_xxxx
+        "appuser" => "demo",
+        "item" => json_encode($items, JSON_UNESCAPED_UNICODE),
+        "embeddata" => json_encode($embeddata, JSON_UNESCAPED_UNICODE),
+        "amount" => $amount,
+        "description" => "Lazada - Thanh toán đơn hàng #".$order["apptransid"],
+        "bankcode" => ''
+        ];
 
-        //! Use ATM payment
-        $bankCode = "SML";
-        $requestType = "payWithMoMoATM";
-        $extraData = "";
-        $requestId = time() . "";
-        $rawHash = "partnerCode=" . $partnerCode . "&accessKey=" . $accessKey . "&requestId=" . $requestId . "&bankCode=" . $bankCode . "&amount=" . $amount . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&returnUrl=" . $returnUrl . "&notifyUrl=" . $notifyurl . "&extraData=" . $extraData . "&requestType=" . $requestType;
-        $signature = hash_hmac("sha256", $rawHash, $secretKey);
+        // appid|apptransid|appuser|amount|apptime|embeddata|item
+        $data = $order["appid"]."|".$order["apptransid"]."|".$order["appuser"]."|".$order["amount"]
+        ."|".$order["apptime"]."|".$order["embeddata"]."|".$order["item"];
+        $order["mac"] = hash_hmac("sha256", $data, $config["key1"]);
 
-        $data = array(
-            'partnerCode' => $partnerCode,
-            'accessKey' => $accessKey,
-            'requestId' => $requestId,
-            'amount' => $amount,
-            'orderId' => $orderId,
-            'orderInfo' => $orderInfo,
-            'returnUrl' => $returnUrl,
-            'bankCode' => $bankCode,
-            'notifyUrl' => $notifyurl,
-            'extraData' => $extraData,
-            'requestType' => $requestType,
-            'signature' => $signature
-        );
+        $context = stream_context_create([
+        "http" => [
+          "header" => "Content-type: application/x-www-form-urlencoded\r\n",
+          "method" => "POST",
+          "content" => http_build_query($order)
+        ]
+        ]);
 
-        $result = execPostRequest($endpoint, json_encode($data));
-        $jsonResult = json_decode($result, true);
-        
-        return redirect($jsonResult['payUrl']);
+        $resp = file_get_contents($config["endpoint"], false, $context);
+        $result = json_decode($resp, true);
+
+        return redirect($result['orderurl']);
     }
     public function createOrder($orderData, $user, $addressId)
     {
@@ -152,9 +159,9 @@ class CheckoutController extends Controller
             'address_id' => $addressId,
         ]);
 
-        // Clear the cart
-        $cart->items()->delete();
-        $cart->delete();
+        // // Clear the cart
+        // $cart->items()->delete();
+        // $cart->delete();
 
         return $order;
     }
@@ -185,7 +192,7 @@ class CheckoutController extends Controller
         ->join('order_address', 'addresses.id', '=', 'order_address.address_id')
         ->where('order_address.order_id', $order->id)
         ->first());
-        
+
         session()->forget('payment_token');
         return view('checkout.success', ['shipping' => $shipping, 'order' => $order]);
     }

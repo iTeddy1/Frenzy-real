@@ -68,19 +68,18 @@
                         <td class="border-b border-gray-200 px-6 py-4">
                             {{ number_format($order->total) }}₫</td>
                         <td class="border-b border-gray-200 px-6 py-4">
-                            <x-order-status :status="$order['status']"/> 
+                            <x-order-status :status="$order['status']"/>
                         </td>
                         <td class="border-b border-gray-200 px-6 py-4 text-center">
                             {{ $order->created_at->format('d M Y') }}</td>
-                        
+
                         </td>
-                        <td class="border-b border-gray-200 px-6 py-4">
+                        <td class="border-b border-gray-200 px-6 py-4" x-data="{ showModal: false, deleteUrl: '' }">
                             <x-dropdown>
                                 <x-slot name="trigger">
-                                    <svg class="icon icon-tabler icon-tabler-dots-vertical"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
-                                        stroke-linejoin="round">
+                                    <svg class="icon icon-tabler icon-tabler-dots-vertical" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
                                         <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
@@ -91,21 +90,40 @@
                                     <x-dropdown-link :href="route('admin.orders.edit', $order)">
                                         Edit
                                     </x-dropdown-link>
-                                    <form id='delete_form' method="POST" action="{{ route('admin.orders.destroy', ['order' => $order->id]) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <x-dropdown-link :href="route('admin.orders.destroy', $order)" 
-                                        onclick="event.preventDefault();
-                                        if(confirm('Are you sure you want to delete this order ?')) this.closest('form').submit();">
-                                            Delete
-                                        </x-dropdown-link>
-                                    </form>
+                                    <x-dropdown-link href="#" @click.prevent="
+                                        deleteUrl = '{{ route('admin.orders.destroy', $order) }}';
+                                        showModal = true;">
+                                        Delete
+                                    </x-dropdown-link>
                                 </x-slot>
-
                             </x-dropdown>
+
+                            <!-- Confirm Delete Modal -->
+                            <div x-show="showModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-95"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-200"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-95">
+                                <div class="bg-white rounded-lg shadow-lg w-96">
+                                    <div class="p-4">
+                                        <h5 class="text-lg font-bold">Confirm Delete</h5>
+                                        <p>Are you sure you want to delete this order?</p>
+                                    </div>
+                                    <div class="flex justify-end p-4 border-t">
+                                        <button type="button" class="btn btn-secondary mr-2"
+                                            @click="showModal = false">Cancel</button>
+                                        <form id="deleteOrderForm" :action="deleteUrl" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <x-danger-button type="submit" class="btn btn-danger">Delete</x-danger-button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
-                    
                     @endforeach
                 </tbody>
             </table>

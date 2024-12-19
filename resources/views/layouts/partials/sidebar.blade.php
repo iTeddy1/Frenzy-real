@@ -1,5 +1,5 @@
 
-<div class="flex h-screen overflow-hidden bg-white">
+<aside class="flex h-screen overflow-hidden bg-white">
   <div class="hidden md:flex md:flex-shrink-0">
     <div class="flex flex-col w-64">
       <div class="flex flex-col flex-grow overflow-y-auto bg-white border-r">
@@ -9,7 +9,7 @@
               <span class="size-12">
                 <img src="{{ Vite::asset("/public/images/logo.png") }}" >
               </span>
-              <span>Frenzy</span>
+              <span>ShoeStory</span>
             </span>
           </a>
           <button class="hidden rounded-lg focus:outline-none focus:shadow-outline">
@@ -24,7 +24,7 @@
             <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
               ECOMMERCE
             </p>
-            <ul>            
+            <ul>
               <li>
                 <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary" href="{{route('home')}}">
                   <ion-icon class="size-4 md hydrated" name="sync-outline" role="img" aria-label="sync outline"></ion-icon>
@@ -106,4 +106,4 @@
       </div>
     </div>
   </div>
-</div>
+</aside>

@@ -2,62 +2,7 @@
 
 @section("content")
     <div class="mx-auto w-full max-w-screen-2xl px-4 md:px-6 2xl:px-8">
-        {{-- <div class="relative w-full" id="carousel-example">
-            <!-- Carousel wrapper -->
-            <div class="relative left-[-1.5%] h-56 overflow-hidden rounded-lg sm:h-64 xl:h-80 2xl:h-96">
-                <!-- Item 1 -->
-                <div class="absolute left-0 h-full w-full opacity-100 duration-700 ease-in-out" id="carousel-item-1">
-                    <img class="absolute left-1/2 top-1/2 max-w-max -translate-x-1/2 -translate-y-1/2 transform rounded-xl"
-                        src="{{ Vite::asset("/public/images/sld1.png") }}" alt="..." />
-                </div>
-                <!-- Item 2 -->
-                <div class="absolute left-0 h-full w-full opacity-0 duration-700 ease-in-out" id="carousel-item-2">
-                    <img class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-xl"
-                        src="{{ Vite::asset("/public/images/sld2.png") }}" alt="..." />
-                </div>
-                <!-- Item 3 -->
-                <div class="absolute left-0 h-full w-full opacity-0 duration-700 ease-in-out" id="carousel-item-3">
-                    <img class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-xl"
-                        src="{{ Vite::asset("/public/images/sld3.png") }}" alt="..." />
-                </div>
-            </div>
-            <!-- Slider indicators -->
-            <div class="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse">
-                <button class="h-3 w-3 rounded-full" id="carousel-indicator-1" type="button" aria-current="true"
-                    aria-label="Slide 1"></button>
-                <button class="h-3 w-3 rounded-full" id="carousel-indicator-2" type="button" aria-current="false"
-                    aria-label="Slide 2"></button>
-                <button class="h-3 w-3 rounded-full" id="carousel-indicator-3" type="button" aria-current="false"
-                    aria-label="Slide 3"></button>
-            </div>
-            <!-- Slider controls -->
-            <button
-                class="group absolute left-44 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
-                id="data-carousel-prev" type="button">
-                <span
-                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white">
-                    <svg class="h-4 w-4 text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5 1 1 5l4 4" />
-                    </svg>
-                    <span class="hidden">Previous</span>
-                </span>
-            </button>
-            <button
-                class="group absolute right-44 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
-                id="data-carousel-next" type="button">
-                <span
-                    class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white">
-                    <svg class="h-4 w-4 text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 9 4-4-4-4" />
-                    </svg>
-                    <span class="hidden">Next</span>
-                </span>
-            </button>
-        </div> --}}
+        @include("components/carousel")
         <div>
             <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
                 Shop</div>
@@ -97,7 +42,7 @@
                             : '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                         <path d="M6 9l6 6l6 -6" />
-                                    </svg>' 
+                                    </svg>'
                         !!}
 
                     </a>
@@ -121,14 +66,16 @@
         <section>
             <div class="mx-auto mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                 @foreach ($products as $product)
-                    <x-product-card 
-                    :name="$product['name']" 
+                    <x-product-card
+                    :name="$product['name']"
                     :tag="$product['tag']"
-                    :regularprice="$product['regular_price']" 
-                    :saleprice="$product['sale_price']" 
+                    :regularprice="$product['regular_price']"
+                    :saleprice="$product['sale_price']"
                     :image="$product->assets->first()->path"
-                    :hoverimage="$product->assets->skip(1)->first()->path" 
-                    :urlid="$product['id']"/>
+                    :hoverimage="$product->assets->skip(1)->first()->path"
+                    :urlid="$product['id']"
+                    :colorway="$product['colorway']"
+                    />
                 @endforeach
             </div>
             <div>{{ $products->links() }}</div>

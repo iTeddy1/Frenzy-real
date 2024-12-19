@@ -22,7 +22,7 @@
 </head>
 
 <body class="font-public" x-data="{ darkMode: false }">
-    <div class="flex h-screen overflow-hidden">
+    <div class="flex h-full overflow-hidden">
         @include("layouts.partials.admin-sidebar")
         {{-- <x-header /> --}}
         <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
@@ -34,6 +34,7 @@
             </main>
         </div>
     </div>
+    @include("layouts.partials.footer")
 </body>
 
 </html>

@@ -8,7 +8,7 @@
 
     <title>{{ config("app.name", "Frenzy") }}</title>
     <link rel="shortcut icon"  href="{{ Vite::asset("/public/images/logo.png") }}">
-    
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet" />
@@ -22,14 +22,14 @@
 </head>
 
 <body class="font-public">
-    <div class="flex h-screen overflow-hidden">
+    <div class="flex h-screen overflow-auto">
         @auth
         @if(Auth::user()->role === 'admin')
             @include('layouts.partials.admin-sidebar')
         @elseif(Auth::user()->role === 'user')
             @include('layouts.partials.sidebar')
         @endif
-        @endauth        
+        @endauth
         <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
             @include("layouts.partials.navigation")
             <main class="">
@@ -37,6 +37,7 @@
                     @yield('content')
                 </div>
             </main>
+            @include("layouts.partials.footer")
         </div>
     </div>
 </body>

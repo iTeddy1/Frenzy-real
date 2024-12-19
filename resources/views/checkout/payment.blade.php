@@ -5,7 +5,7 @@
         <div class="mb-8">
             <h1 class="text-2xl font-bold">Checkout</h1>
             {{ Breadcrumbs::render('user.checkout.payment') }}
-        </div>    
+        </div>
         <div>
             <h2 class="sr-only">Steps</h2>
 
@@ -70,7 +70,7 @@
                                             class="my-3 flex cursor-pointer gap-8 rounded-small border border-divider px-3 py-4 text-text-dark hover:bg-background-neutral-light">
                                             <input class="ml-2" name="payment_method" value="atm" type="radio" />
                                             <div class="pl-2">
-                                                <p>Pay with Momo ATM</p>
+                                                <p>Pay with Zalopay</p>
                                                 <p class="text-text-light">
                                                     Pay with mobile banking application or e-Wallet
                                                 </p>

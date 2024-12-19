@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="mx-auto w-full max-w-screen-2xl px-4 md:px-6 2xl:px-8 ">
-        <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800">
+        @include('components/carousel')
+        <div class="self-stretch text-2xl font-bold leading-normal tracking-wide text-gray-800 mt-4">
             Shop</div>
         {{ Breadcrumbs::render("home") }}
 
@@ -23,8 +24,8 @@
                         name="query"
                         type="search"
                         class="block bg-white w-full rounded-lg border border-gray-300 p-4 ps-10 text-sm text-text-normal focus:border-divider focus:ring-primary"
-                        id="product-search" 
-                        placeholder="Search..." 
+                        id="product-search"
+                        placeholder="Search..."
                         required />
                     </div>
                 </form>
@@ -42,7 +43,7 @@
                             : '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                         <path d="M6 9l6 6l6 -6" />
-                                </svg>' 
+                                </svg>'
                         !!}
 
                     </a>
@@ -66,14 +67,16 @@
         <section>
             <div id="search-result" class="mx-auto mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
                 @foreach ($products as $product)
-                    <x-product-card 
-                    :name="$product['name']" 
+                    <x-product-card
+                    :name="$product['name']"
                     :tag="$product['tag']"
-                    :regularprice="$product['regular_price']" 
-                    :saleprice="$product['sale_price']" 
+                    :regularprice="$product['regular_price']"
+                    :saleprice="$product['sale_price']"
                     :image="$product->assets->first()->path"
-                    :hoverimage="$product->assets->skip(1)->first()->path" 
-                    :urlid="$product['id']"/>
+                    :hoverimage="$product->assets->skip(1)->first()->path"
+                    :urlid="$product['id']"
+                    :colorway="$product['colorway']"
+                    />
                 @endforeach
             </div>
             <div>{{ $products->links() }}</div>

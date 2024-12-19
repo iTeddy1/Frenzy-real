@@ -1,4 +1,4 @@
-<div class="flex h-screen overflow-hidden bg-white">
+<aside class="flex h- overflow-hidden bg-white">
   <div class="hidden md:flex md:flex-shrink-0">
     <div class="flex flex-col w-64">
       <div class="flex flex-col flex-grow overflow-y-auto bg-white border-r">
@@ -19,11 +19,11 @@
           </button>
         </div>
         <div class="flex flex-col flex-grow px-4 mt-5">
-          <nav class="flex-1 space-y-1 bg-white">         
+          <nav class="flex-1 space-y-1 bg-white">
             <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
               ECOMMERCE
             </p>
-            <ul>            
+            <ul>
               <li>
                 <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary {{ Request::is('home') ? 'active-link' : '' }}" href="{{route('home')}}">
                   <ion-icon class="size-4 md hydrated" name="sync-outline" role="img" aria-label="sync outline"></ion-icon>
@@ -90,22 +90,8 @@
                   <span class="ml-4 font-semibold"> List </span>
                 </a>
               </li>
-              <li>
-                <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-sm text-gray-500 transition duration-200 ease-in-out transform rounded-lg focus:shadow-outline hover:bg-primary-lighter hover:scale-95 hover:text-primary {{ Request::is('admin/products/create') ? 'active-link' : '' }}" href="{{route('admin.products.create')}}">
-                  <ion-icon class="size-4 md hydrated" name="sync-outline" role="img" aria-label="sync outline"></ion-icon>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-playlist-add" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#00AC55" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M19 8h-14" />
-                    <path d="M5 12h9" />
-                    <path d="M11 16h-6" />
-                    <path d="M15 16h6" />
-                    <path d="M18 13v6" />
-                  </svg>
-                  <span class="ml-4 font-semibold"> Create </span>
-                </a>
-              </li>
             </ul>
-  
+
             <p class="px-4 pt-4 text-xs font-semibold text-gray-400 uppercase">
               Contact
             </p>
@@ -127,4 +113,4 @@
       </div>
     </div>
   </div>
-</div>
+</aside>
