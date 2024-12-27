@@ -43,36 +43,44 @@
     {{-- main --}}
     <div
         class="flex flex-col items-start justify-start gap-2.5 self-stretch rounded border border-divider bg-white py-5 shadow">
-        {{-- filter --}}
-        <div class="flex items-center justify-center gap-4 self-stretch px-4">
-            <div class="align-center relative flex shrink grow basis-0 justify-start self-stretch">
 
-                <form class="mr-auto" action='{{route("admin.products.index")}}' method="GET">
-                    <label class="sr-only mb-2 text-sm font-medium text-text-dark"
-                        for="admin-search">Search</label>
-                    <div class="relative">
-                        <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-                            <svg class="h-4 w-4 text-text-normal" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                            </svg>
-                        </div>
-                        <input
-                            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-text-normal focus:border-divider focus:ring-primary "
-                            id="admin-search" name="query" type="search" placeholder="Search..." required />
+<div class="flex items-center gap-4 self-stretch px-4">
 
+    {{-- filter --}}
+    <div class="flex items-center justify-center gap-4 self-stretch px-4">
+        <div class="align-center relative flex shrink grow basis-0 justify-start self-stretch">
+
+            <form class="mr-auto" action='{{route("admin.products.index")}}' method="GET">
+                <label class="sr-only mb-2 text-sm font-medium text-text-dark"
+                    for="admin-search">Search</label>
+                <div class="relative">
+                    <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
+                        <svg class="h-4 w-4 text-text-normal" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
                     </div>
-                </form>
-            </div>
+                    <input
+                        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-text-normal focus:border-divider focus:ring-primary "
+                        id="admin-search" name="query" type="search" placeholder="Search..." required />
+
+                </div>
+            </form>
         </div>
+    </div>
+    {{-- Bulk Delete Button --}}
+    <div class="mt-4">
+        <button id="bulk-delete" class="btn btn-danger">Delete Selected</button>
+    </div>
+</div>
         <div class="w-full overflow-x-auto">
             <table class="w-full overflow-x-auto">
                 {{-- header --}}
                 <thead>
                     <tr>
                         <td class="w-[30px] px-6 py-4 text-left font-bold text-gray-600">
-                            <input type="checkbox">
+                            <input type="checkbox" id="select-all">
                         </td>
 
                         <td class="w-2/5 px-6 py-4 text-left font-bold text-gray-600">
@@ -106,7 +114,7 @@
                     {{-- {{ $product }} --}}
                     <tr>
                         <td class="border-b border-divider px-6 py-4">
-                            <input name="ids[]" value="{{ $product->id }}" type="checkbox">
+                            <input name="ids[]" value="{{ $product->id }}" type="checkbox" class="product-checkbox">
                         </td>
                         <td class="w-2/5 border-b border-gray-200 px-6 py-4">
                             <a class="flex h-[50px] gap-2.5" href="{{route('admin.products.show', $product->id)}}">
@@ -198,5 +206,47 @@
     {{-- pagination --}}
 
 </div>
+{{-- Confirm Delete Modal for Bulk --}}
+<div x-show="bulkShowModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 scale-95"
+    x-transition:enter-end="opacity-100 scale-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 scale-100"
+    x-transition:leave-end="opacity-0 scale-95">
+    <div class="bg-white rounded-lg shadow-lg w-96">
+        <div class="p-4">
+            <h5 class="text-lg font-bold">Confirm Delete Selected Products</h5>
+            <p>Are you sure you want to delete selected products?</p>
+        </div>
+        <div class="flex justify-end p-4 border-t">
+            <button type="button" class="btn btn-secondary mr-2" @click="bulkShowModal = false">Cancel</button>
+            <form id="bulkDeleteForm" :action="bulkDeleteUrl" method="POST">
+                @csrf
+                @method('DELETE')
+                <x-danger-button type="submit" class="btn btn-danger">Delete</x-danger-button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class="w-full px-4">{{ $products->links() }}</div>
+<script>
+    document.getElementById('select-all').addEventListener('change', function() {
+        const checkboxes = document.querySelectorAll('.product-checkbox');
+        checkboxes.forEach(checkbox => checkbox.checked = this.checked);
+    });
+
+    const bulkDeleteButton = document.getElementById('bulk-delete');
+    let bulkDeleteUrl = '';
+
+    bulkDeleteButton.addEventListener('click', function() {
+        const selectedProducts = Array.from(document.querySelectorAll('.product-checkbox:checked'));
+        if (selectedProducts.length > 0) {
+            bulkDeleteUrl = selectedProducts.map(checkbox => checkbox.value).join(',');
+            bulkShowModal = true;
+        }
+    });
+</script>
 @endsection
+

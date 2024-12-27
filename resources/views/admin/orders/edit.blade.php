@@ -35,15 +35,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-full"> 
+                    <div class="w-full">
                         <div class="text-base font-semibold leading-tight text-gray-400">Status</div>
                         <div class="percent-options mt-2 flex w-1/2 flex-wrap gap-4">
                             <div>
-                                <input class="peer sr-only" id="tip1" name="status" type="radio" value="pending">
+                                <input class="peer sr-only" id="tip1" name="status" type="radio" {{ $orderDetails->status == 'pending' ? 'checked' : '' }} value="pending">
                                 <label
                                     class="flex cursor-pointer items-center justify-center gap-2 rounded border-divider bg-background-neutral-light p-1.5 font-semibold text-text-dark peer-checked:bg-secondary peer-checked:text-white"
                                     for="tip1">
-                                    <svg class="icon icon-tabler icon-tabler-stars" xmlns="http://www.w3.org/2000/svg"
+                                    <svg class="icon peer-checked:text-white icon-tabler icon-tabler-stars" xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A6B0BB"
                                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -58,11 +58,11 @@
                                 </label>
                             </div>
                             <div>
-                                <input class="peer sr-only" id="tip2" name="status" type="radio" value="processing">
+                                <input class="peer sr-only" id="tip2" name="status" type="radio" {{ $orderDetails->status == 'processing' ? 'checked' : '' }} value="processing">
                                 <label
                                     class="flex cursor-pointer items-center justify-center gap-2 rounded border-divider bg-background-neutral-light p-1.5 font-semibold text-text-dark peer-checked:bg-warning peer-checked:text-white"
                                     for="tip2">
-                                    <svg class="icon icon-tabler icon-tabler-refresh" xmlns="http://www.w3.org/2000/svg"
+                                    <svg class="icon peer-checked:stroke-white icon-tabler icon-tabler-refresh" xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A6B0BB"
                                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -73,11 +73,11 @@
                                 </label>
                             </div>
                             <div>
-                                <input class="peer sr-only" id="tip3" name="status" type="radio" value="shipped">
+                                <input class="peer sr-only" id="tip3" name="status" type="radio" {{ $orderDetails->status == 'shipped' ? 'checked' : '' }} value="shipped">
                                 <label
                                     class="flex cursor-pointer items-center justify-center gap-2 rounded border-divider bg-background-neutral-light p-1.5 font-semibold text-text-dark peer-checked:bg-primary-dark peer-checked:text-white"
                                     for="tip3">
-                                    <svg class="icon icon-tabler icon-tabler-truck-delivery peer-checked:stroke-white"
+                                    <svg class="icon peer-checked:text-white icon-tabler icon-tabler-truck-delivery peer-checked:stroke-white"
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="#A6B0BB" fill="none" stroke-linecap="round"
                                         stroke-linejoin="round">
@@ -91,11 +91,11 @@
                                 </label>
                             </div>
                             <div>
-                                <input class="peer sr-only" id="tip4" name="status" type="radio" value="delivered">
+                                <input class="peer sr-only" id="tip4" name="status" type="radio" {{ $orderDetails->status == 'delivered' ? 'checked' : '' }} value="delivered">
                                 <label
                                     class="flex cursor-pointer items-center justify-center gap-2 rounded border-divider bg-background-neutral-light p-1.5 font-semibold text-text-dark peer-checked:bg-primary peer-checked:text-white"
                                     for="tip4">
-                                    <svg class="icon icon-tabler icon-tabler-discount-check" xmlns="http://www.w3.org/2000/svg"
+                                    <svg class="icon peer-checked:text-white icon-tabler icon-tabler-discount-check" xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A6B0BB"
                                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -107,11 +107,11 @@
                                 </label>
                             </div>
                             <div>
-                                <input class="peer sr-only" id="tip5" name="status" type="radio" value="cancelled">
+                                <input class="peer sr-only" id="tip5" name="status" type="radio" {{ $orderDetails->status == 'cancelled' ? 'checked' : '' }} value="cancelled">
                                 <label
                                     class="flex cursor-pointer items-center justify-center gap-2 rounded border-divider bg-background-neutral-light p-1.5 font-semibold text-text-dark peer-checked:bg-error peer-checked:text-white"
                                     for="tip5">
-                                    <svg class="icon icon-tabler icon-tabler-circle-x" xmlns="http://www.w3.org/2000/svg"
+                                    <svg class="icon peer-checked:text-white icon-tabler icon-tabler-circle-x" xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5"
                                         stroke="#A6B0BB" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -273,5 +273,6 @@
                 }
             };
         }
+
     </script>
 @endsection

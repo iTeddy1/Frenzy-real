@@ -35,7 +35,7 @@
                         <div
                             class="thumbnail inline-flex h-[100px] w-[100px] cursor-pointer items-center justify-center rounded bg-neutral-100">
                             <img class="rounded border-transparent" id="thumbnail-{{ $product->id }}"
-                                src="{{ $asset->path }}" alt="{{ $asset->filename }}" />
+                                src="{{ $asset->path }}" alt="{{ $asset->fouyf,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,ilename }}" />
                         </div>
                     @endforeach
                 </div>

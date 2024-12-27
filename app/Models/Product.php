@@ -21,9 +21,9 @@ class Product extends Model
             foreach ($product->assets as $asset) {
                 $asset->delete();
             }
-            
+
             // Delete pivot table records
-            $product->assets()->detach(); 
+            $product->assets()->detach();
 
             // Delete the product directory
             $directory = 'assets/products/' . $product->id;
@@ -38,6 +38,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Asset::class, 'product_assets');
     }
-
+    public function orderItems()
+    {
+    return $this->hasMany(OrderItem::class);
+    }
 
 }

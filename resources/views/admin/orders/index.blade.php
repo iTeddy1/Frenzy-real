@@ -11,6 +11,30 @@
             {{ Breadcrumbs::render("admin.orders") }}
         </div>
     </div>
+    <div class="mb-4 w-full">
+        <form method="GET" action="{{ route('admin.orders.index') }}" class="flex items-center gap-4">
+            <div class='p-2 border rounded-lg bg-white'>
+                <label for="start_date" class="block text-sm font-medium text-gray-700">Start Date</label>
+                <input type="date" id="start_date" name="start_date" value="{{ request('start_date') }}" class="mt-1 block w-full rounded-md border-text-dark focus:ring-text-dark p-2 shadow-sm">
+            </div>
+            <div class='p-2 border rounded-lg bg-white'>
+                <label for="end_date" class="block text-sm font-medium text-gray-700">End Date</label>
+                <input type="date" id="end_date" name="end_date" value="{{ request('end_date') }}" class="mt-1 block w-full rounded-md border-text-dark focus:ring-text-dark p-2 shadow-sm">
+            </div>
+            <div class='p-2 border rounded-lg bg-white'>
+                <label for="min_total" class="block text-sm font-medium text-gray-700">Min Total</label>
+                <input type="number" id="min_total" name="min_total" value="{{ request('min_total') }}" class="mt-1 block w-full rounded-md border-text-dark focus:ring-text-dark p-2 shadow-sm">
+            </div>
+            <div class='p-2 border rounded-lg bg-white'>
+                <label for="max_total" class="block text-sm font-medium text-gray-700">Max Total</label>
+                <input type="number" id="max_total" name="max_total" value="{{ request('max_total') }}" class="mt-1 block w-full rounded-md border-text-dark focus:ring-text-dark p-2 shadow-sm">
+            </div>
+            <button type="submit" class="btn btn-primary mt-6">
+                Filter
+            </button>
+        </form>
+    </div>
+
     {{-- main --}}
     <div
         class="flex flex-col items-start justify-start self-stretch rounded border border-divider bg-white py-5 shadow">

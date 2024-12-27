@@ -3,6 +3,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminProductStatisticsController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\User\ProductController;
@@ -48,6 +49,8 @@ Route::middleware(['auth', Role::class . ':admin'])->prefix('admin')->name('admi
     Route::patch('/orders/{order}', [AdminOrderController::class, 'update'])->name('orders.update');
     Route::delete('/orders/{order}', [AdminOrderController::class, 'destroy'])->name('orders.destroy');
 
+    Route::get('/statistics', [AdminProductStatisticsController::class, 'index'])->name('statistics.index');
+    Route::post('/statistics', [AdminProductStatisticsController::class, 'fetch'])->name('statistics.fetch');
 });
 
 //! User routes
@@ -60,13 +63,13 @@ Route::middleware(['auth', 'verified'])->prefix('user')->name('user.')->group(fu
     Route::post('/checkout/success', [CheckoutController::class, 'storePayment'])->name('checkout.storePayment');
     Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 
-    // Cart 
+    // Cart
     Route::post('/checkout/cart', [CartController::class, 'add'])->name('cart.add');
     Route::get('/checkout/cart', [CheckoutController::class, 'cart'])->name('checkout.cart');
-    
+
     Route::post('/checkout/cart/update', [CartController::class, 'update'])->name('cart.update');
     Route::post('/checkout/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
-    
+
     Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 });

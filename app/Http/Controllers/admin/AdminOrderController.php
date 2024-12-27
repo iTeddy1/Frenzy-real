@@ -8,11 +8,26 @@ use Illuminate\Http\Request;
 
 class AdminOrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::with('user')->paginate(5);
-        // dd($orders[0]);
-        return view('admin.orders.index', ['orders' => $orders]);
+        $query = Order::with('user');
+
+        // Lọc theo khoảng thời gian
+        if ($request->start_date && $request->end_date) {
+            $query->whereBetween('created_at', [$request->start_date, $request->end_date]);
+        }
+
+        // Lọc theo thành tiền
+        if ($request->min_total) {
+            $query->where('total', '>=', $request->min_total);
+        }
+        if ($request->max_total) {
+            $query->where('total', '<=', $request->max_total);
+        }
+
+        $orders = $query->paginate(5);
+
+        return view('admin.orders.index', compact('orders'));
     }
 
     public function edit(Order $order)
